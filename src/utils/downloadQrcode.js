@@ -1,11 +1,8 @@
 import html2canvas from "html2canvas";
 
-
-
 const downloadQrcode = (data) => {
-
   const elementId = `erobot_khqr`;
-  const element = document.querySelector(`#${elementId}`) as HTMLElement;
+  const element = document.querySelector(`#${elementId}`);
 
   if (!element) {
     console.error(`Element with ID #${elementId} not found.`);
@@ -13,7 +10,7 @@ const downloadQrcode = (data) => {
   }
 
   html2canvas(element, {
-    backgroundColor: '#ffffff', // Set background explicitly to white
+    backgroundColor: "#ffffff", // Set background explicitly to white
   }).then((canvas) => {
     const a = document.createElement("a");
 

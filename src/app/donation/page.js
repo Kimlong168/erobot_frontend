@@ -10,7 +10,7 @@ import assets from "@/assets/assets";
 import { PiHandsPrayingFill } from "react-icons/pi";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import Link from "next/link";
-
+import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 export default function Payment() {
   const [qrCode, setQrCode] = useState("");
 
@@ -139,6 +139,29 @@ export default function Payment() {
       // Update status from the API response
       const status = response.data?.errorCode === null ? true : false;
       setStatus(status);
+
+      if (status) {
+        // Function to format the current date and time
+        function getFormattedDateTime() {
+          const now = new Date();
+          const options = {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          };
+          return now.toLocaleString("en-US", options); // Adjust locale as needed
+        }
+
+        await sendTelegramMessage(
+          `🎉 Donation received from ${paymentData.name || "anonymous"} for ${
+            paymentData.amount
+          } ${currency} on ${getFormattedDateTime()}`,
+          process.env.NEXT_PUBLIC_TELEGRAM_DONATION_CHAT_ID
+        );
+      }
       // console.log("res", response.data);
     } catch (error) {
       // Handle errors
@@ -172,7 +195,7 @@ export default function Payment() {
     // Check the transaction status every 5 seconds
 
     const intervalId = setInterval(() => {
-      if (qrCode !== "") {
+      if (qrCode !== "" && !status) {
         checkTransactionStatusByMD5();
         // console.log("Checking transaction status...");
       }
@@ -180,7 +203,7 @@ export default function Payment() {
 
     // Cleanup function to clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, [qrCode]); // Empty dependency array ensures the interval starts on mount
+  }, [qrCode, status]); // Empty dependency array ensures the interval starts on mount
 
   return (
     <>
