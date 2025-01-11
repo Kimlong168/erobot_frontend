@@ -209,7 +209,7 @@ export default function Payment() {
 
             {/* Title */}
             <h1 className="text-center text-2xl font-bold mb-4">
-              Payment System for KimlongZ
+              Donate to Erobot Cambodia
             </h1>
 
             {/* Input Fields */}
@@ -279,8 +279,8 @@ export default function Payment() {
 
                       {/* Card Content */}
                       <div className="bg-white">
-                        <p className="text-lg font-semibold  text-gray-800 px-8">
-                          Kimlong Chann
+                        <p className="text-lg font-semibold my-2 text-gray-800 px-8">
+                          Erobot Cambodia
                         </p>
                         <p className="text-2xl font-bold text-gray-800 font-bakong flex justify-start items-center gap-4 px-8 -my-1.5 break-all">
                           {parseFloat(paymentData.amount)}{" "}
