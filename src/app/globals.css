@@ -1,3 +1,8 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&family=Bayon&family=Content:wght@400;700&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +12,7 @@
   --foreground: #171717;
 }
 
+/* Dark mode colors */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -14,8 +20,9 @@
   }
 }
 
+/* Body styles */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Rajdhani', Arial, Helvetica, sans-serif;
 }
