@@ -66,7 +66,7 @@ const Footer = () => {
                       Shop
                     </Link>
                     <Link
-                      href="javascript:void(0)"
+                      href="/contact"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Contact
