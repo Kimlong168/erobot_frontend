@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import typography from "@tailwindcss/typography";
 import tailwindcssAnimate from "tailwindcss-animate";
+
 export default {
   mode: "jit",
   content: [
@@ -40,14 +41,12 @@ export default {
         "gray-5": "#E0E0E0", //gray5
       },
       backgroundImage: {
-        "home-image": "url('./assets/homeBg.jpg')",
-        "about-image": "url('./assets/aboutBg.jpg')",
+        donate: "url('/images/heroImage.jpg')",
       },
       fontFamily: {
         bakong: "Nunito Sans",
-        primary: "Orbitron",
-        secondary: "Rajdhani",
-        tertiary: "Aldrich",
+        primary: "Shrikhand",
+        secondary: "Open Sans",
       },
     },
   },

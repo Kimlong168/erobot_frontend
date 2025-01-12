@@ -11,7 +11,8 @@ import { PiHandsPrayingFill } from "react-icons/pi";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import Link from "next/link";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
-export default function Payment() {
+import { getCurrentTime } from "@/utils/getCurrentTime";
+const DonationPage = () => {
   const [qrCode, setQrCode] = useState("");
 
   const [status, setStatus] = useState(false); // Store transaction status
@@ -142,23 +143,11 @@ export default function Payment() {
 
       if (status) {
         // Function to format the current date and time
-        function getFormattedDateTime() {
-          const now = new Date();
-          const options = {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          };
-          return now.toLocaleString("en-US", options); // Adjust locale as needed
-        }
 
         await sendTelegramMessage(
           `🎉 Donation received from ${paymentData.name || "anonymous"} for ${
             paymentData.amount
-          } ${currency} on ${getFormattedDateTime()}`,
+          } ${currency} on ${getCurrentTime()}`,
           process.env.NEXT_PUBLIC_TELEGRAM_DONATION_CHAT_ID
         );
       }
@@ -207,15 +196,19 @@ export default function Payment() {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center text-white p-6">
-        <div className="w-full max-w-md p-6 rounded-2xl shadow-lg bg-black/20 border">
+      <div className="min-h-[calc(100vh-100px)] grid justify-center items-center text-white bg-gray-700 bg-donate bg-cover bg-center p-6">
+        <div
+          className={`w-full max-w-md mx-auto p-6 rounded-2xl shadow-lg bg-black/50 border -mt-4 ${
+            qrCode && "mt-0"
+          }`}
+        >
           <div>
             {/* Currency Toggle */}
             <div className="flex justify-center mb-6">
               <button
                 onClick={() => handleCurrencyChange("USD")}
                 className={`px-4 py-2 border border-white rounded-l-md ${
-                  currency === "USD" && "bg-red-500 font-bold"
+                  currency === "USD" && "bg-secondary font-bold"
                 }`}
               >
                 USD
@@ -223,7 +216,7 @@ export default function Payment() {
               <button
                 onClick={() => handleCurrencyChange("KHR")}
                 className={`px-4 py-2 border border-white rounded-r-md ${
-                  currency === "KHR" && "bg-red-500 font-bold"
+                  currency === "KHR" && "bg-secondary font-bold"
                 }`}
               >
                 KHR
@@ -231,8 +224,8 @@ export default function Payment() {
             </div>
 
             {/* Title */}
-            <h1 className="text-center text-2xl font-bold mb-4">
-              Donate to Erobot Cambodia
+            <h1 className="text-center text-3xl font-bold mb-6">
+              Donate to ERobot Cambodia
             </h1>
 
             {/* Input Fields */}
@@ -243,7 +236,7 @@ export default function Payment() {
                 onChange={handleOnChange}
                 value={paymentData.name}
                 placeholder="Your cute name"
-                className="w-full px-4 py-2 border rounded-md bg-gray-800 border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <input
                 type="text"
@@ -253,9 +246,9 @@ export default function Payment() {
                 placeholder={
                   currency === "USD" ? "Amount in USD" : "Amount in KHR"
                 }
-                className="w-full px-4 py-2 border rounded-md bg-gray-800 border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <button className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md">
+              <button className="w-full px-4 py-3 bg-secondary hover:bg-primary rounded-md">
                 Generate QR Code ({currency === "USD" ? "$" : "៛"})
               </button>
             </form>
@@ -374,4 +367,6 @@ export default function Payment() {
       </div>
     </>
   );
-}
+};
+
+export default DonationPage;
