@@ -196,9 +196,9 @@ const DonationPage = () => {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-100px)] grid justify-center items-center text-white bg-gray-700 bg-donate bg-cover bg-center p-6">
+      <div className="min-h-[calc(100vh-100px)]  grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
         <div
-          className={`w-full max-w-md mx-auto p-6 rounded-2xl shadow-lg bg-black/50 border -mt-4 ${
+          className={`w-full max-w-sm md:max-w-md mx-auto p-6 rounded-2xl shadow-lg bg-black/50 border -mt-4 ${
             qrCode && "mt-0"
           }`}
         >
@@ -236,7 +236,7 @@ const DonationPage = () => {
                 onChange={handleOnChange}
                 value={paymentData.name}
                 placeholder="Your cute name"
-                className="w-full px-4 py-2 border rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 border text-black rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <input
                 type="text"
@@ -246,7 +246,7 @@ const DonationPage = () => {
                 placeholder={
                   currency === "USD" ? "Amount in USD" : "Amount in KHR"
                 }
-                className="w-full px-4 py-2 border rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 border text-black rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <button className="w-full px-4 py-3 bg-secondary hover:bg-primary rounded-md">
                 Generate QR Code ({currency === "USD" ? "$" : "៛"})
@@ -306,7 +306,7 @@ const DonationPage = () => {
                         </p>
 
                         <div className="text-gray-400 text-center ">
-                          ----------------------------------
+                          --------------------------------------
                         </div>
                         {/* QR Code */}
                         <div className="mb-3 w-full flex justify-center ">
