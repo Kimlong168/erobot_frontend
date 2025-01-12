@@ -17,8 +17,8 @@ export default function Home() {
           height={800}
         />
 
-        <div className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg rounded-xl shadow-xl p-8 w-fit md:w-[42%] 2xl:w-[30%]">
-          <div className=" font-primary text-3xl font-bold text-secondary mb-3 bg-white p-2 rounded text-center md:text-left">
+        <div className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg rounded-xl shadow-xl p-8 md:w-[42%] 2xl:w-[30%]">
+          <div className="font-primary text-3xl font-bold text-secondary mb-3 bg-white p-2 rounded text-center md:text-left">
             <TypeAnimation
               speed={50}
               cursor={false}
