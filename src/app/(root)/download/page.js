@@ -4,8 +4,8 @@ import { LuDownload } from "react-icons/lu";
 import Image from "next/image";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const DownloadPage = () => {
-  const LOGO_DARK_URL = baseUrl + "/images/light.png";
-  const LOGO_LIGHT_URL = baseUrl + "/images/dark.png";
+  const LOGO_LIGHT_URL = baseUrl + "/images/light.png";
+  const LOGO_DARK_URL = baseUrl + "/images/dark.png";
   const LOGO_WHITE_URL = baseUrl + "/images/white.png";
 
   const downloadFileAtURL = async (url) => {
