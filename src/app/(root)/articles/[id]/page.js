@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import Safe from "react-safe";
 import { BiCategory } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegCalendarCheck } from "react-icons/fa6";
@@ -9,12 +8,21 @@ import BackToPrevBtn from "@/components/ui/BackToPrevBtn";
 import { getArticleById } from "@/queries/article";
 import { notFound } from "next/navigation";
 import Comment from "@/components/ui/Comment";
+import { getAuthors } from "@/queries/author";
+import { getArticleCategories } from "@/queries/articleCategory";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ArticleDetail = async ({ params }) => {
   const id = (await params).id;
 
   const article = await getArticleById(id);
+  const authors = await getAuthors();
+  const categories = await getArticleCategories();
+
+  const author = authors.find((author) => author.id === article.authorId);
+  const category = categories.find(
+    (category) => category.id === article.categoryId
+  );
 
   if (!article) return notFound();
 
@@ -27,17 +35,19 @@ const ArticleDetail = async ({ params }) => {
         </h2>
       </div>
 
-      {/* category, author, views */}
+      {/* category, author, date */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 my-6">
         <div className="flex items-center gap-3">
           <BiCategory />
           <span className="font-semibold">Category:</span>
-          <span className="text-primary">{article.categoryId}</span>
+          <span>{category.categoryName}</span>
         </div>
         <div className="flex items-center gap-2">
           <FaRegUser />
           <span className="font-semibold">By:</span>
-          <span>{article.authorId}</span>
+          <span>
+            {article.authorId == "default" ? "Admin" : author.fullName}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <FaRegCalendarCheck />
@@ -54,7 +64,7 @@ const ArticleDetail = async ({ params }) => {
           height={500}
           className="w-full h-[260px] md:h-[350px] lg:h-[500px] object-cover rounded-lg overflow-hidden"
           src={article.coverImage}
-          alt="Article title"
+          alt="Article image"
         />
       </div>
 

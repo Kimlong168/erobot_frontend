@@ -1,0 +1,53 @@
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+import { AiOutlineFullscreenExit } from "react-icons/ai";
+
+const PopupImage = ({ image, width, height, className }) => {
+  const [showImage, setShowImage] = useState(false);
+  return (
+    <>
+      {showImage ? (
+        <div className="relative">
+          <div className="fixed inset-0  bg-black/70 z-[1000] flex justify-center items-center p-4">
+            <div
+              onClick={() => setShowImage(false)}
+              className="relative max-w-[500px] max-h-[600px] min-h-[200px] min-w-[200px] overflow-hidden border-2 border-secondary rounded-xl"
+            >
+              {/* image */}
+              <Image
+                className="object-fill w-full h-full "
+                width={width}
+                height={height}
+                src={image}
+                alt={image}
+              />
+              {/* icon */}
+              <div className="absolute top-0 right-0 cursor-pointer bg-secondary rounded-bl-xl p-1.5  text-white font-bold">
+                <AiOutlineFullscreenExit />
+              </div>
+            </div>
+          </div>
+          <Image
+            src={image}
+            width={width}
+            height={height}
+            alt={image}
+            className={className}
+          />
+        </div>
+      ) : (
+        <Image
+          src={image}
+          width={width}
+          height={height}
+          alt={image}
+          onClick={() => setShowImage(true)}
+          className={className}
+        />
+      )}
+    </>
+  );
+};
+
+export default PopupImage;

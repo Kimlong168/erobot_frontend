@@ -2,6 +2,7 @@
 import assets from "@/assets/assets";
 import { LuDownload } from "react-icons/lu";
 import Image from "next/image";
+import PopupImage from "@/components/ui/PopupImage";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const DownloadPage = () => {
   const LOGO_LIGHT_URL = baseUrl + "/images/light.png";
@@ -83,16 +84,18 @@ const DownloadPage = () => {
         <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
           Logos
         </h3>
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           {logos.map((logo, index) => (
             <div key={index}>
-              <Image
-                className="border w-[200px] h-[200px] object-cover rounded-lg"
-                src={logo.image}
-                alt={logo.title}
-                width={200}
-                height={200}
-              />
+              <div className="w-full md:w-[200px] md:h-[200px] overflow-hidden rounded-lg border border-gray-400">
+                <PopupImage
+                  image={logo.image}
+                  className=" w-full h-full object-cover hover:scale-110 transition-transform"
+                  width={400}
+                  height={400}
+                />
+              </div>
+
               <button
                 onClick={() => downloadFileAtURL(logo.url)}
                 className="mt-2 w-full flex justify-center items-center gap-3 px-3 py-2.5 bg-secondary text-white font-medium text-sm rounded-lg hover:bg-primary "

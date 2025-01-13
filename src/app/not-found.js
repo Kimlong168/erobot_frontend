@@ -18,14 +18,14 @@ const Error404 = () => {
                 </span>
               </div>
               <h5 className="font-semibold -mr-10 -mt-3">Page not found</h5>
-              <p className="mt-2 mb-6 ">
+              <p className="mt-2 mb-10">
                 We are sorry, but the page you requested was not found.
               </p>
               <Link
                 href="/donation"
-                className="bg-secondary px-5 py-3 text-sm shadow-sm font-medium tracking-wider text-gray-50 rounded-full hover:shadow-lg btn btn-sm "
+                className=" bg-white border border-secondary px-5 py-3 text-sm shadow-sm font-medium tracking-wider text-secondary rounded-full hover:shadow-lg btn btn-sm "
               >
-                Donate Now
+                ❤️ Donate Now
               </Link>
             </div>
           </div>
