@@ -88,7 +88,7 @@ const AboutContent = () => {
           {language == "en" ? "Organization" : "អំពីយើង"}
         </Link>
         <Link
-          href="/process"
+          href="/members"
           className="group hover:underline hover:text-primary flex items-center gap-2"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
@@ -103,7 +103,7 @@ const AboutContent = () => {
           {language == "en" ? "Members" : "ដំណើរការផលិត"}
         </Link>{" "}
         <Link
-          href="/process"
+          href="/projects"
           className="group hover:underline hover:text-primary flex items-center gap-2"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
@@ -118,22 +118,7 @@ const AboutContent = () => {
           {language == "en" ? "Projects" : "ដំណើរការផលិត"}
         </Link>
         <Link
-          href="/distillery"
-          className="group hover:underline hover:text-primary flex items-center gap-2"
-        >
-          <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
-            <Image
-              className="block"
-              src={assets.kbachkhmer}
-              alt="kbachkhmer"
-              width={100}
-              height={100}
-            />
-          </div>
-          {language == "en" ? "Activities" : "រោងចក្រផលិត"}
-        </Link>
-        <Link
-          href="/distillery"
+          href="/download"
           className="group hover:underline hover:text-primary flex items-center gap-2"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45 ">

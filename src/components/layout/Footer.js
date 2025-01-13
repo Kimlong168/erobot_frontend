@@ -48,19 +48,19 @@ const Footer = () => {
                 <div className="flex flex-col items-center gap-6 mb-8">
                   <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-12 gap-y-3 lg:flex-nowrap text-dark-grey-900">
                     <Link
-                      href="javascript:void(0)"
+                      href="/"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Home
                     </Link>
                     <Link
-                      href="javascript:void(0)"
+                      href="/articles"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Articles
                     </Link>
                     <Link
-                      href="javascript:void(0)"
+                      href="/products"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Shop
@@ -72,19 +72,19 @@ const Footer = () => {
                       Contact
                     </Link>
                     <Link
-                      href="javascript:void(0)"
+                      href="/about"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       About
                     </Link>
                     <Link
-                      href="javascript:void(0)"
+                      href="/projects"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Projects
                     </Link>
                     <Link
-                      href="javascript:void(0)"
+                      href="/donation"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Donate
@@ -94,7 +94,7 @@ const Footer = () => {
                     {contactInfo.socialMedia.map((social, index) => (
                       <Link
                         key={index}
-                        href="javascript:void(0)"
+                        href={social.url}
                         className="text-grey-700 hover:text-grey-900"
                       >
                         <LinkIcon title={social.title} size={24} />
@@ -103,9 +103,10 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <p className="text-base font-normal leading-7 text-center text-grey-700 flex items-center justify-center gap-1">
-                    <PiCopyrightBold className="hidden md:block" /> 2025
-                    Copyright, ERobot Cambodia. All rights reserved.
+                  <p className="text-base font-normal leading-7 text-center text-grey-700">
+                    <PiCopyrightBold className="inline-block mb-1" /> 2025
+                    Copyright, ERobot Cambodia. All rights reserved. Made with
+                    ❤️
                   </p>
                 </div>
               </div>

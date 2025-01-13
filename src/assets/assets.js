@@ -5,7 +5,9 @@ import logo from "./logo.png";
 import kbachkhmer from "./kbachkhmer.png";
 import camFlag from "./cam-flag.png";
 import usFlag from "./us-flag.png";
-
+import darkLogo from "./dark.png";
+import lightLogo from "./light.png";
+import whiteLogo from "./white.png";
 const assets = {
   khqrLogo,
   heroImage,
@@ -14,6 +16,9 @@ const assets = {
   kbachkhmer,
   camFlag,
   usFlag,
+  darkLogo,
+  lightLogo,
+  whiteLogo,
 };
 
 export default assets;

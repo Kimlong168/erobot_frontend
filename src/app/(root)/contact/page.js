@@ -114,8 +114,8 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="container p-8 md:pt-0">
-      <div className="flex flex-col lg:flex-row gap-12 md:gap-18 lg:gap-24 pt-3 md:py-12">
+    <section className="container p-8 md:py-12">
+      <div className="flex flex-col lg:flex-row gap-12 md:gap-18 lg:gap-24">
         {/* contact information */}
         <div className="w-full">
           {/* map */}
@@ -142,9 +142,9 @@ const ContactPage = () => {
                   className="w-full xl:w-[80%]"
                   height="310"
                   style={{ border: 0 }}
-                  allowfullscreen=""
+                  allowFullScreen=""
                   loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
             </motion.div>

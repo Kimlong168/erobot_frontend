@@ -1,6 +1,7 @@
 "use client";
 import assets from "@/assets/assets";
 import Link from "next/link";
+import { IoIosArrowDown } from "react-icons/io";
 import {
   FaFacebook,
   FaLine,
@@ -133,7 +134,7 @@ const Header = () => {
 
               <li className="cursor-pointer">
                 <NavLink
-                  href="/blogs"
+                  href="/articles"
                   title={`${language == "en" ? "Articles" : "អត្ថបទ"}`}
                 />
               </li>
@@ -158,7 +159,8 @@ const Header = () => {
           {/* left buttons */}
           <div className="flex items-center justify-end text-xl md:text-2xl h-[85px]">
             <div className="px-5 border-l border-primary-content h-full grid place-content-center">
-              <CiLight />
+              <CiLight className="hidden lg:block" />{" "}
+              <IoIosArrowDown className="lg:hidden" />
             </div>
             <div className="px-5 border-l border-primary-content h-full grid place-content-center">
               <Image

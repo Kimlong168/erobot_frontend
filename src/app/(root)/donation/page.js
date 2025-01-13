@@ -195,7 +195,7 @@ const DonationPage = () => {
   }, [qrCode, status]); // Empty dependency array ensures the interval starts on mount
 
   return (
-    <>
+    <section>
       <div className="min-h-[calc(100vh-100px)]  grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
         <div
           className={`w-full max-w-sm md:max-w-md mx-auto p-6 rounded-2xl shadow-lg bg-black/50 border -mt-4 ${
@@ -365,7 +365,7 @@ const DonationPage = () => {
           <SnackbarProvider />
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
