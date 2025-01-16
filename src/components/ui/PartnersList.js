@@ -1,5 +1,5 @@
 "use client";
-import { getPartners } from "@/queries/partners";
+import { getPartners } from "@/queries/partner";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -21,12 +21,12 @@ const PartnersList = ({ direction = "left" }) => {
       <div className="">
         <Marquee
           // pauseOnClick={true}
-          // pauseOnHover={true}
+          pauseOnHover={true}
           autoFill={true}
           speed={80}
           delay={3}
-          gradient={true}
-          gradientWidth={50}
+          gradient={false}
+          gradientWidth={0}
           direction={direction}
           // className="flex justify-between items-center py-3 w-full bg-primary border-[3px] dark:border-white border-black"
 

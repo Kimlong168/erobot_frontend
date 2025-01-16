@@ -5,29 +5,28 @@ import LinkIcon from "../ui/LinkIcon";
 import { PiCopyrightBold } from "react-icons/pi";
 const Footer = () => {
   const contactInfo = {
-    phoneNumber: "010 567 014",
+    phoneNumber: "(855) 12 345 678",
     email: "erobotteam@gmail.com",
     telegram: "",
     socialMedia: [
       {
         title: "Facebook",
-        url: "https://www.facebook.com/sorakhmer",
+        url: "#",
+      },
+
+      {
+        title: "Youtube",
+        url: "#",
       },
       {
         title: "Tiktok",
-        url: "https://t.me/sorakhmer",
-      },
-      {
-        title: "Youtube",
-        url: "https://t.me/sorakhmer",
+        url: "#",
       },
       {
         title: "Telegram",
-        url: "https://t.me/sorakhmer",
+        url: "#",
       },
     ],
-    telegramBotId: "",
-    chatId: "",
   };
   return (
     <footer className="overflow-hidden ">

@@ -118,7 +118,7 @@ const Header = () => {
           >
             {/* tab */}
             <ul
-              className={`hidden lg:flex justify-center items-center gap-10 uppercase font-primary ${
+              className={`hidden lg:flex justify-center items-center gap-7 xl:gap-10 uppercase font-primary ${
                 language !== "en" && "text-lg"
               }`}
             >
@@ -154,7 +154,7 @@ const Header = () => {
             </ul>
           </div>
           {/* left buttons */}
-          <div className="flex items-center justify-end text-xl md:text-2xl h-[85px]">
+          <div className="flex items-center justify-end text-xl md:text-2xl h-[80px] lg:h-[85px]">
             <div
               className="px-5 border-l border-primary-content h-full grid place-content-center cursor-pointer"
               onClick={() => setShowSideBar((prev) => !prev)}
@@ -174,7 +174,7 @@ const Header = () => {
             <div className="h-full bg-primary grid place-content-center">
               <Link
                 href="/donation"
-                className=" text-white px-5 md:px-10 text-2xl font-primary"
+                className=" text-white px-5 xl:px-10 text-2xl font-primary"
               >
                 Donate
               </Link>

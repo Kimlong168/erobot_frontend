@@ -9,6 +9,7 @@ import LatestArticlesList from "@/components/ui/LatestArticlesList";
 import ImpactsList from "@/components/ui/ImpactsList";
 import { useInView } from "react-intersection-observer";
 import DrawCircleText from "@/components/ui/DrawCircleText";
+import DonorsList from "@/components/ui/DonorsList";
 export default function Home() {
   const [ref, inView] = useInView({
     threshold: 0.5,
@@ -86,7 +87,7 @@ export default function Home() {
           <LatestArticlesList />
           <div className="flex justify-center mt-4">
             <Link href="/articles">
-              <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold p-4 rounded-full mt-4 hover:shadow-lg">
+              <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg">
                 <span>
                   <FaHeart fill="#E1232E" />
                 </span>{" "}
@@ -109,20 +110,34 @@ export default function Home() {
         >
           {theme == "dark" ? (
             <div
-              className="w-[130%] my-12 bg-transparent "
+              className="w-[130%] my-8 bg-transparent "
               style={{ filter: "brightness(0) invert(1)" }}
             >
               <PartnersList direction={"left"} />
             </div>
           ) : (
-            <div className="w-[130%] mt-8">
+            <div className="w-[130%] my-8">
               <PartnersList direction="left" />
             </div>
           )}
         </motion.div>
       </section>
 
-      <section className="relative mt-12 bg-boy bg-cover bg-center h-[500px]">
+      {/* <section className="overflow-hidden">
+        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
+          Our Donors
+        </h2>
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <DonorsList direction="left" />
+        </motion.div>
+      </section> */}
+
+      <section className="relative bg-boy bg-cover bg-center h-[500px]">
         <div className="absolute inset-0 bg-black/50 opacity-50"></div>
         <div className="container relative z-2 h-full grid place-content-center items-center md:gap-12">
           <motion.div
