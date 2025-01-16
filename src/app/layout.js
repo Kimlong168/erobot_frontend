@@ -4,11 +4,14 @@ export const metadata = {
   description: "Welcome to erobotcambodia.org",
 };
 
-
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`antialiased font-secondary`}>{children}</body>
+      <body
+        className={`antialiased font-secondary max-w-screen overflow-x-hidden`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

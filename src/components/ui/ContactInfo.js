@@ -2,7 +2,7 @@ import LinkIcon from "./LinkIcon";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
-import { getContactInfo } from "@/queries/coontact";
+import { getContactInfo } from "@/queries/contact";
 const ContactInfo = async () => {
   const contactInfo = await getContactInfo();
   return (

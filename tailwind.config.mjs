@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import typography from "@tailwindcss/typography";
 import tailwindcssAnimate from "tailwindcss-animate";
-
+import plugin from "tailwindcss/plugin";
 export default {
   mode: "jit",
   content: [
@@ -51,7 +51,26 @@ export default {
       },
     },
   },
-  plugins: [typography, tailwindcssAnimate],
+  plugins: [
+    typography,
+    tailwindcssAnimate,
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".text-stroke": {
+          "-webkit-text-stroke": "2px black",
+          color: "transparent",
+        },
+        ".text-stroke-sm": {
+          "-webkit-text-stroke": "1px black",
+          color: "transparent",
+        },
+        ".text-stroke-lg": {
+          "-webkit-text-stroke": "3px black",
+          color: "transparent",
+        },
+      });
+    }),
+  ],
 };
 
 // export default config;

@@ -123,8 +123,8 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-wrap mb-5 mt-5 ">
-          <div className="w-full max-w-full mx-auto text-center bg-secondary hover:bg-primary">
-            <p className="text-base font-normal leading-7 text-center text-grey-700 text-white">
+          <div className="w-full max-w-full mx-auto text-center hover:bg-secondary bg-primary">
+            <p className="text-sm font-normal leading-7 text-center text-grey-700 text-white">
               <PiCopyrightBold className="inline-block mb-1 " /> 2025 Copyright,
               ERobot Cambodia. All rights reserved.
             </p>

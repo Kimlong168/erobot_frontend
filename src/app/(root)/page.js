@@ -3,11 +3,12 @@ import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { FaHeart } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { fadeIn, zoomInOut } from "../../utils/variants";
+import { fadeIn } from "../../utils/variants";
 import PartnersList from "@/components/ui/PartnersList";
 import LatestArticlesList from "@/components/ui/LatestArticlesList";
 import ImpactsList from "@/components/ui/ImpactsList";
 import { useInView } from "react-intersection-observer";
+import DrawCircleText from "@/components/ui/DrawCircleText";
 export default function Home() {
   const [ref, inView] = useInView({
     threshold: 0.5,
@@ -27,8 +28,8 @@ export default function Home() {
           height={800}
         /> */}
 
-        <div className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg rounded-xl shadow-xl p-8 md:w-[42%] 2xl:w-[30%]">
-          <div className="font-primary text-3xl font-bold text-secondary mb-3 bg-white p-2 rounded text-center md:text-left">
+        <div className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg  shadow-xl p-8 md:w-[42%] 2xl:w-[30%]">
+          <div className="font-primary text-3xl font-bold text-secondary mb-3 bg-white p-2  text-center md:text-left">
             <TypeAnimation
               speed={50}
               cursor={false}
@@ -54,7 +55,7 @@ export default function Home() {
           </p>
           <div className="flex justify-end w-full ">
             <Link href="/donation">
-              <button className="flex items-center gap-2 bg-white text-secondary font-bold py-2.5 px-4 rounded mt-4 ">
+              <button className="flex items-center gap-2 bg-white text-secondary font-bold py-3.5 px-4 mt-4 ">
                 <span>
                   <FaHeart fill="#E1232E" />
                 </span>{" "}
@@ -83,14 +84,16 @@ export default function Home() {
 
         <div className="container mt-8 mb-14">
           <LatestArticlesList />
-          <Link href="/articles" className="flex justify-center mt-4">
-            <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold p-4 rounded-full mt-4 hover:shadow-lg">
-              <span>
-                <FaHeart fill="#E1232E" />
-              </span>{" "}
-              View More
-            </button>
-          </Link>
+          <div className="flex justify-center mt-4">
+            <Link href="/articles">
+              <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold p-4 rounded-full mt-4 hover:shadow-lg">
+                <span>
+                  <FaHeart fill="#E1232E" />
+                </span>{" "}
+                View More
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -121,7 +124,7 @@ export default function Home() {
 
       <section className="relative mt-12 bg-boy bg-cover bg-center h-[500px]">
         <div className="absolute inset-0 bg-black/50 opacity-50"></div>
-        <div className="container relative z-10 h-full grid place-content-center items-center md:gap-12">
+        <div className="container relative z-2 h-full grid place-content-center items-center md:gap-12">
           <motion.div
             variants={fadeIn(
               {
@@ -134,21 +137,22 @@ export default function Home() {
             whileInView={"show"}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h3 className=" text-4xl md:text-[40px] text-[#eee] font-bold text-center md:text-left md:w-[70%] leading-relaxed ">
-              Join us in making the world a better place. Together, we can turn
-              compassion into action.
+            <h3 className=" text-4xl md:text-[40px] text-[#eee] font-bold text-center md:text-left md:w-[70%] leading-relaxed">
+              {/* Join us in making the world a better place. Together, we can turn
+              compassion into action. */}
+              <DrawCircleText />
             </h3>
-            <Link
+            {/* <Link
               href="/donation"
               className="flex justify-center md:justify-start"
             >
-              <button className="flex items-center gap-2 bg-white  text-secondary border border-secondary font-bold p-4 rounded-full mt-4 ">
+              <button className="flex items-center gap-2 bg-white  text-secondary border border-secondary font-bold px-4 py-3.5 rounded-full mt-4 ">
                 <span>
                   <FaHeart fill="#E1232E" />
                 </span>{" "}
                 Donate Now
               </button>
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </section>

@@ -6,19 +6,18 @@ import {
   FaFacebook,
   FaLine,
   FaPhoneSquareAlt,
-  FaShoppingCart,
   FaTelegram,
 } from "react-icons/fa";
 import { scrollToTop } from "@/utils/scrollToTop";
 import LinkIcon from "../ui/LinkIcon";
 import NavLink from "../ui/NavLink";
 import NavLinkDropdown from "../ui/NavLinkDropdown";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import Image from "next/image";
-// import LanguageSwitchButton from "../ui/LanguageSwitchButton";
-// import ToggleLightDarkMode from "../ui/ToggleLightDarkMode";
+import SideBar from "./SideBar";
 import { CiLight } from "react-icons/ci";
+import { useState } from "react";
 const Header = () => {
+  const [showSideBar, setShowSideBar] = useState(false);
   const language = "en";
   const contactInfo = {
     phoneNumber: "(855) 12 345 678",
@@ -158,7 +157,10 @@ const Header = () => {
           </div>
           {/* left buttons */}
           <div className="flex items-center justify-end text-xl md:text-2xl h-[85px]">
-            <div className="px-5 border-l border-primary-content h-full grid place-content-center">
+            <div
+              className="px-5 border-l border-primary-content h-full grid place-content-center cursor-pointer"
+              onClick={() => setShowSideBar((prev) => !prev)}
+            >
               <CiLight className="hidden lg:block" />{" "}
               <IoIosArrowDown className="lg:hidden" />
             </div>
@@ -192,6 +194,10 @@ const Header = () => {
           </div>
         </nav>
       </header>
+
+      {showSideBar && (
+        <SideBar setShowSideBar={setShowSideBar} showSideBar={showSideBar} />
+      )}
     </>
   );
 };
