@@ -11,7 +11,7 @@ const ContactInfo = async () => {
       {/* contact info */}
       <div className="mt-10">
         <h3 className="text-nowrap font-bold text-3xl md:text-4xl ">
-          {language == "en" ? "Our Contact" : "ទំនាក់ទំនងតាមរយៈ"}
+          Our Contact
         </h3>
 
         {contactInfo && (
@@ -25,7 +25,7 @@ const ContactInfo = async () => {
             <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
               {/* phone */}
               <div>
-                {language == "en" ? "Phone" : "លេខទូរស័ព្ទ"}:{" "}
+                Phone
                 <Link href={`tel:${contactInfo.phoneNumber}`}>
                   {contactInfo.phoneNumber}
                 </Link>
@@ -34,7 +34,7 @@ const ContactInfo = async () => {
             <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
               {/* email */}
               <div>
-                {language == "en" ? "Email" : "អ៊ីម៉ែល"}:{" "}
+                Email
                 <Link href={`mailto:${contactInfo.email}`}>
                   {contactInfo.email}
                 </Link>
@@ -44,7 +44,7 @@ const ContactInfo = async () => {
               {/* telegram */}
               <div>
                 {" "}
-                {language == "en" ? "Telegram" : "តេលេក្រាម"}:{" "}
+                Telegram
                 <Link href={contactInfo.telegram}>@erobotcambodia</Link>
               </div>
             </div>
