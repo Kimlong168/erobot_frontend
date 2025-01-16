@@ -1,44 +1,18 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
-import LinkIcon from "@/components/ui/LinkIcon";
 import SuccessModal from "@/components/ui/SuccessModal";
 import RedStar from "@/components/ui/RedStar";
 import WarningModal from "@/components/ui/WarningModal";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 import { getCurrentTime } from "@/utils/getCurrentTime";
+import ContactInfo from "@/components/ui/ContactInfo";
 
 const ContactPage = () => {
   // get user email to cc to the user when they submit the contact form
   // const contactInfo = contactList.map((item) => item)[0];
   const language = "en";
-  const contactInfo = {
-    phoneNumber: "010 567 014",
-    email: "erobotteam@gmail.com",
-    telegram: "",
-    socialMedia: [
-      {
-        title: "Facebook",
-        url: "https://www.facebook.com/sorakhmer",
-      },
-      {
-        title: "Tiktok",
-        url: "https://t.me/sorakhmer",
-      },
-      {
-        title: "Youtube",
-        url: "https://t.me/sorakhmer",
-      },
-      {
-        title: "Telegram",
-        url: "https://t.me/sorakhmer",
-      },
-    ],
-    telegramBotId: "",
-    chatId: "",
-  };
 
   const [formData, setFormData] = useState({
     fullname: "",
@@ -149,63 +123,9 @@ const ContactPage = () => {
               </div>
             </motion.div>
           </div>
-          {/* contact info */}
-          <div className="mt-10">
-            <h3 className="text-nowrap font-bold text-3xl md:text-4xl ">
-              {language == "en" ? "Our Contact" : "ទំនាក់ទំនងតាមរយៈ"}
-            </h3>
 
-            {contactInfo && (
-              <motion.div
-                variants={fadeIn("right", 0.2)}
-                initial="hidden"
-                whileInView={"show"}
-                viewport={{ once: true, amount: 0.3 }}
-                className="pt-6 pb-3 porse lg:prose-xl"
-              >
-                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                  {/* phone */}
-                  <div>
-                    {language == "en" ? "Phone" : "លេខទូរស័ព្ទ"}:{" "}
-                    <Link href={`tel:${contactInfo.phoneNumber}`}>
-                      {contactInfo.phoneNumber}
-                    </Link>
-                  </div>
-                </div>
-                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                  {/* email */}
-                  <div>
-                    {language == "en" ? "Email" : "អ៊ីម៉ែល"}:{" "}
-                    <Link href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
-                    </Link>
-                  </div>
-                </div>
-                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                  {/* telegram */}
-                  <div>
-                    {" "}
-                    {language == "en" ? "Telegram" : "តេលេក្រាម"}:{" "}
-                    <Link href={contactInfo.telegram}>@erobotcambodia</Link>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* social media */}
-            <div className="flex items-center gap-4 text-2xl mt-4">
-              {contactInfo &&
-                contactInfo.socialMedia?.map((item, index) => (
-                  <Link
-                    href={item.url}
-                    key={index}
-                    className="hover:text-primary-light hover:underline"
-                  >
-                    <LinkIcon title={item.title} size={32} />
-                  </Link>
-                ))}
-            </div>
-          </div>
+          {/* contact information */}
+          <ContactInfo />
         </div>
 
         {/* contact form */}
@@ -312,15 +232,12 @@ const ContactPage = () => {
                 ></textarea>
               </div>
 
-              {/* submit button */}
-              {contactInfo && (
-                <button
-                  type="submit"
-                  className="lg:prose-xl border-2 rounded-lg bg-secondary hover:bg-primary border-white px-6 py-2 font-semibold text-white"
-                >
-                  Send Message
-                </button>
-              )}
+              <button
+                type="submit"
+                className="lg:prose-xl border-2 rounded-lg bg-secondary hover:bg-primary border-white px-6 py-2 font-semibold text-white"
+              >
+                Send Message
+              </button>
             </div>
           </motion.form>
 

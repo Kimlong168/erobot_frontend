@@ -1,37 +1,24 @@
-// import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 "use client";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
-import Image from "next/image";
-import assets from "@/assets/assets";
 import { FaHeart } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { fadeIn, zoomInOut } from "../../utils/variants";
+import PartnersList from "@/components/ui/PartnersList";
+import LatestArticlesList from "@/components/ui/LatestArticlesList";
+import ImpactsList from "@/components/ui/ImpactsList";
+import { useInView } from "react-intersection-observer";
 export default function Home() {
-  const impactData = [
-    {
-      icon: "👥", // Replace with your custom SVG or icon
-      value: "105.4",
-      label: "million children reached",
-    },
-    {
-      icon: "🌍", // Replace with your custom SVG or icon
-      value: "115",
-      label: "countries where we worked",
-    },
-    {
-      icon: "⚠️", // Replace with your custom SVG or icon
-      value: "121",
-      label: "emergencies responded to",
-    },
-    {
-      icon: "📢", // Replace with your custom SVG or icon
-      value: "99",
-      label: "policy changes achieved",
-    },
-  ];
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+  });
+
+  const theme = "light";
+
   return (
     <>
       {/* hero section */}
-      <section className="relative h-[calc(100vh-100px)] bg-donate bg-cover bg-center mb-16">
+      <section className="relative h-[calc(100vh-100px)] bg-donate bg-cover bg-center mb-12">
         {/* <Image
           className="w-full object-cover h-[calc(100vh-100px)]"
           src={assets.heroImage}
@@ -78,6 +65,93 @@ export default function Home() {
         </div>
       </section>
 
+      <section ref={ref} className="container text-center pb-14 bg-white">
+        <h2 className="text-3xl font-primary mb-6 group">
+          Our Impact to our community in{" "}
+          <span className=" group-hover:text-primary text-secondary">
+            Cambodia
+          </span>
+        </h2>
+
+        <ImpactsList inView={inView} />
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
+          Read Our Articles
+        </h2>
+
+        <div className="container mt-8 mb-14">
+          <LatestArticlesList />
+          <Link href="/articles" className="flex justify-center mt-4">
+            <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold p-4 rounded-full mt-4 hover:shadow-lg">
+              <span>
+                <FaHeart fill="#E1232E" />
+              </span>{" "}
+              View More
+            </button>
+          </Link>
+        </div>
+      </section>
+
+      <section className="overflow-hidden">
+        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
+          Our Partners
+        </h2>
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {theme == "dark" ? (
+            <div
+              className="w-[130%] my-12 bg-transparent "
+              style={{ filter: "brightness(0) invert(1)" }}
+            >
+              <PartnersList direction={"left"} />
+            </div>
+          ) : (
+            <div className="w-[130%] mt-8">
+              <PartnersList direction="left" />
+            </div>
+          )}
+        </motion.div>
+      </section>
+
+      <section className="relative mt-12 bg-boy bg-cover bg-center h-[500px]">
+        <div className="absolute inset-0 bg-black/50 opacity-50"></div>
+        <div className="container relative z-10 h-full grid place-content-center items-center md:gap-12">
+          <motion.div
+            variants={fadeIn(
+              {
+                default: "left",
+              },
+              0.5,
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h3 className=" text-4xl md:text-[40px] text-[#eee] font-bold text-center md:text-left md:w-[70%] leading-relaxed ">
+              Join us in making the world a better place. Together, we can turn
+              compassion into action.
+            </h3>
+            <Link
+              href="/donation"
+              className="flex justify-center md:justify-start"
+            >
+              <button className="flex items-center gap-2 bg-white  text-secondary border border-secondary font-bold p-4 rounded-full mt-4 ">
+                <span>
+                  <FaHeart fill="#E1232E" />
+                </span>{" "}
+                Donate Now
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 }

@@ -42,6 +42,7 @@ export default {
       },
       backgroundImage: {
         donate: "url('/images/heroImage.jpg')",
+        boy: "url('/images/boy.jpg')",
       },
       fontFamily: {
         bakong: "Nunito Sans",

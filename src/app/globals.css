@@ -149,7 +149,7 @@ body {
 
   /* startupcard */
   .startup-card {
-    @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-xl hover:border-secondary/90 transition-all duration-500 hover:shadow-2xl hover:bg-secondary/10;
+    @apply bg-white border-[5px] border-black/70 py-6 px-5 rounded-[22px] shadow-xl hover:border-secondary/90 transition-all duration-500 hover:shadow-2xl hover:bg-secondary/10;
   }
 
   .startup-card_date {
@@ -165,7 +165,7 @@ body {
   }
 
   .startup-card_btn {
-    @apply rounded-full bg-black font-medium text-[16px] text-white px-5 py-3 !important;
+    @apply rounded-full bg-black/80 font-medium text-[16px] text-white px-5 py-3 !important;
   }
 
   .startup-card_skeleton {

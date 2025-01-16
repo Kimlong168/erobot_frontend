@@ -18,7 +18,7 @@ const ArticleCard = ({ article }) => {
   } = article;
 
   return (
-    <li className="startup-card group">
+    <div className="startup-card group w-full">
       <div className="flex-between">
         <p className="startup_card_date">{publicationDate}</p>
         <div className="flex gap-1.5 text-[20px]">
@@ -71,7 +71,7 @@ const ArticleCard = ({ article }) => {
           <Link href={`/articles/${id}`}>Details</Link>
         </button>
       </div>
-    </li>
+    </div>
   );
 };
 

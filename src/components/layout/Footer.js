@@ -104,9 +104,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center">
                   <p className="text-base font-normal leading-7 text-center text-grey-700">
-                    <PiCopyrightBold className="inline-block mb-1" /> 2025
-                    Copyright, ERobot Cambodia. All rights reserved. Made with
-                    ❤️
+                    Made with ❤️💙 for Cambodian Children
                   </p>
                 </div>
               </div>
@@ -125,13 +123,12 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-wrap mb-5 mt-5 ">
-          <marquee className="w-full max-w-full mx-auto text-center bg-secondary hover:bg-primary">
-            <p className="text-sm text-white py-1">
-              ERobot Team is a group of young people who are passionate about
-              technology and innovation. We are committed to help our people as
-              much as possible.
+          <div className="w-full max-w-full mx-auto text-center bg-secondary hover:bg-primary">
+            <p className="text-base font-normal leading-7 text-center text-grey-700 text-white">
+              <PiCopyrightBold className="inline-block mb-1 " /> 2025 Copyright,
+              ERobot Cambodia. All rights reserved.
             </p>
-          </marquee>
+          </div>
         </div>
       </div>
     </footer>

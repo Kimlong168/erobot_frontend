@@ -20,3 +20,12 @@ export const getArticleById = async (id) => {
     console.error("Error fetching blog:", error);
   }
 };
+
+export const getLatestArticles = async () => {
+  const querySnapshot = await getDocs(collection(db, "blogs"));
+  const articles = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return articles.slice(0, 3);
+};

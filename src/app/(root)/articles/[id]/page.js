@@ -44,7 +44,7 @@ const ArticleDetail = async ({ params }) => {
         </div>
         <div className="flex items-center gap-2">
           <FaRegUser />
-          <span className="font-semibold">By:</span>
+          <span className="font-semibold">Author:</span>
           <span>
             {article.authorId == "default" ? "Admin" : author.fullName}
           </span>

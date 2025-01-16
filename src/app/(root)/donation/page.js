@@ -180,8 +180,8 @@ const DonationPage = () => {
     setStatus(false);
   };
 
+  // Check the transaction status every 5 seconds
   useEffect(() => {
-    // Check the transaction status every 5 seconds
 
     const intervalId = setInterval(() => {
       if (qrCode !== "" && !status) {
