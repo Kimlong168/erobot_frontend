@@ -26,24 +26,22 @@ const Header = () => {
     socialMedia: [
       {
         title: "Facebook",
-        url: "https://www.facebook.com/sorakhmer",
+        url: "#",
       },
 
       {
         title: "Youtube",
-        url: "https://t.me/sorakhmer",
+        url: "#",
       },
       {
         title: "Tiktok",
-        url: "https://t.me/sorakhmer",
+        url: "#",
       },
       {
         title: "Telegram",
-        url: "https://t.me/sorakhmer",
+        url: "#",
       },
     ],
-    telegramBotId: "",
-    chatId: "",
   };
   return (
     <>
@@ -195,9 +193,7 @@ const Header = () => {
         </nav>
       </header>
 
-      {showSideBar && (
-        <SideBar setShowSideBar={setShowSideBar} showSideBar={showSideBar} />
-      )}
+      <SideBar setShowSideBar={setShowSideBar} showSideBar={showSideBar} />
     </>
   );
 };

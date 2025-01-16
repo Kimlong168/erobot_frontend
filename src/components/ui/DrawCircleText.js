@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 const DrawCircleText = () => {
   return (
-    <div className=" text-whtie bg-black/50 px-3 ">
-      <h1 className="text-5xl leading-snug">
+    <div className=" text-whtie bg-black/50 p-3">
+      <h1 className="text-4xl md:text-5xl leading-relaxed">
         Join us in making the world a better place.
         <span className="relative p-2 ">
           Together,

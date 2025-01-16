@@ -14,7 +14,7 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
     <div
       id="sideBar"
       className={`fixed inset-0 z-[1000] overflow-auto overflow-x-hidden transition-all duration-300 ease-in-out transform bg-neutral-950 ${
-        showSideBar ? "translate-x-0" : "-translate-x-full"
+        showSideBar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <section className="bg-neutral-950 p-4 md:p-8">

@@ -128,7 +128,7 @@ export default function Home() {
           <motion.div
             variants={fadeIn(
               {
-                default: "left",
+                default: "up",
               },
               0.5,
               "all"
