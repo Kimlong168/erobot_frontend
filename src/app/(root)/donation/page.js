@@ -162,6 +162,8 @@ const DonationPage = () => {
           } ${currency} on ${getCurrentTime()}`,
           process.env.NEXT_PUBLIC_TELEGRAM_DONATION_CHAT_ID
         );
+
+        localStorage.removeItem("md5"); // Clear the MD5 from localStorage
       }
       // console.log("res", response.data);
     } catch (error) {
@@ -195,7 +197,7 @@ const DonationPage = () => {
   const handleCopyLink = (link) => {
     const linkWithoutSpace = link.replace(/\s/g, "%20");
     const text = `🌟 **Erobot ${
-      paymentData.amount == 1 ? "1 $" : "Donation"
+      paymentData.amount == 1 ? "1$" : "Donation"
     } Challenge** 🌟
     \n🙏🏼Hello ${
       paymentData.name ? paymentData.name : "friend"
