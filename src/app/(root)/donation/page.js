@@ -193,13 +193,15 @@ const DonationPage = () => {
   };
 
   const handleCopyLink = (link) => {
-    const text = `🌟 **Erobot Donation Challenge** 🌟
-  
-  🙏🏼Hello ${paymentData.name}, Let's support **ERobot Cambodia**
-  
-  👉 Click the link to donate: ${link}
-  
-  Every contribution counts, and your generosity makes a difference. Thank you! 💖`;
+    const linkWithoutSpace = link.replace(/\s/g, "%20");
+    const text = `🌟 **Erobot ${
+      paymentData.amount == 1 ? "1 $" : "Donation"
+    } Challenge** 🌟
+    \n🙏🏼Hello ${
+      paymentData.name ? paymentData.name : "friend"
+    }!, Let's support **ERobot Cambodia**
+    \n👉 Click the link to donate: ${linkWithoutSpace}
+    \nEvery contribution counts, and your generosity makes a difference. Thank you! 💖`;
 
     navigator.clipboard
       .writeText(text)

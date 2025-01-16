@@ -93,11 +93,11 @@ const ImpactsList = ({ inView }) => {
                   {item.number != "0" ? (
                     <CountUp end={item.number} duration={3} />
                   ) : (
-                    ""
+                    "..."
                   )}
                 </>
               ) : (
-                ""
+                "..."
               )}
             </h3>
             <p className=" text-gray-600 capitalize">{item.text}</p>
