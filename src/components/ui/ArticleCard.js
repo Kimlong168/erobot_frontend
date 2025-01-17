@@ -56,15 +56,15 @@ const ArticleCard = ({ article }) => {
 
         <Image
           src={coverImage}
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           alt="placeholder"
           className="startup-card_img"
         />
       </Link>
 
       <div className="flex-between gap-3 mt-5">
-        <Link href={`/?query=${categoryId?.toLowerCase()}`}>
+        <Link href={`/articles?query=filter${categoryId?.toLowerCase()}`}>
           <p className="text-16-medium">{category.categoryName}</p>
         </Link>
         <button className="startup-card_btn">

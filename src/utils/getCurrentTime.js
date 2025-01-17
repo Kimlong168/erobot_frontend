@@ -11,4 +11,12 @@ const getCurrentTime = () => {
   return now.toLocaleString("en-US", options); // Adjust locale as needed
 };
 
-export { getCurrentTime };
+function getCurrentTimeForDonor() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0"); // Month is zero-indexed
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+export { getCurrentTime, getCurrentTimeForDonor };

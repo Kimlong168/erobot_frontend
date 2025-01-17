@@ -136,15 +136,15 @@ body {
 
   /* searchform */
   .search-form {
-    @apply max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5;
+    @apply lg:max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black/70 rounded-[80px] text-[24px] px-5 flex flex-row items-center gap-5;
   }
 
   .search-input {
-    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
+    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black/70 w-full h-auto;
   }
 
   .search-btn {
-    @apply size-[50px] rounded-full bg-black flex justify-center items-center !important;
+    @apply size-[50px] rounded-full bg-black/80 flex justify-center items-center !important;
   }
 
   /* startupcard */

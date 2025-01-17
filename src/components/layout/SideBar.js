@@ -5,7 +5,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
-import scrollToTop from "@/utils/scrollToTop";
+import {scrollToTop} from "@/utils/scrollToTop";
 import assets from "@/assets/assets";
 import { CiLight } from "react-icons/ci";
 const SideBar = ({ setShowSideBar, showSideBar }) => {

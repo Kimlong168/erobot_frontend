@@ -60,7 +60,7 @@ const ArticleDetail = async ({ params }) => {
 
       <div>
         <Image
-          width={500}
+          width={1000}
           height={500}
           className="w-full h-[260px] md:h-[350px] lg:h-[500px] object-cover rounded-lg overflow-hidden"
           src={article.coverImage}

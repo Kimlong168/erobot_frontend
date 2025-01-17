@@ -1,12 +1,10 @@
 import ArticlesPage from "./components/ArticlesPage";
 import { db, collection, getDocs } from "@/libs/firebase";
 
-const ArticlesServerComponent = async () => {
-  // const querySnapshot = await getDocs(collection(db, "blogs"));
-  // const articles = querySnapshot.docs.map((doc) => ({
-  //   id: doc.id,
-  //   ...doc.data(),
-  // }));
+const ArticlesServerComponent = async ({ searchParams }) => {
+  const query = (await searchParams).query;
+
+  // const params = { search: query || null };
 
   const [articlesSnapshot, authorsSnapshot, artsSnapshot] = await Promise.all([
     getDocs(collection(db, "blogs")),
@@ -31,13 +29,12 @@ const ArticlesServerComponent = async () => {
   }));
 
   return (
-  
-      <ArticlesPage
-        initialData={articles}
-        authors={authors}
-        articleCategories={articleCategories}
-      />
- 
+    <ArticlesPage
+      initialData={articles}
+      authors={authors}
+      articleCategories={articleCategories}
+      query={query}
+    />
   );
 };
 

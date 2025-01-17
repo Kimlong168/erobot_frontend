@@ -13,9 +13,10 @@ import { PiHandsPrayingFill } from "react-icons/pi";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import Link from "next/link";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
-import { getCurrentTime } from "@/utils/getCurrentTime";
+import { getCurrentTime, getCurrentTimeForDonor } from "@/utils/getCurrentTime";
 import { useSearchParams } from "next/navigation";
 import { fadeIn } from "@/utils/variants";
+import { createDonor } from "@/queries/donor";
 const DonationPage = () => {
   const searchParams = useSearchParams();
   // Extract values from the query parameters
@@ -163,6 +164,18 @@ const DonationPage = () => {
           process.env.NEXT_PUBLIC_TELEGRAM_DONATION_CHAT_ID
         );
 
+        const amountInUSD =
+          currency === "USD"
+            ? parseFloat(paymentData.amount)
+            : parseFloat(paymentData.amount) / 4000;
+
+        createDonor({
+          name: paymentData.name || "Anonymous",
+          amount: amountInUSD,
+          source: "website",
+          date: getCurrentTimeForDonor(),
+        });
+
         localStorage.removeItem("md5"); // Clear the MD5 from localStorage
       }
       // console.log("res", response.data);
@@ -298,40 +311,40 @@ const DonationPage = () => {
                 />
                 {currency === "USD" ? (
                   <div className="flex gap-2">
-                    <button
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
                           amount: 1,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       1 $
-                    </button>
-                    <button
+                    </div>
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
                           amount: 5,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       5 $
-                    </button>
-                    <button
+                    </div>
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
                           amount: 10,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       10 $
-                    </button>
-                    <button
+                    </div>
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -341,57 +354,60 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 px-3 rounded-md w-full"
                     >
                       Random
-                    </button>
+                    </div>
                   </div>
                 ) : (
                   <div className="flex gap-2">
-                    <button
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
                           amount: 4000,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       4000 ៛
-                    </button>
-                    <button
+                    </div>
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
                           amount: 20000,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       20000 ៛
-                    </button>
-                    <button
+                    </div>
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
                           amount: 40000,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       40000 ៛
-                    </button>
-                    <button
+                    </div>
+                    <div
                       onClick={() =>
                         setPaymentData((prev) => ({
                           ...prev, // Spread previous state to keep other properties
                           amount: (Math.floor(Math.random() * 500) + 1) * 100, // Random number between 100 and 50000 ending in 00
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       Random
-                    </button>
+                    </div>
                   </div>
                 )}
-                <button className="w-full px-4 py-3 bg-secondary hover:bg-primary rounded-md">
+                <button
+                  type="submit"
+                  className="w-full px-4 py-3 bg-secondary hover:bg-primary rounded-md"
+                >
                   Generate QR Code ({currency === "USD" ? "$" : "៛"})
                 </button>
               </form>

@@ -4,9 +4,11 @@ import { getArticles } from "@/queries/article";
 import ArticleCard from "@/components/ui/ArticleCard";
 import { BsSearch } from "react-icons/bs";
 import { useArticleContext } from "@/contexts/ArticleContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import SearchForm from "@/components/form/SearchForm";
+import { FaHeart } from "react-icons/fa";
 
-const ArticlesPage = ({ initialData, authors, articleCategories }) => {
+const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   const { state: articles, setState } = useArticleContext();
   const { data, isLoading, isError } = useQuery(
     "blogs", // queryKey
@@ -16,32 +18,89 @@ const ArticlesPage = ({ initialData, authors, articleCategories }) => {
       staleTime: 60000,
     }
   );
+  const [visibleArticles, setVisibleArticles] = useState(articles);
+  const [visibleCount, setVisibleCount] = useState(6); // Initial number of articles to display
 
-  // Update the state with the fetched articles
+  const handleSeeMore = () => {
+    setVisibleCount((prevCount) => prevCount + 3); // Increase visible articles by 3
+  };
+
+  // Update the visible articles in the context state
   useEffect(() => {
-    console.log(data);
+    const visibleArticles = articles.slice(0, visibleCount);
+    setVisibleArticles(visibleArticles);
+  }, [visibleCount, setState, articles]);
+
+  // Filter articles and update the state based on the search query
+  useEffect(() => {
     if (data) {
-      setState(data);
+      const filteredArticles = query
+        ? data.filter(
+            (article) =>
+              article.title.toLowerCase().includes(query.toLowerCase()) ||
+              article.content.toLowerCase().includes(query.toLowerCase()) ||
+              article.categoryId
+                .toLowerCase()
+                .includes(
+                  query.includes("filter")
+                    ? query.replace("filter", "").toLowerCase()
+                    : query.toLowerCase()
+                )
+          )
+        : data;
+
+      setState(filteredArticles);
+
+      // set only visibleCount to show
+      const visibleArticles = filteredArticles.slice(0, visibleCount);
+      setVisibleArticles(visibleArticles);
     }
-  }, [data, setState]);
+  }, [query, data, setState]);
+
+  const getCategoryName = (id) => {
+    console.log(articleCategories);
+    const category = articleCategories.find(
+      (category) => category.id.toLowerCase() === id.toLowerCase()
+    );
+    console.log(category);
+    return category?.categoryName ? category.categoryName : "Category";
+  };
 
   if (isLoading) return <p>Loading articles...</p>;
   if (isError) return <p>Error loading articles.</p>;
 
   return (
     <section className="container p-8 md:py-12">
-      <div className="flex justify-between items-center">
-        <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4 ">
-          All Articles
-        </h3>
-
+      {/* <div className="flex justify-between items-center">
         <div>
           <BsSearch fill="#de0025" size={28} />
         </div>
+      </div> */}
+
+      <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center gap-2 lg:gap-8">
+        <p className="text-30-semibold w-full lg:w-auto">
+          {query && !query.includes("filter") ? (
+            `Search results for "${query}"`
+          ) : (
+            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block">
+              All Articles
+            </h3>
+          )}
+        </p>{" "}
+        <div>
+          <SearchForm
+            query={
+              query?.includes("filter")
+                ? getCategoryName(query?.replace("filter", ""))
+                : query
+            }
+          />
+        </div>
       </div>
+
       <ul className="mt-7 card_grid">
-        {data?.length > 0 ? (
-          articles?.map((article) => {
+        {articles?.length > 0 ? (
+          visibleArticles?.map((article) => {
             const author = authors.find(
               (author) => author.id === article.authorId
             );
@@ -60,6 +119,20 @@ const ArticlesPage = ({ initialData, authors, articleCategories }) => {
           <p className="no-results">No articles found</p>
         )}
       </ul>
+
+      <div className="flex justify-center mt-4">
+        {visibleCount < articles.length && ( // Show "See More" button only if there are more articles
+          <button
+            onClick={handleSeeMore}
+            className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg"
+          >
+            <span>
+              <FaHeart fill="#E1232E" />
+            </span>{" "}
+            View More
+          </button>
+        )}
+      </div>
     </section>
   );
 };
