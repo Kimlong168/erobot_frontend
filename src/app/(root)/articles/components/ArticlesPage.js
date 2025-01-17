@@ -70,15 +70,9 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   if (isError) return <p>Error loading articles.</p>;
 
   return (
-    <section className="container p-8 md:py-12">
-      {/* <div className="flex justify-between items-center">
-        <div>
-          <BsSearch fill="#de0025" size={28} />
-        </div>
-      </div> */}
-
+    <section className="container py-8 md:py-12">
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center gap-2 lg:gap-8">
-        <p className="text-30-semibold w-full lg:w-auto">
+        <p className="text-30-semibold w-full">
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
@@ -89,6 +83,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
         </p>{" "}
         <div>
           <SearchForm
+            actionPath="/articles"
             query={
               query?.includes("filter")
                 ? getCategoryName(query?.replace("filter", ""))

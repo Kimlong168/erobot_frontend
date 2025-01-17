@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
+import { FaX } from "react-icons/fa6";
 
 const PopupImage = ({ image, width, height, className }) => {
   const [showImage, setShowImage] = useState(false);
@@ -23,8 +24,8 @@ const PopupImage = ({ image, width, height, className }) => {
                 alt={image}
               />
               {/* icon */}
-              <div className="absolute top-0 right-0 cursor-pointer bg-secondary rounded-bl-xl p-1.5  text-white font-bold">
-                <AiOutlineFullscreenExit />
+              <div className="absolute top-1 right-1 cursor-pointer  p-2  rounded-full text-secondary font-bold">
+                <FaX />
               </div>
             </div>
           </div>

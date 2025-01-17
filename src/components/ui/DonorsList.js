@@ -35,8 +35,12 @@ const DonorsList = ({ direction = "left" }) => {
         >
           {donorList.map((donor, index) => {
             return (
-              <div className="pl-5 py-4 capitalize font-bold " key={index}>
-                {donor.name ? donor.name : ""}
+              <div key={index}>
+                {donor.name && donor.name !== "Anonymous" ? (
+                  <div className="pl-5 py-4 capitalize font-bold ">
+                    {donor.name}
+                  </div>
+                ) : null}
               </div>
             );
           })}

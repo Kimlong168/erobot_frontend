@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
-const SearchFormReset = () => {
+const SearchFormReset = ({ href }) => {
   const reset = () => {
     const form = document.querySelector(".search-form");
 
@@ -12,7 +12,7 @@ const SearchFormReset = () => {
   };
   return (
     <button type="reset" onClick={reset} className="search-button">
-      <Link href="/articles" className="search-btn text-white">
+      <Link href={href} className="search-btn text-white">
         <X className="size-5" />
       </Link>
     </button>

@@ -6,7 +6,7 @@ const ArticlesServerComponent = async ({ searchParams }) => {
 
   // const params = { search: query || null };
 
-  const [articlesSnapshot, authorsSnapshot, artsSnapshot] = await Promise.all([
+  const [articlesSnapshot, authorsSnapshot, articleCategorySnapshot] = await Promise.all([
     getDocs(collection(db, "blogs")),
     getDocs(collection(db, "authors")),
     getDocs(collection(db, "blog_category")),
@@ -23,7 +23,7 @@ const ArticlesServerComponent = async ({ searchParams }) => {
     ...doc.data(),
   }));
 
-  const articleCategories = artsSnapshot.docs.map((doc) => ({
+  const articleCategories = articleCategorySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));

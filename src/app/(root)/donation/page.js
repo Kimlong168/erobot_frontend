@@ -23,7 +23,6 @@ const DonationPage = () => {
   const name = searchParams.get("name");
   const amount = searchParams.get("amount");
   const curr = searchParams.get("curr");
-
   const [qrCode, setQrCode] = useState("");
 
   const [status, setStatus] = useState(false); // Store transaction status
@@ -351,7 +350,7 @@ const DonationPage = () => {
                           amount: Math.floor(Math.random() * 50) + 1,
                         }))
                       }
-                      className="bg-bakong-red hover:bg-primary text-white py-2 px-3 rounded-md w-full"
+                      className="bg-bakong-red hover:bg-primary text-white py-2 px-3 rounded-md w-full text-center"
                     >
                       Random
                     </div>
