@@ -310,7 +310,13 @@ const DonationPage = () => {
                 />
                 {currency === "USD" ? (
                   <div className="flex gap-2">
-                    <div
+                    <button
+                      onClick={() => {
+                        console.log("avoid submit form with the next button");
+                      }}
+                      className="hidden"
+                    ></button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -320,8 +326,8 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       1 $
-                    </div>
-                    <div
+                    </button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -331,8 +337,8 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       5 $
-                    </div>
-                    <div
+                    </button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -342,8 +348,8 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       10 $
-                    </div>
-                    <div
+                    </button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -353,11 +359,18 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 px-3 rounded-md w-full text-center"
                     >
                       Random
-                    </div>
+                    </button>
                   </div>
                 ) : (
                   <div className="flex gap-2">
-                    <div
+                    {" "}
+                    <button
+                      onClick={() => {
+                        console.log("avoid submit form with the next button");
+                      }}
+                      className="hidden"
+                    ></button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -367,8 +380,8 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       4000 ៛
-                    </div>
-                    <div
+                    </button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -378,8 +391,8 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       20000 ៛
-                    </div>
-                    <div
+                    </button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           name: prev.name,
@@ -389,8 +402,8 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       40000 ៛
-                    </div>
-                    <div
+                    </button>
+                    <button
                       onClick={() =>
                         setPaymentData((prev) => ({
                           ...prev, // Spread previous state to keep other properties
@@ -400,7 +413,7 @@ const DonationPage = () => {
                       className="bg-bakong-red hover:bg-primary text-white py-2 rounded-md w-full text-center"
                     >
                       Random
-                    </div>
+                    </button>
                   </div>
                 )}
                 <button
