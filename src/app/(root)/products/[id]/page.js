@@ -26,6 +26,7 @@ const ProductDetail = async ({ params }) => {
 
   return (
     <section className="container mt-6 overflow-x-hidden">
+ 
       {/* detail card */}
       <div>
         <ProductDetailCard

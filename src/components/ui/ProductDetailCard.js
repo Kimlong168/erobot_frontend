@@ -1,17 +1,16 @@
 "use client";
+import { useState } from "react";
 import { MdOutlineOpenWith } from "react-icons/md";
+import { FaLink, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
 import PopupImage from "@/components/ui/PopupImage";
-import { useContext, useState } from "react";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import SharingBtn from "@/components/ui/SharingBtn";
-import { FaLink, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
-import { AnimatePresence } from "framer-motion";
-import Notification from "@/components/ui/Notification";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import Image from "next/image";
-
+import { useCartContext } from "@/contexts/CartContext";
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import ItemCartQuantity from "./ItemCartQuantity";
 const ProductDetailCard = ({ product }) => {
   const { id, image, name, description, categoryName, detail, price } = product;
+  const { cartItems, addItemOrIncreaseQuantity } = useCartContext();
 
   const [showDetail, setShowDetail] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -19,9 +18,24 @@ const ProductDetailCard = ({ product }) => {
   //   get current url
   const currentURL = process.env.Next_PUBLIC_BASE_URL + "/products/" + id;
 
+  const handleCopyLink = () => {
+    navigator.clipboard
+      .writeText(currentURL)
+      .then(() => {
+        enqueueSnackbar("Link copied successfully!", {
+          variant: "success", // Options: success, error, warning, info, default
+          autoHideDuration: 1500, // Optional: Time in ms before the notification hides
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to copy link: ", err);
+      });
+  };
+
   return (
     <>
       {/* product detail card */}
+      <ItemCartQuantity number={cartItems?.length} />
       <div className=" w-full mt-5">
         <div className="flex items-center justify-center w-full">
           <div className="border-2 border-gray-5 rounded-xl p-4 md:p-8 flex flex-col w-full md:flex-row gap-5 md:gap-24  text-gray-700 ">
@@ -162,7 +176,12 @@ const ProductDetailCard = ({ product }) => {
 
                 {/* buy now */}
                 <button
-                  // onClick={() => setIsOpenForm(true)}
+                  onClick={() =>
+                    enqueueSnackbar(`This feature is under construction!`, {
+                      variant: "error",
+                      autoHideDuration: 1500,
+                    })
+                  }
                   className="flex items-center justify-center max-w-[135px] w-[135px] gap-2 p-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded"
                 >
                   Buy Now <FaMoneyBill />
@@ -174,81 +193,37 @@ const ProductDetailCard = ({ product }) => {
               <div className="flex items-center gap-4 mt-4">
                 <button
                   onClick={() => {
-                    // addToCart({ id, name, price, image, quantity });
-                    // // show number added to cart
-                    // setShowNumberToAdd(true);
-                    // setTimeout(() => {
-                    //   setShowNumberToAdd(false);
-                    // }, 500);
-                    // // show add to cart notification
-                    // setIsAddedtoCart(true);
-                    // // show view cart button
-                    // setShowViewCartBtn(true);
-                    // // hide view cart button after 2s
-                    // setTimeout(() => {
-                    //   setShowViewCartBtn(false);
-                    // }, 2000);
+                    addItemOrIncreaseQuantity(product, parseInt(quantity));
+                    enqueueSnackbar(`Add ${name} to cart!`, {
+                      variant: "success",
+                      autoHideDuration: 1500,
+                    });
                   }}
                   title="add to cart"
                   className="flex items-center justify-center max-w-[135px] min-w-[135px] gap-2 p-2.5 px-1 bg-secondary hover:bg-primary-light text-white font-bold rounded relative"
                 >
                   <span className="truncate">Add to Cart</span>
-                  {/* {showNumberToAdd && (
-                    <span className="absolute z-2 -right-2 -top-2 text-white  font-bold text-xs bg-red-600 rounded-full w-5 h-5 p-2 grid place-content-center animate-bounce">
-                      +{quantity}
+                  {quantity && (
+                    <span className="absolute z-2 -right-2 -top-2 text-white  font-bold text-xs bg-yellow-500 rounded-full w-5 h-5 p-2 grid place-content-center animate-bounce">
+                      +{parseInt(quantity)}
                     </span>
-                  )} */}
-
-                  {/* {isAddedtoCart ? (
-                    <IoMdCheckmarkCircleOutline className="animate-ping" />
-                  ) : (
-                    <FaShoppingCart />
-                  )} */}
+                  )}
                 </button>
 
-                <button className="flex items-center justify-center w-[135px] max-w-[135px]  gap-2 p-2.5 font-bold rounded bg-blue-600 hover:bg-blue-700 text-white">
+                <button
+                  onClick={handleCopyLink}
+                  className="flex items-center justify-center w-[135px] max-w-[135px]  gap-2 p-2.5 font-bold rounded bg-blue-600 hover:bg-blue-700 text-white"
+                >
                   Copy Link
-                  {/* {copied ? (
-                    <IoMdCheckmarkCircleOutline className="animate-ping" />
-                  ) : (
-                    <FaLink />
-                  )} */}
+                  <FaLink />
                 </button>
               </div>
             </div>
           </div>
-
-          {/* copy link notification */}
-
-          {/* {copied && (
-            <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
-              <AnimatePresence>
-                <Notification
-                  text="Product link is copied!"
-                  removeNotif={() => setCopied(false)}
-                  id={currentURL}
-                  bg="bg-blue-500"
-                />
-              </AnimatePresence>
-            </div>
-          )} */}
-
-          {/* add to cart notification */}
-
-          {/* {isAddedtoCart && (
-            <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
-              <AnimatePresence>
-                <Notification
-                  text={`${name}is added to cart!`}
-                  removeNotif={() => setIsAddedtoCart(false)}
-                  id={id}
-                  bg="bg-primary"
-                />
-              </AnimatePresence>
-            </div>
-          )} */}
         </div>
       </div>
+
+      <SnackbarProvider />
     </>
   );
 };

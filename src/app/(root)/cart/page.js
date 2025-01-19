@@ -1,8 +1,9 @@
+import CartTable from "./components/cartTable";
 const CartPage = () => {
   return (
-    <div className="container min-h-screen grid place-content-center text-secondary font-primary text-2xl">
-      <div className="-mt-[100px]">Under Construction!</div>
-    </div>
+    <section className="container py-12">
+      <CartTable />
+    </section>
   );
 };
 

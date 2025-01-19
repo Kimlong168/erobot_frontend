@@ -8,6 +8,8 @@ import usFlag from "./us-flag.png";
 import darkLogo from "./dark.png";
 import lightLogo from "./light.png";
 import whiteLogo from "./white.png";
+import removeIcon from "./remove_icon_red.png";
+import addIcon from "./add_icon_green.png";
 const assets = {
   khqrLogo,
   heroImage,
@@ -19,6 +21,8 @@ const assets = {
   darkLogo,
   lightLogo,
   whiteLogo,
+  removeIcon,
+  addIcon,
 };
 
 export default assets;
