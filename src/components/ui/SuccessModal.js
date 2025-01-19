@@ -1,3 +1,4 @@
+"use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -47,6 +48,5 @@ const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
     </AnimatePresence>
   );
 };
-
 
 export default WarningModal;

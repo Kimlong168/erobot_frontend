@@ -74,6 +74,14 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCartItems([]);
+    localStorage.removeItem("cartItems");
+  };
+
+  const getTotalPrice = () => {
+    if (cartItems.length === 0) return 0;
+    return cartItems
+      .reduce((acc, item) => acc + item.price * item.quantity, 0)
+      .toFixed(2);
   };
 
   return (
@@ -86,6 +94,7 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         updateQuantity,
         clearCart,
+        getTotalPrice,
       }}
     >
       {children}

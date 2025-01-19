@@ -11,6 +11,8 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
+
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,6 +31,18 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+export const storage = getStorage(app);
 export const provider = new GoogleAuthProvider();
 
-export { collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc };
+export {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+};
