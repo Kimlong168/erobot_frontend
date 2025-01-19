@@ -9,7 +9,7 @@ const SearchForm = ({ query, actionPath }) => {
         name="query"
         defaultValue={query}
         className="search-input outline-none"
-        placeholder="Search Startups"
+        placeholder="Search"
       />
 
       <div className="flex gap-2">

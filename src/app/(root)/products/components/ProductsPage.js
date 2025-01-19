@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import SearchForm from "@/components/form/SearchForm";
 import { FaHeart } from "react-icons/fa";
 import ProductCard from "@/components/ui/ProductCard";
-
+import { useCartContext } from "@/contexts/CartContext";
+import ItemCartQuantity from "@/components/ui/ItemCartQuantity";
 const ProductsPage = ({ initialData, productCategories, query }) => {
+  const { cartItems } = useCartContext();
   const { state: products, setState } = useProductContext();
   const { data, isLoading, isError } = useQuery(
     "products", // queryKey
@@ -69,6 +71,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
 
   return (
     <section className="container py-8 md:py-12">
+      <ItemCartQuantity number={cartItems?.length} />
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center lg:gap-8">
         <p className="text-30-semibold w-full ">
           {query && !query.includes("filter") ? (
