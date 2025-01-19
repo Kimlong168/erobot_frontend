@@ -25,8 +25,9 @@ export const CartProvider = ({ children }) => {
   const addItemOrIncreaseQuantity = (item, quantity = 1) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find(
-        (i) => String(i.id).toLowerCase() === String(item.id).toLowerCase()
+        (i) => String(i.id).toLowerCase() == String(item.id).toLowerCase()
       );
+
       if (existingItem) {
         return prevItems.map((i) =>
           i.id === item.id
