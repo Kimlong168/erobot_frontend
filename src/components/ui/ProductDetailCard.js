@@ -16,7 +16,7 @@ const ProductDetailCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   //   get current url
-  const currentURL = process.env.Next_PUBLIC_BASE_URL + "/products/" + id;
+  const currentURL = process.env.NEXT_PUBLIC_BASE_URL + "/products/" + id;
 
   const handleCopyLink = () => {
     navigator.clipboard
