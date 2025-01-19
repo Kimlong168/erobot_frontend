@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
         {isItemInCart ? (
           <button
             onClick={() => {
-              removeItem(product);
+              removeItem(product.id);
               enqueueSnackbar(`Remove ${name} from cart!`, {
                 variant: "error",
                 autoHideDuration: 1500,
