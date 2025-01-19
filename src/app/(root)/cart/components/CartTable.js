@@ -4,6 +4,7 @@ import { useCartContext } from "@/contexts/CartContext";
 import Image from "next/image";
 import { FaX } from "react-icons/fa6";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
+
 const CartTable = () => {
   const {
     cartItems,
