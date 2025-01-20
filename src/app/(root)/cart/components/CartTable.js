@@ -14,7 +14,7 @@ import dataURItoBlob from "@/utils/dataURItoBlob";
 import { deleteImageFromStorage } from "@/utils/deleteImageFromStorage";
 import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
-import { orderMessage } from "@/data/OrderMessage";
+import { orderMessage } from "@/data/messageToSend";
 
 const CartTable = () => {
   const {
