@@ -8,9 +8,12 @@ import LoadingWithPercentage from "@/components/ui/LoadingWithPercentage";
 import { FaWindowClose } from "react-icons/fa";
 import Link from "next/link";
 import LinkIcon from "@/components/ui/LinkIcon";
-import Image from "next/image";
 import ConfirmModal from "../ui/ConfirmModal";
 import contactInfo from "@/data/contactInfo";
+import Image from "next/image";
+import assets from "@/assets/assets";
+import { enqueueSnackbar } from "notistack";
+
 // import lineLogo from "../../assets/images/line-logo.jpg";
 // import facebookLogo from "../../assets/images/facebook-logo.jpg";
 // import telegramLogo from "../../assets/images/telegram-logo.png";
@@ -41,7 +44,12 @@ const CustomerContactForm = ({
 
   // show confirm order modal
   const confirmOrder = () => {
-    if (formData.fullName && formData.phoneNumber && formData.address) {
+    if (
+      formData.fullName &&
+      formData.phoneNumber &&
+      formData.address &&
+      formData.paymentMethod
+    ) {
       setShowModal(true);
     } else {
       setIsShowWarning(true);
@@ -50,16 +58,30 @@ const CustomerContactForm = ({
 
   const processOrder = async () => {
     setShowModal(false);
-    setIsSending(true);
-    sendToTelegram();
-    setTimeout(() => {
-      setIsSubmitted({
-        showForm: false,
-        showAlert: true,
+    if (formData.paymentMethod === "khqr") {
+      enqueueSnackbar("Payment with KHQR is not available yet!", {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
       });
-    }, 3000);
-    // reset the percentage value
-    setProgress(0);
+    } else {
+      setIsSending(true);
+      sendToTelegram();
+      setTimeout(() => {
+        setIsSubmitted({
+          showForm: false,
+          showAlert: true,
+        });
+      }, 3000);
+      // reset the percentage value
+      setProgress(0);
+    }
+  };
+
+  const handleSelectPaymentMethod = (method) => {
+    setFormData({ ...formData, paymentMethod: method });
   };
 
   // handle loading with percentage
@@ -202,25 +224,6 @@ const CustomerContactForm = ({
                       />
                     </div>
 
-                    {/* email */}
-                    <div className="mb-4">
-                      <label
-                        title="required"
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                      />
-                    </div>
-
                     {/* contact link */}
                     <div className="mb-4">
                       <label
@@ -308,6 +311,62 @@ const CustomerContactForm = ({
                           </p>
                         </div>
                       )}
+                    </div>
+                    {/* payment method */}
+                    <div className="mb-4">
+                      <label
+                        title="required"
+                        htmlFor="paymentMethod"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Payment Method
+                        <RedStar />
+                      </label>
+                      <div className="flex flex-col md:flex-row gap-2 mt-1">
+                        <div
+                          onClick={() => handleSelectPaymentMethod("cod")}
+                          className={`w-full p-2 py-3 rounded border cursor-pointer grid place-content-center relative ${
+                            formData.paymentMethod === "cod" &&
+                            "border-bakong-red"
+                          }`}
+                        >
+                          COD (Cash on delivery)
+                          <span
+                            className={`absolute top-0.5 right-0.5 ${
+                              formData.paymentMethod !== "cod" && "hidden"
+                            }`}
+                          >
+                            ✅
+                          </span>
+                        </div>
+                        <div
+                          onClick={() => handleSelectPaymentMethod("khqr")}
+                          className={`w-full p-2 rounded border flex gap-3 items-center cursor-pointer relative ${
+                            formData.paymentMethod === "khqr" &&
+                            "border-bakong-red"
+                          }`}
+                        >
+                          <Image
+                            src={assets.KHQR}
+                            alt="KHQR"
+                            width={85}
+                            height={60}
+                          />
+                          <div className="flex flex-col gap-0.5  w-full">
+                            <div className="text-xs">Pay with KHQR</div>
+                            <small className="text-[12px] text-gray-600">
+                              Tap here to generate KHQR for payment
+                            </small>
+                          </div>
+                          <span
+                            className={`absolute top-0.5 right-0.5 ${
+                              formData.paymentMethod !== "khqr" && "hidden"
+                            }`}
+                          >
+                            ✅
+                          </span>
+                        </div>
+                      </div>
                     </div>
 
                     {/* message */}

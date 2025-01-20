@@ -10,8 +10,10 @@ import lightLogo from "./light.png";
 import whiteLogo from "./white.png";
 import removeIcon from "./remove_icon_red.png";
 import addIcon from "./add_icon_green.png";
+import KHQR from "./KHQR.png";
 const assets = {
   khqrLogo,
+  KHQR,
   heroImage,
   bigLogo,
   logo,

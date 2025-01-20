@@ -18,7 +18,13 @@ ${formData.phoneNumber ? `Phone: *${formData.phoneNumber}*` : ""}
 
 ${formData.address ? `Address: *${formData.address}*` : ""}
 
-${formData.email ? `Email: *${formData.email}*` : "Email: *No Email Provided*"}
+${
+  formData.paymentMethod
+    ? `Payment Method: *${formData.paymentMethod.toUpperCase()}*`
+    : ""
+}
+
+${formData.md5 ? `MD5: *\`${formData.md5}\`` : ""}
 
 ${
   formData.telegram
