@@ -9,6 +9,8 @@ import { FaWindowClose } from "react-icons/fa";
 import Link from "next/link";
 import LinkIcon from "@/components/ui/LinkIcon";
 import Image from "next/image";
+import ConfirmModal from "../ui/ConfirmModal";
+import contactInfo from "@/data/contactInfo";
 // import lineLogo from "../../assets/images/line-logo.jpg";
 // import facebookLogo from "../../assets/images/facebook-logo.jpg";
 // import telegramLogo from "../../assets/images/telegram-logo.png";
@@ -20,31 +22,7 @@ const CustomerContactForm = ({
   sendToTelegram,
   orderDetail = null,
 }) => {
-  const contactInfo = {
-    phoneNumber: "(855) 12 345 678",
-    email: "erobotteam@gmail.com",
-    telegram: "",
-    socialMedia: [
-      {
-        title: "Facebook",
-        url: "#",
-      },
-
-      {
-        title: "Youtube",
-        url: "#",
-      },
-      {
-        title: "Tiktok",
-        url: "#",
-      },
-      {
-        title: "Telegram",
-        url: "#",
-      },
-    ],
-  };
-
+  const [showModal, setShowModal] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState({
     showForm: true,
     showAlert: false,
@@ -59,6 +37,29 @@ const CustomerContactForm = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  // show confirm order modal
+  const confirmOrder = () => {
+    if (formData.fullName && formData.phoneNumber && formData.address) {
+      setShowModal(true);
+    } else {
+      setIsShowWarning(true);
+    }
+  };
+
+  const processOrder = async () => {
+    setShowModal(false);
+    setIsSending(true);
+    sendToTelegram();
+    setTimeout(() => {
+      setIsSubmitted({
+        showForm: false,
+        showAlert: true,
+      });
+    }, 3000);
+    // reset the percentage value
+    setProgress(0);
   };
 
   // handle loading with percentage
@@ -253,7 +254,7 @@ const CustomerContactForm = ({
                               alt=""
                             /> */}
 
-                            <span>or others</span>
+                            {/* <span>or others</span> */}
                           </span>
                         </div>
 
@@ -328,31 +329,7 @@ const CustomerContactForm = ({
 
                     {/* order now button */}
                     <div
-                      onClick={() => {
-                        if (
-                          formData.fullName &&
-                          formData.phoneNumber &&
-                          formData.address
-                        ) {
-                          setIsSending(true);
-                          sendToTelegram();
-                          // delay 1.5s to make sure the content is changed and the image is taken
-                          // setTimeout(() => {
-                          //   sendToTelegram();
-                          // }, 2000);
-                          // delay 3s to make sure the image is uploaded and also deleted after sending to telegram successfully
-                          setTimeout(() => {
-                            setIsSubmitted({
-                              showForm: false,
-                              showAlert: true,
-                            });
-                          }, 3000);
-                          // reset the percentage value
-                          setProgress(0);
-                        } else {
-                          setIsShowWarning(true);
-                        }
-                      }}
+                      onClick={confirmOrder}
                       className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer font-bold"
                     >
                       Order Now
@@ -364,14 +341,13 @@ const CustomerContactForm = ({
                       <p className="mt-2">
                         <span className="font-bold rounded mr-2">Note:</span> We
                         will reach out to you via your contact or Telegram
-                        promptly. Once we confirm your order, we will proceed to
-                        process the checkout. Thank you for your patience
+                        promptly. Thank you for your patience.
                       </p>
                     </div>
 
                     {/* social media */}
                     <div className="flex items-center gap-5">
-                      <div>For more information (Japanese or English)</div>
+                      <div>For more information</div>
                       <div className="flex items-center gap-4 text-2xl">
                         {contactInfo &&
                           contactInfo.socialMedia.map((item, index) => (
@@ -404,6 +380,15 @@ const CustomerContactForm = ({
           </div>
         </div>
       )}
+
+      {/* confirm order   */}
+      <ConfirmModal
+        show={showModal}
+        setShow={setShowModal}
+        title="Confirm Order"
+        message="Are you sure you want to order?"
+        onConfirm={processOrder}
+      />
 
       {/* fill required information alert */}
       <WarningModal

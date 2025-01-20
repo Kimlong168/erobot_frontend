@@ -16,33 +16,11 @@ import Image from "next/image";
 import SideBar from "./SideBar";
 import { CiLight } from "react-icons/ci";
 import { useState } from "react";
+import contactInfo from "@/data/contactInfo";
 const Header = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const language = "en";
-  const contactInfo = {
-    phoneNumber: "(855) 12 345 678",
-    email: "erobotteam@gmail.com",
-    telegram: "",
-    socialMedia: [
-      {
-        title: "Facebook",
-        url: "#",
-      },
 
-      {
-        title: "Youtube",
-        url: "#",
-      },
-      {
-        title: "Tiktok",
-        url: "#",
-      },
-      {
-        title: "Telegram",
-        url: "#",
-      },
-    ],
-  };
   return (
     <>
       <div className="flex justify-between items-center p-1 px-3 sm:px-6 md:px-8 bg-bakong-red text-white">

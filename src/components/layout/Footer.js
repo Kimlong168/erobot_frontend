@@ -3,31 +3,8 @@ import Image from "next/image";
 import assets from "@/assets/assets";
 import LinkIcon from "../ui/LinkIcon";
 import { PiCopyrightBold } from "react-icons/pi";
+import contactInfo from "@/data/contactInfo";
 const Footer = () => {
-  const contactInfo = {
-    phoneNumber: "(855) 12 345 678",
-    email: "erobotteam@gmail.com",
-    telegram: "",
-    socialMedia: [
-      {
-        title: "Facebook",
-        url: "#",
-      },
-
-      {
-        title: "Youtube",
-        url: "#",
-      },
-      {
-        title: "Tiktok",
-        url: "#",
-      },
-      {
-        title: "Telegram",
-        url: "#",
-      },
-    ],
-  };
   return (
     <footer className="overflow-hidden ">
       <div className="bg-white">

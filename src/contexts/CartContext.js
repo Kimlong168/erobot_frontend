@@ -74,7 +74,6 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCartItems([]);
-    localStorage.removeItem("cartItems");
   };
 
   const getTotalPrice = () => {

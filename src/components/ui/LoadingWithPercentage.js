@@ -1,3 +1,4 @@
+"use client";
 const LoadingWithPercentage = ({ percentage }) => {
   return (
     <div className="flex items-center justify-center">
