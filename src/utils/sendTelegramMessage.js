@@ -1,8 +1,7 @@
 import axios from "axios";
+const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+const chatId = process.env.NEXT_PUBLIC_TELEGRAM_GENERAL_CHAT_ID;
 const sendTelegramMessage = async (message, topic_id) => {
-  const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.NEXT_PUBLIC_TELEGRAM_GENERAL_CHAT_ID;
-
   try {
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
@@ -28,4 +27,33 @@ const sendTelegramMessage = async (message, topic_id) => {
   }
 };
 
-export { sendTelegramMessage };
+const sendTelegramImage = async (downloadURL, caption, topic_id) => {
+  const form = new FormData();
+  form.append("chat_id", chatId);
+  // url of image to send
+  form.append("photo", downloadURL);
+  // caption for the image
+  form.append("caption", caption);
+  // mark down
+  form.append("parse_mode", "Markdown");
+  // topic
+  if (topic_id) {
+    form.append("message_thread_id", topic_id);
+  }
+
+  try {
+    await axios.post(
+      `https://api.telegram.org/bot${botToken}/sendPhoto`,
+      form,
+      {
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${form._boundary}`,
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Error sending image:", error);
+  }
+};
+
+export { sendTelegramMessage, sendTelegramImage };

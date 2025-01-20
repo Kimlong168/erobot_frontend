@@ -1,5 +1,4 @@
 "use client";
-import axios from "axios";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
@@ -7,8 +6,8 @@ import SuccessModal from "@/components/ui/SuccessModal";
 import RedStar from "@/components/ui/RedStar";
 import WarningModal from "@/components/ui/WarningModal";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
-import { getCurrentTime } from "@/utils/getCurrentTime";
 import ContactInfo from "@/components/ui/ContactInfo";
+import { contactMessage } from "@/data/messageToSend";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -36,18 +35,7 @@ const ContactPage = () => {
     }
 
     try {
-      const messageToSend = `===== New Message =====\n\nDate: ${getCurrentTime()}
-        ${formData.fullname ? `\nName: ${formData.fullname}` : ""}
-        ${
-          formData.socialMediaLink
-            ? `\nSocial Media: ${formData.socialMediaLink}`
-            : ""
-        }
-        ${formData.phone ? `\nPhone Number: ${formData.phone}` : ""}
-        ${formData.address ? `\nAddress: ${formData.address}` : ""}
-        ${formData.email ? `\nEmail: ${formData.email}` : ""}
-        ${formData.description ? `\nMessage: ${formData.description}` : ""}
-      `;
+      const messageToSend = contactMessage(formData);
 
       // Wait for the message to be sent to Telegram
       await sendTelegramMessage(

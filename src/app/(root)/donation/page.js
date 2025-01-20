@@ -10,13 +10,14 @@ import { LuDownload, LuLink } from "react-icons/lu";
 import Image from "next/image";
 import assets from "@/assets/assets";
 import { PiHandsPrayingFill } from "react-icons/pi";
-import {  enqueueSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 import Link from "next/link";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 import { getCurrentTime, getCurrentTimeForDonor } from "@/utils/getCurrentTime";
 import { useSearchParams } from "next/navigation";
 import { fadeIn } from "@/utils/variants";
 import { createDonor } from "@/queries/donor";
+import { invitationMessage } from "@/data/messageToSend";
 
 const DonationPage = () => {
   const searchParams = useSearchParams();
@@ -44,10 +45,6 @@ const DonationPage = () => {
       enqueueSnackbar("Pleaes input amount!", {
         variant: "error", // Options: success, error, warning, info, default
         autoHideDuration: 1500, // Optional: Time in ms before the notification hides
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "center",
-        },
       });
       return;
     }
@@ -56,10 +53,6 @@ const DonationPage = () => {
       enqueueSnackbar("Amount in KHR cannot be less than 100 KHR", {
         variant: "error", // Options: success, error, warning, info, default
         autoHideDuration: 1500, // Optional: Time in ms before the notification hides
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "center",
-        },
       });
       return;
     }
@@ -69,10 +62,6 @@ const DonationPage = () => {
       enqueueSnackbar("Amount must be a number!", {
         variant: "error", // Options: success, error, warning, info, default
         autoHideDuration: 1500, // Optional: Time in ms before the notification hides
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "center",
-        },
       });
       return;
     }
@@ -209,14 +198,11 @@ const DonationPage = () => {
 
   const handleCopyLink = (link) => {
     const linkWithoutSpace = link.replace(/\s/g, "%20");
-    const text = `🌟 **Erobot ${
-      paymentData.amount == 1 ? "1$" : "Donation"
-    } Challenge** 🌟
-    \n🙏🏼Hello ${
-      paymentData.name ? paymentData.name : "friend"
-    }!, Let's support **ERobot Cambodia**
-    \n👉 Click the link to donate: ${linkWithoutSpace}
-    \nEvery contribution counts, and your generosity makes a difference. Thank you! 💖`;
+    const text = invitationMessage(
+      linkWithoutSpace,
+      paymentData.amount,
+      paymentData.name
+    );
 
     navigator.clipboard
       .writeText(text)
@@ -224,10 +210,6 @@ const DonationPage = () => {
         enqueueSnackbar("Invitation link copied successfully!", {
           variant: "success", // Options: success, error, warning, info, default
           autoHideDuration: 1500, // Optional: Time in ms before the notification hides
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "center",
-          },
         });
       })
       .catch((err) => {
@@ -549,7 +531,6 @@ const DonationPage = () => {
                 </p>
               </div>
             )}
-         
           </div>
         </div>
       </section>

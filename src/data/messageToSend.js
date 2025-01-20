@@ -1,4 +1,5 @@
 import checkSocialMedia from "@/utils/checkSocialMedia";
+import { getCurrentTime } from "@/utils/getCurrentTime";
 
 const orderMessage = (baseUrl, orderId, formData, totalPrice) => {
   return `===== *New Order* =====
@@ -38,4 +39,35 @@ ${
 ----------------------------------`;
 };
 
-export { orderMessage };
+const contactMessage = (formData) => {
+  return `===== *New Message* =====
+
+*Date:* ${getCurrentTime()}
+
+${formData.fullname ? `*Name:* ${formData.fullname}\n` : ""}
+${
+  formData.socialMediaLink
+    ? `*Social Media:* [${checkSocialMedia(formData.socialMediaLink)}](${
+        formData.socialMediaLink
+      })\n`
+    : ""
+}
+${formData.phone ? `*Phone Number:* ${formData.phone}\n` : ""}
+${formData.address ? `*Address:* ${formData.address}\n` : ""}
+${
+  formData.email
+    ? `*Email:* [${formData.email}](mailto:${formData.email})\n`
+    : ""
+}
+${formData.description ? `*Message:*\n${formData.description}\n` : ""}
+  `;
+};
+
+const invitationMessage = (link, amount, name) => {
+  return `🌟 **Erobot ${amount == 1 ? "1$" : "Donation"} Challenge** 🌟
+  \n🙏🏼Hello ${name ? name : "friend"}!, Let's support **ERobot Cambodia**
+  \n👉Click the link to donate: ${link}
+  \nEvery contribution counts, and your generosity makes a difference. Thank you! 💖`;
+};
+
+export { orderMessage, contactMessage, invitationMessage };

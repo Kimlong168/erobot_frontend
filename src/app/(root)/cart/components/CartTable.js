@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import html2canvas from "html2canvas";
-import {  enqueueSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 import Link from "next/link";
 import { FaX } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
@@ -15,6 +15,7 @@ import deleteImageFromStorage from "@/utils/deleteImageFromStorage";
 import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
 import { orderMessage } from "@/data/messageToSend";
+import { sendTelegramImage } from "@/utils/sendTelegramMessage";
 
 const CartTable = () => {
   const {
@@ -64,10 +65,8 @@ const CartTable = () => {
           .then((downloadURL) => {
             //get the download url
             try {
-              const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-              const chatId = process.env.NEXT_PUBLIC_TELEGRAM_GENERAL_CHAT_ID;
+              const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
               const baseUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL;
-              const form = new FormData();
 
               // caption for the image to send to telegram
               const messageToSend = orderMessage(
@@ -77,25 +76,17 @@ const CartTable = () => {
                 getTotalPrice()
               );
 
-              form.append("chat_id", chatId);
-              // url of image to send
-              form.append("photo", downloadURL);
-              // caption for the image
-              form.append("caption", messageToSend);
-              // mark down
-              form.append("parse_mode", "Markdown");
+              // const form = new FormData();
+              // form.append("chat_id", chatId);
+              // // url of image to send
+              // form.append("photo", downloadURL);
+              // // caption for the image
+              // form.append("caption", messageToSend);
+              // // mark down
+              // form.append("parse_mode", "Markdown");
 
               const send = async () => {
-                const response = await axios.post(
-                  `https://api.telegram.org/bot${botToken}/sendPhoto`,
-                  form,
-                  {
-                    headers: {
-                      "Content-Type": `multipart/form-data; boundary=${form._boundary}`,
-                    },
-                  }
-                );
-                console.log("Image sent successfully!", response);
+                await sendTelegramImage(downloadURL, messageToSend, topicId);
               };
 
               // excute send function and record order to database and get the post link
@@ -226,7 +217,9 @@ const CartTable = () => {
                           width={50}
                           height={50}
                           onClick={() => decreaseQuantity(item.id)}
-                          className={`w-7 h-7 cursor-pointer ${isOpenForm ? "hidden" : ""}`}
+                          className={`w-7 h-7 cursor-pointer ${
+                            isOpenForm ? "hidden" : ""
+                          }`}
                           src={assets.removeIcon}
                           alt="remove_icon_red"
                         />
@@ -235,7 +228,9 @@ const CartTable = () => {
                           width={50}
                           height={50}
                           onClick={() => addItemOrIncreaseQuantity(item)}
-                          className={`w-7 h-7 cursor-pointer ${isOpenForm ? "hidden" : ""}`}
+                          className={`w-7 h-7 cursor-pointer ${
+                            isOpenForm ? "hidden" : ""
+                          }`}
                           src={assets.addIcon}
                           alt="add_icon_green"
                         />
@@ -260,7 +255,6 @@ const CartTable = () => {
                 ))}
               </tbody>
             </table>
-         
           </section>{" "}
           <section className="mt-12">
             <div className="flex flex-col md:flex-row justify-between gap-10 w-full">
