@@ -6,7 +6,7 @@ import PopupImage from "@/components/ui/PopupImage";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import SharingBtn from "@/components/ui/SharingBtn";
 import { useCartContext } from "@/contexts/CartContext";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import {  enqueueSnackbar } from "notistack";
 import ItemCartQuantity from "./ItemCartQuantity";
 const ProductDetailCard = ({ product }) => {
   const { id, image, name, description, categoryName, detail, price } = product;
@@ -194,10 +194,13 @@ const ProductDetailCard = ({ product }) => {
                 <button
                   onClick={() => {
                     addItemOrIncreaseQuantity(product, parseInt(quantity));
-                    enqueueSnackbar(`Add ${name} to cart!`, {
-                      variant: "success",
-                      autoHideDuration: 1500,
-                    });
+                    enqueueSnackbar(
+                      `Add ${quantity == 1 ? "" : quantity} ${name} to cart!`,
+                      {
+                        variant: "success",
+                        autoHideDuration: 1500,
+                      }
+                    );
                   }}
                   title="add to cart"
                   className="flex items-center justify-center max-w-[135px] min-w-[135px] gap-2 p-2.5 px-1 bg-secondary hover:bg-primary-light text-white font-bold rounded relative"
@@ -223,7 +226,7 @@ const ProductDetailCard = ({ product }) => {
         </div>
       </div>
 
-      <SnackbarProvider />
+  
     </>
   );
 };

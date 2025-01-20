@@ -72,15 +72,15 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   return (
     <section className="container py-8 md:py-12">
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center gap-2 lg:gap-8">
-        <p className="text-30-semibold w-full">
+        <div className="text-30-semibold w-full">
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
-            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block">
+            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate">
               All Articles
             </h3>
           )}
-        </p>{" "}
+        </div>{" "}
         <div>
           <SearchForm
             actionPath="/articles"

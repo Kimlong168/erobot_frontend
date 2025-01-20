@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import html2canvas from "html2canvas";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import {  enqueueSnackbar } from "notistack";
 import Link from "next/link";
 import { FaX } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
@@ -226,7 +226,7 @@ const CartTable = () => {
                           width={50}
                           height={50}
                           onClick={() => decreaseQuantity(item.id)}
-                          className={`w-7 h-7 ${isOpenForm ? "hidden" : ""}`}
+                          className={`w-7 h-7 cursor-pointer ${isOpenForm ? "hidden" : ""}`}
                           src={assets.removeIcon}
                           alt="remove_icon_red"
                         />
@@ -235,7 +235,7 @@ const CartTable = () => {
                           width={50}
                           height={50}
                           onClick={() => addItemOrIncreaseQuantity(item)}
-                          className={`w-7 h-7 ${isOpenForm ? "hidden" : ""}`}
+                          className={`w-7 h-7 cursor-pointer ${isOpenForm ? "hidden" : ""}`}
                           src={assets.addIcon}
                           alt="add_icon_green"
                         />
@@ -260,7 +260,7 @@ const CartTable = () => {
                 ))}
               </tbody>
             </table>
-            <SnackbarProvider />
+         
           </section>{" "}
           <section className="mt-12">
             <div className="flex flex-col md:flex-row justify-between gap-10 w-full">

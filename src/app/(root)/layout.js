@@ -6,6 +6,7 @@ import { ArticleProvider } from "@/contexts/ArticleContext";
 import { ProductProvider } from "@/contexts/ProductContext";
 import { CartProvider } from "@/contexts/CartContext";
 import GoToTop from "@/components/ui/GoToTop";
+import { SnackbarProvider } from "notistack";
 const queryClient = new QueryClient();
 
 function Layout({ children }) {
@@ -19,6 +20,7 @@ function Layout({ children }) {
               {children}
               <Footer />
               {/* <GoToTop /> */}
+              <SnackbarProvider />
             </ArticleProvider>
           </ProductProvider>
         </CartProvider>

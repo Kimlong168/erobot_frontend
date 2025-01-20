@@ -73,15 +73,15 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
     <section className="container py-8 md:py-12">
       <ItemCartQuantity number={cartItems?.length} />
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center lg:gap-8">
-        <p className="text-30-semibold w-full ">
+        <div className="text-30-semibold w-full ">
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
-            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block">
+            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate">
               All Products
             </h3>
           )}
-        </p>{" "}
+        </div>{" "}
         <div className="">
           <SearchForm
             actionPath="/products"

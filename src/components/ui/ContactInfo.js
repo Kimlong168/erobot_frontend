@@ -2,32 +2,10 @@ import LinkIcon from "./LinkIcon";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
+import contactInfo from "@/data/contactInfo";
 const ContactInfo = async () => {
   //   const contactInfo = await getContactInfo();
-  const contactInfo = {
-    phoneNumber: "(855) 12 345 678",
-    email: "erobotteam@gmail.com",
-    telegram: "",
-    socialMedia: [
-      {
-        title: "Facebook",
-        url: "#",
-      },
 
-      {
-        title: "Youtube",
-        url: "#",
-      },
-      {
-        title: "Tiktok",
-        url: "#",
-      },
-      {
-        title: "Telegram",
-        url: "#",
-      },
-    ],
-  };
   return (
     <div>
       {" "}

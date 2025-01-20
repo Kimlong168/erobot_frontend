@@ -10,13 +10,14 @@ import { LuDownload, LuLink } from "react-icons/lu";
 import Image from "next/image";
 import assets from "@/assets/assets";
 import { PiHandsPrayingFill } from "react-icons/pi";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import {  enqueueSnackbar } from "notistack";
 import Link from "next/link";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 import { getCurrentTime, getCurrentTimeForDonor } from "@/utils/getCurrentTime";
 import { useSearchParams } from "next/navigation";
 import { fadeIn } from "@/utils/variants";
 import { createDonor } from "@/queries/donor";
+
 const DonationPage = () => {
   const searchParams = useSearchParams();
   // Extract values from the query parameters
@@ -548,7 +549,7 @@ const DonationPage = () => {
                 </p>
               </div>
             )}
-            <SnackbarProvider />
+         
           </div>
         </div>
       </section>

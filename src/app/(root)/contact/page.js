@@ -1,19 +1,16 @@
 "use client";
+import axios from "axios";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import SuccessModal from "@/components/ui/SuccessModal";
 import RedStar from "@/components/ui/RedStar";
 import WarningModal from "@/components/ui/WarningModal";
-import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
+// import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 import { getCurrentTime } from "@/utils/getCurrentTime";
 import ContactInfo from "@/components/ui/ContactInfo";
 
 const ContactPage = () => {
-  // get user email to cc to the user when they submit the contact form
-  // const contactInfo = contactList.map((item) => item)[0];
-  const language = "en";
-
   const [formData, setFormData] = useState({
     fullname: "",
     phone: "",
@@ -25,14 +22,13 @@ const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowWarning, setIsShowWarning] = useState(false);
 
-  // handle send message to telegram
-  //bot token
-  // var telegram_bot_id = contactInfo ? contactInfo.telegramBotId : "";
-  //chat id
-  // var chat_id = "@sorakhmerCustomerOrder"; //can only send to the public channel
-  // var chat_id = contactInfo ? contactInfo.chatId : ""; //channel id : we can send to both private and public channel
+  // handle input change
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const sendToTelegram = (e) => {
+  const sendToTelegram = async (e) => {
     e.preventDefault();
 
     if (!formData.fullname || !formData.description) {
@@ -40,51 +36,53 @@ const ContactPage = () => {
       return;
     }
 
-    // Send customer contact and information to telegram
     try {
-      const send = async () => {
-        const messageToSend = `===== New Message =====\n\nDate: ${getCurrentTime()}
-          ${formData.fullname ? `\nName: ${formData.fullname}` : ""}
-          ${
-            formData.socialMediaLink
-              ? `\nSocial Media: ${formData.socialMediaLink}`
-              : ""
-          }
-          ${formData.phone ? `\nPhone Number: ${formData.phone}` : ""}
-          ${formData.address ? `\nAddress: ${formData.address}` : ""}
-          ${formData.email ? `\nEmail: ${formData.email}` : ""}
-          ${formData.description ? `\nMessage: ${formData.description}` : ""}
-       `;
+      const messageToSend = `===== New Message =====\n\nDate: ${getCurrentTime()}
+        ${formData.fullname ? `\nName: ${formData.fullname}` : ""}
+        ${
+          formData.socialMediaLink
+            ? `\nSocial Media: ${formData.socialMediaLink}`
+            : ""
+        }
+        ${formData.phone ? `\nPhone Number: ${formData.phone}` : ""}
+        ${formData.address ? `\nAddress: ${formData.address}` : ""}
+        ${formData.email ? `\nEmail: ${formData.email}` : ""}
+        ${formData.description ? `\nMessage: ${formData.description}` : ""}
+      `;
 
-        await sendTelegramMessage(
-          messageToSend,
-          process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID
-        );
-        // clear form data
-        setFormData({
-          fullname: "",
-          phone: "",
-          address: "",
-          description: "",
-          email: "",
-          socialMediaLink: "",
-        });
+      const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+      const chatId = process.env.NEXT_PUBLIC_TELEGRAM_GENERAL_CHAT_ID;
+      const topicId = process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID;
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-        // set submitted to true to show success modal
-        setIsSubmitted(true);
-      };
+      await axios.post(url, {
+        chat_id: chatId,
+        text: messageToSend,
+        message_thread_id: topicId,
+        parse_mode: "Markdown",
+      });
 
-      // excute function to send message to telegram
-      send();
+      // Wait for the message to be sent to Telegram
+      // await sendTelegramMessage(
+      //   messageToSend,
+      //   process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID
+      // );
+
+      // Clear form data
+      setFormData({
+        fullname: "",
+        phone: "",
+        address: "",
+        description: "",
+        email: "",
+        socialMediaLink: "",
+      });
+
+      // Show success modal
+      setIsSubmitted(true);
     } catch (error) {
       console.error("Error sending message:", error);
     }
-  };
-
-  // handle input change
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -95,7 +93,7 @@ const ContactPage = () => {
           {/* map */}
           <div>
             <h3 className="text-nowrap font-bold text-3xl md:text-4xl ">
-              {language == "en" ? "Our Organization" : "ក្រុមហ៊ុនខ្មែរយ៉ូរីយូ"}
+              Our Organization
             </h3>
             <motion.div
               variants={fadeIn("right", 0.2)}
@@ -131,22 +129,22 @@ const ContactPage = () => {
         {/* contact form */}
         <div className="w-full">
           <h3 className="text-nowrap font-bold text-3xl md:text-4xl">
-            {language == "en" ? "Send a message" : "ផ្ញើសារមកកាន់យើង"}
+            Send a message
           </h3>
 
           {/* form submit message */}
-          <motion.form
-            variants={fadeIn("left", 0.2)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: true, amount: 0.3 }}
+          <form
+            // variants={fadeIn("left", 0.2)}
+            // initial="hidden"
+            // whileInView={"show"}
+            // viewport={{ once: true, amount: 0.3 }}
             onSubmit={(e) => sendToTelegram(e)}
           >
             <div className="flex flex-col gap-3 mt-5 md:mt-8">
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
                 <label className="lg:prose-xl ">
-                  {language == "en" ? "Fullname" : "ឈ្មោះ"}
+                  Fullname
                   <RedStar />
                 </label>
                 <input
@@ -154,7 +152,7 @@ const ContactPage = () => {
                   type="text"
                   name="fullname"
                   value={formData.fullname}
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={handleOnChange}
                 />
               </div>
 
@@ -162,64 +160,56 @@ const ContactPage = () => {
                 {/* input social media  */}
                 <label className="lg:prose-xl ">
                   {" "}
-                  {language == "en" ? "Social media" : "បណ្តាញសង្គម"}(Telegram,
-                  Line, Facebook,...)
+                  Social media(Telegram, Line, Facebook,...)
                 </label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="url"
                   value={formData.socialMediaLink}
                   name="socialMediaLink"
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={handleOnChange}
                 />
               </div>
 
               <div className="flex flex-col gap-0.5">
                 {/* input email */}
-                <label className="lg:prose-xl ">
-                  {language == "en" ? "Email" : "អ៊ីម៉ែល"}
-                </label>
+                <label className="lg:prose-xl ">Email</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="email"
                   name="email"
                   value={formData.email}
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={handleOnChange}
                 />
               </div>
 
               <div className="flex flex-col gap-0.5">
                 {/* input phone */}
-                <label className="lg:prose-xl ">
-                  {language == "en" ? "Phone" : "លេខទូរស័ព្ទ"}
-                </label>
+                <label className="lg:prose-xl ">Phone</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="tel"
                   name="phone"
                   value={formData.phone}
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={handleOnChange}
                 />
               </div>
 
               <div className="flex flex-col gap-0.5">
                 {/* input country */}
-                <label className="lg:prose-xl ">
-                  {" "}
-                  {language == "en" ? "Address" : "អាសយដ្ឋាន"}
-                </label>
+                <label className="lg:prose-xl "> Address</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="text"
                   name="address"
                   value={formData.address}
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={handleOnChange}
                 />
               </div>
               <div className="flex flex-col gap-0.5">
                 {/* input message */}
                 <label className="lg:prose-xl ">
-                  {language == "en" ? "Message" : "ការពិពណ៌នា"}
+                  Message
                   <RedStar />
                 </label>
                 <textarea
@@ -228,33 +218,26 @@ const ContactPage = () => {
                   cols="30"
                   rows="5"
                   value={formData.description}
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={handleOnChange}
                 ></textarea>
               </div>
 
               <button
+                // onClick={sendToTelegram}
                 type="submit"
                 className="lg:prose-xl border-2 rounded-lg bg-secondary hover:bg-primary border-white px-6 py-2 font-semibold text-white"
               >
                 Send Message
               </button>
             </div>
-          </motion.form>
+          </form>
 
           {/* fill required information alert */}
           <WarningModal
             isOpen={isShowWarning}
             setIsOpen={setIsShowWarning}
-            title={
-              language == "en"
-                ? "Fill Required Information!"
-                : "បំពេញព័ត៌មានដែលចាំបាច់!"
-            }
-            description={
-              language == "en"
-                ? "Please fill the required fields with * mark. Thank you!"
-                : "សូមបំពេញព័ត៌មានដែលចាំបាច់ដែលមាន * ជាសម្គាល់។ អរគុណ!"
-            }
+            title="Fill Required Information!"
+            description="Please fill the required fields with * mark. Thank you!"
           />
 
           {/* submiting successfully alert */}
@@ -264,12 +247,8 @@ const ContactPage = () => {
             setIsOpen={() => {
               setIsSubmitted(false);
             }}
-            title={language == "en" ? "Message Sent!" : "ផ្ញើសារដោយជោគជ័យ!"}
-            description={
-              language == "en"
-                ? "Thank you for reaching out to us. We will get back to you as soon as possible."
-                : "សូមអរគុណសំរាប់ការទំនាក់ទំនងមកកាន់យើង។ យើងនឹងឆ្លើយតបទៅអ្នកវិញនៅពេលក្រោយ។"
-            }
+            title="Message Sent!"
+            description="Thank you for reaching out to us. We will get back to you as soon as possible."
           />
         </div>
       </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { useCartContext } from "@/contexts/CartContext";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 const ProductCard = ({ product }) => {
   const { id, name, price, categoryId, categoryName, image } = product;
 
@@ -66,8 +66,7 @@ const ProductCard = ({ product }) => {
           </button>
         )}
       </div>
-      {/* notify */}
-      <SnackbarProvider />
+  
     </div>
   );
 };
