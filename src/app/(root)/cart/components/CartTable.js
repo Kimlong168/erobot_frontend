@@ -11,7 +11,7 @@ import assets from "@/assets/assets";
 import { createOrder } from "@/queries/order";
 import OrderCheckoutForm from "@/components/form/OrderCheckoutForm";
 import dataURItoBlob from "@/utils/dataURItoBlob";
-import { deleteImageFromStorage } from "@/utils/deleteImageFromStorage";
+import deleteImageFromStorage from "@/utils/deleteImageFromStorage";
 import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
 import { orderMessage } from "@/data/messageToSend";
