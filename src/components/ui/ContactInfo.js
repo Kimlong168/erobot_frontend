@@ -3,8 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import contactInfo from "@/data/contactInfo";
-const ContactInfo = async () => {
-  //   const contactInfo = await getContactInfo();
+const ContactInfo =  () => {
 
   return (
     <div>

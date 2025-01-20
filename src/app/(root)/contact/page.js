@@ -6,7 +6,7 @@ import { fadeIn } from "@/utils/variants";
 import SuccessModal from "@/components/ui/SuccessModal";
 import RedStar from "@/components/ui/RedStar";
 import WarningModal from "@/components/ui/WarningModal";
-// import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
+import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 import { getCurrentTime } from "@/utils/getCurrentTime";
 import ContactInfo from "@/components/ui/ContactInfo";
 
@@ -24,14 +24,12 @@ const ContactPage = () => {
 
   // handle input change
   const handleOnChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const sendToTelegram = async (e) => {
     e.preventDefault();
-
     if (!formData.fullname || !formData.description) {
       setIsShowWarning(true);
       return;
@@ -51,23 +49,11 @@ const ContactPage = () => {
         ${formData.description ? `\nMessage: ${formData.description}` : ""}
       `;
 
-      const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-      const chatId = process.env.NEXT_PUBLIC_TELEGRAM_GENERAL_CHAT_ID;
-      const topicId = process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID;
-      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-      await axios.post(url, {
-        chat_id: chatId,
-        text: messageToSend,
-        message_thread_id: topicId,
-        parse_mode: "Markdown",
-      });
-
       // Wait for the message to be sent to Telegram
-      // await sendTelegramMessage(
-      //   messageToSend,
-      //   process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID
-      // );
+      await sendTelegramMessage(
+        messageToSend,
+        process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID
+      );
 
       // Clear form data
       setFormData({
@@ -139,7 +125,7 @@ const ContactPage = () => {
             // initial="hidden"
             // whileInView={"show"}
             // viewport={{ once: true, amount: 0.3 }}
-            onSubmit={(e) => sendToTelegram(e)}
+            onSubmit={sendToTelegram}
           >
             <div className="flex flex-col gap-3 mt-5 md:mt-8">
               <div className="flex flex-col gap-0.5">
