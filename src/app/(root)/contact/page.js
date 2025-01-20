@@ -24,6 +24,7 @@ const ContactPage = () => {
 
   // handle input change
   const handleOnChange = (e) => {
+    e.preventDefault();
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };

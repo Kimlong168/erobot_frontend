@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 
-const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
+const SuccessModal = ({ isOpen, setIsOpen, title, description }) => {
   const language = "en";
   return (
     <AnimatePresence>
@@ -49,4 +49,4 @@ const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
   );
 };
 
-export default WarningModal;
+export default SuccessModal;
