@@ -24,7 +24,7 @@ ${
     : ""
 }
 
-${formData.md5 ? `MD5: *\`${formData.md5}\`` : ""}
+${formData.md5 ? `MD5: \`${formData.md5}\`` : ""}
 
 ${
   formData.telegram

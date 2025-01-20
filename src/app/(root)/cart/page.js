@@ -301,6 +301,7 @@ const CartPage = () => {
           formData={formData}
           setFormData={setFormData}
           sendToTelegram={sendToTelegram}
+          totalPrice={getTotalPrice()}
         />
       )}
     </section>
