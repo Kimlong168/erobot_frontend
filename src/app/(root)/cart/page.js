@@ -277,7 +277,16 @@ const CartPage = () => {
                       <td>
                         {" "}
                         <button
-                          onClick={() => setIsOpenForm(true)}
+                          onClick={() => {
+                            if (cartItems.length == 0) {
+                              enqueueSnackbar("Your cart is empty!", {
+                                variant: "error",
+                                autoHideDuration: 1500,
+                              });
+                              return;
+                            }
+                            setIsOpenForm(true);
+                          }}
                           className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg"
                         >
                           <span>
