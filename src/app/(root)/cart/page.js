@@ -14,7 +14,10 @@ import deleteImageFromStorage from "@/utils/deleteImageFromStorage";
 import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
 import { orderMessage } from "@/data/messageToSend";
-import { sendTelegramImage } from "@/utils/sendTelegramMessage";
+import {
+  sendTelegramImage,
+  sendTelegramMessage,
+} from "@/utils/sendTelegramMessage";
 
 const CartPage = () => {
   const {
@@ -63,21 +66,23 @@ const CartPage = () => {
         // Get the download URL for the uploaded image
         getDownloadURL(imageRef)
           .then((downloadURL) => {
-            //get the download url
-            try {
-              const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
-              const baseUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL;
+            const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
 
+            try {
               // caption for the image to send to telegram
               const messageToSend = orderMessage(
-                baseUrl,
                 orderId,
                 formData,
                 getTotalPrice()
               );
 
               const send = async () => {
-                await sendTelegramImage(downloadURL, messageToSend, topicId);
+                const response = await sendTelegramImage(
+                  downloadURL,
+                  messageToSend,
+                  topicId
+                );
+                console.log("response sending image to telegram", response);
               };
 
               // excute send function and record order to database and get the post link
@@ -87,6 +92,16 @@ const CartPage = () => {
               recordOrder();
             } catch (error) {
               console.error("Error sending image:", error);
+
+              // send notifitaion to telegram if error
+              // const messageToSend = orderMessage(
+              //   baseUrl,
+              //   orderId,
+              //   formData,
+              //   getTotalPrice()
+              // );
+
+              // sendTelegramMessage(messageToSend, topicId);
             }
             // Delete the cart image after 5s to save storage space
             setTimeout(() => {
@@ -114,20 +129,6 @@ const CartPage = () => {
 
   // record order to firestore database
   const recordOrder = async () => {
-    // get the price and name of the product from the productList instead of local storage
-    // const updatedCartItems = cartItems.map((item) => {
-    //   const product = productList.filter(
-    //     (product) => product.id === item.id
-    //   )[0];
-    //   return {
-    //     id: item.id,
-    //     name: product.name,
-    //     price: product.price,
-    //     quantity: item.quantity,
-    //     image: product.image,
-    //   };
-    // });
-
     // data to be recorded
     const order = {
       orderId: orderId,
@@ -140,14 +141,14 @@ const CartPage = () => {
       md5: formData.md5,
       cartItems: cartItems,
       total: getTotalPrice(),
-      status: "pending",
+      status: formData.paymentMethod === "khqr" ? "paid" : "pending",
       date: new Date().toLocaleString("en-GB"),
       timeStamp: new Date().getTime(),
     };
 
     const result = await createOrder(order);
     clearCart();
-    // store orderId to order history  and local storage
+    // store orderId to order history and local storage
     // recordOrderHistory(orderId);
   };
 
@@ -280,7 +281,7 @@ const CartPage = () => {
                           onClick={() => {
                             if (cartItems.length == 0) {
                               enqueueSnackbar("Your cart is empty!", {
-                                variant: "error",
+                                variant: "info",
                                 autoHideDuration: 1500,
                               });
                               return;

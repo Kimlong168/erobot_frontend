@@ -1,10 +1,11 @@
 import checkSocialMedia from "@/utils/checkSocialMedia";
 import { getCurrentTime } from "@/utils/getCurrentTime";
+const baseUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL;
 
-const orderMessage = (baseUrl, orderId, formData, totalPrice) => {
+const orderMessage = (orderId, formData, totalPrice) => {
   return `===== *New Order* =====
 
-Order id: \`${orderId}\`
+Order ID: \`${orderId}\`
 
 Date: *${new Date().toLocaleString()}*
 
@@ -24,19 +25,59 @@ ${
     : ""
 }
 
-${formData.md5 ? `MD5: \`${formData.md5}\`` : ""}
+${formData.md5 ? `MD5: \`${formData.md5}\`` : "MD5: *None*"}
 
 ${
   formData.telegram
     ? `${checkSocialMedia(formData.telegram)}: *${formData.telegram}*`
-    : "Contact Link: *No Contact Link Provided*"
+    : "Contact Link: *None*"
 }
 
+${formData.message ? `Remark: *${formData.message}*` : "Remark: *None*"}
+
+----------------------------------
+
+💰 *Total*: *${totalPrice} $*
+
+----------------------------------`;
+};
+
+const buyNowMessage = (orderId, formData, totalPrice, orderDetail) => {
+  return `===== *New Order (Buy now)* =====
+
+Order ID: \`${orderId}\`
+
+Date: *${new Date().toLocaleString()}*
+
+Update Status: [Order Details](${baseUrl}/orderDetail/${orderId})
+
+----------------------------------
+
+${orderDetail.productName} (${orderDetail.quantity} x ${orderDetail.price} $)
+
+----------------------------------
+
+${formData.fullName ? `Name: *${formData.fullName}*` : ""}
+
+${formData.phoneNumber ? `Phone: *${formData.phoneNumber}*` : ""}
+
+${formData.address ? `Address: *${formData.address}*` : ""}
+
 ${
-  formData.message
-    ? `Remark: *${formData.message}*`
-    : "Remark: *No Remark Provided*"
+  formData.paymentMethod
+    ? `Payment Method: *${formData.paymentMethod.toUpperCase()}*`
+    : ""
 }
+
+${formData.md5 ? `MD5: \`${formData.md5}\`` : "MD5: *None*"}
+
+${
+  formData.telegram
+    ? `${checkSocialMedia(formData.telegram)}: *${formData.telegram}*`
+    : "Contact Link: *None*"
+}
+
+${formData.message ? `Remark: *${formData.message}*` : "Remark: *None*"}
 
 ----------------------------------
 
@@ -76,4 +117,4 @@ const invitationMessage = (link, amount, name) => {
   \nEvery contribution counts, and your generosity makes a difference. Thank you! 💖`;
 };
 
-export { orderMessage, contactMessage, invitationMessage };
+export { orderMessage, buyNowMessage, contactMessage, invitationMessage };

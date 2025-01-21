@@ -6,14 +6,30 @@ import PopupImage from "@/components/ui/PopupImage";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import SharingBtn from "@/components/ui/SharingBtn";
 import { useCartContext } from "@/contexts/CartContext";
-import {  enqueueSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 import ItemCartQuantity from "./ItemCartQuantity";
+import OrderCheckoutForm from "@/components/form/OrderCheckoutForm";
+import { buyNowMessage } from "@/data/messageToSend";
+import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
+import { createOrder } from "@/queries/order";
+import { useEffect } from "react";
 const ProductDetailCard = ({ product }) => {
   const { id, image, name, description, categoryName, detail, price } = product;
   const { cartItems, addItemOrIncreaseQuantity } = useCartContext();
 
-  const [showDetail, setShowDetail] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [showDetail, setShowDetail] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [orderId, setOrderId] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phoneNumber: "",
+    address: "",
+    paymentMethod: "",
+    md5: "",
+    telegram: "",
+    message: "",
+  });
 
   //   get current url
   const currentURL = process.env.NEXT_PUBLIC_BASE_URL + "/products/" + id;
@@ -31,6 +47,77 @@ const ProductDetailCard = ({ product }) => {
         console.error("Failed to copy link: ", err);
       });
   };
+
+  const sendToTelegram = async () => {
+    try {
+      //   send to telegram
+      const messageToSend = buyNowMessage(
+        orderId,
+        formData,
+        parseFloat(price) * quantity,
+        {
+          productName: name,
+          quantity: quantity,
+          price: price,
+        }
+      );
+
+      await sendTelegramMessage(
+        messageToSend,
+        process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID
+      );
+
+      recordOrder();
+    } catch (err) {
+      console.error("Failed to send to telegram: ", err);
+    }
+
+    // reset the fullName to avoid dubplicate order id bcoz we user fullName to generate order id
+    setFormData({
+      ...formData,
+      fullName: "",
+    });
+  };
+
+  // record order to firestore database
+  const recordOrder = async () => {
+    // data to be recorded
+    const order = {
+      orderId: orderId,
+      fullName: formData.fullName,
+      phoneNumber: formData.phoneNumber,
+      contactLink: formData.telegram,
+      address: formData.address,
+      message: formData.message,
+      paymentMethod: formData.paymentMethod,
+      md5: formData.md5,
+      cartItems: [
+        {
+          ...product,
+          quantity: quantity,
+        },
+      ],
+      total: parseFloat(price) * quantity,
+      status: formData.paymentMethod === "khqr" ? "paid" : "pending",
+      date: new Date().toLocaleString("en-GB"),
+      timeStamp: new Date().getTime(),
+    };
+
+    const result = await createOrder(order);
+
+    console.log("Order recorded: ", result);
+
+    // store orderId to order history and local storage
+    // recordOrderHistory(orderId);
+  };
+
+  // generate order id
+  useEffect(() => {
+    const fullNameWithoutSpaces = formData.fullName.replace(/\s/g, "");
+    setOrderId(
+      `${fullNameWithoutSpaces}_${Math.floor(Date.now() / 1000).toString()}`
+    );
+  }, [formData.fullName]);
 
   return (
     <>
@@ -177,10 +264,12 @@ const ProductDetailCard = ({ product }) => {
                 {/* buy now */}
                 <button
                   onClick={() =>
-                    enqueueSnackbar(`This feature is under construction!`, {
-                      variant: "error",
-                      autoHideDuration: 1500,
-                    })
+                    // enqueueSnackbar(`This feature is under construction!`, {
+                    //   variant: "error",
+                    //   autoHideDuration: 1500,
+                    // })
+
+                    setIsOpenForm(true)
                   }
                   className="flex items-center justify-center max-w-[135px] w-[135px] gap-2 p-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded"
                 >
@@ -226,7 +315,22 @@ const ProductDetailCard = ({ product }) => {
         </div>
       </div>
 
-  
+      {/* order checkout form */}
+      {isOpenForm && (
+        <OrderCheckoutForm
+          setIsOpenForm={setIsOpenForm}
+          formData={formData}
+          setFormData={setFormData}
+          sendToTelegram={sendToTelegram}
+          totalPrice={parseFloat(price) * quantity}
+          orderDetail={{
+            productName: name,
+            quantity: quantity,
+            price: price,
+            total: parseFloat(price) * quantity,
+          }}
+        />
+      )}
     </>
   );
 };

@@ -465,7 +465,7 @@ const CustomerContactForm = ({
                             <div className="flex flex-col gap-0.5  w-full">
                               <div className="text-xs">Pay with KHQR</div>
                               <small className="text-[12px] text-gray-600">
-                                Tap here to generate KHQR for payment
+                                Generate KHQR for payment
                               </small>
                             </div>
                             <span
