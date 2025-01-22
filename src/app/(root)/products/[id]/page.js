@@ -25,7 +25,7 @@ const ProductDetail = async ({ params }) => {
   if (!product) return notFound();
 
   return (
-    <section className="container mt-6 overflow-x-hidden">
+    <main className="container mt-6 overflow-x-hidden">
       {/* detail card */}
       <div>
         <ProductDetailCard
@@ -51,7 +51,7 @@ const ProductDetail = async ({ params }) => {
       </div>
 
       <Comment />
-    </section>
+    </main>
   );
 };
 

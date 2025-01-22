@@ -1,4 +1,13 @@
-import { db, collection, getDocs, getDoc, doc } from "@/libs/firebase";
+import {
+  db,
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  query,
+  orderBy,
+  limit,
+} from "@/libs/firebase";
 
 export const getArticles = async () => {
   const querySnapshot = await getDocs(collection(db, "blogs"));
@@ -28,11 +37,26 @@ export const getArticleById = async (id) => {
   }
 };
 
+// export const getLatestArticles = async () => {
+//   const querySnapshot = await getDocs(collection(db, "blogs"));
+//   const articles = querySnapshot.docs.map((doc) => ({
+//     id: doc.id,
+//     ...doc.data(),
+//   }));
+//   return articles.slice(0, 3);
+// };
+
 export const getLatestArticles = async () => {
-  const querySnapshot = await getDocs(collection(db, "blogs"));
+  const q = query(
+    collection(db, "blogs"),
+    // orderBy("createdAt", "desc"), // Ensure the articles are ordered by date, descending
+    orderBy("coverImageId", "desc"),
+    limit(3) // Fetch only the latest 3 articles
+  );
+  const querySnapshot = await getDocs(q);
   const articles = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
-  return articles.slice(0, 3);
+  return articles;
 };

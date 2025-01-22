@@ -9,7 +9,6 @@ import LatestArticlesList from "@/components/ui/LatestArticlesList";
 import ImpactsList from "@/components/ui/ImpactsList";
 import { useInView } from "react-intersection-observer";
 import DrawCircleText from "@/components/ui/DrawCircleText";
-import DonorsList from "@/components/ui/DonorsList";
 export default function Home() {
   const [ref, inView] = useInView({
     threshold: 0.5,
@@ -21,14 +20,6 @@ export default function Home() {
     <>
       {/* hero section */}
       <section className="relative h-[calc(100vh-100px)] bg-donate bg-cover bg-center mb-12">
-        {/* <Image
-          className="w-full object-cover h-[calc(100vh-100px)]"
-          src={assets.heroImage}
-          alt="hero image"
-          width={1200}
-          height={800}
-        /> */}
-
         <div className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg  shadow-xl p-8 md:w-[42%] 2xl:w-[30%]">
           <div className="font-primary text-3xl font-bold text-secondary mb-3 bg-white p-2  text-center md:text-left">
             <TypeAnimation

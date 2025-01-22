@@ -35,7 +35,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
   // Filter products and update the state based on the search query
   useEffect(() => {
     if (data) {
-      const filteredproducts = query
+      const filteredProducts = query
         ? data.filter(
             (product) =>
               product.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -49,10 +49,10 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
           )
         : data;
 
-      setState(filteredproducts);
+      setState(filteredProducts);
 
       // set only visibleCount to show
-      const visibleProducts = filteredproducts.slice(0, visibleCount);
+      const visibleProducts = filteredProducts.slice(0, visibleCount);
       setVisibleProducts(visibleProducts);
     }
   }, [query, data, setState]);
@@ -70,7 +70,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
   if (isError) return <p>Error loading products.</p>;
 
   return (
-    <section className="container py-8 md:py-12">
+    <main className="container py-8 md:py-12">
       <ItemCartQuantity number={cartItems?.length} />
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center lg:gap-8">
         <div className="text-30-semibold w-full ">
@@ -128,7 +128,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
           </button>
         )}
       </div>
-    </section>
+    </main>
   );
 };
 

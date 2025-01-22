@@ -61,10 +61,10 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="container p-8 md:py-12">
+    <main className="container p-8 md:py-12">
       <div className="flex flex-col lg:flex-row gap-12 md:gap-18 lg:gap-24">
         {/* contact information */}
-        <div className="w-full">
+        <section className="w-full">
           {/* map */}
           <div>
             <h3 className="text-nowrap font-bold text-3xl md:text-4xl ">
@@ -99,10 +99,10 @@ const ContactPage = () => {
 
           {/* contact information */}
           <ContactInfo />
-        </div>
+        </section>
 
         {/* contact form */}
-        <div className="w-full">
+        <section className="w-full">
           <h3 className="text-nowrap font-bold text-3xl md:text-4xl">
             Send a message
           </h3>
@@ -119,7 +119,7 @@ const ContactPage = () => {
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
                 <label className="lg:prose-xl ">
-                  Fullname
+                  Full name
                   <RedStar />
                 </label>
                 <input
@@ -160,7 +160,7 @@ const ContactPage = () => {
 
               <div className="flex flex-col gap-0.5">
                 {/* input phone */}
-                <label className="lg:prose-xl ">Phone</label>
+                <label className="lg:prose-xl ">Phone number</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="tel"
@@ -225,9 +225,9 @@ const ContactPage = () => {
             title="Message Sent!"
             description="Thank you for reaching out to us. We will get back to you as soon as possible."
           />
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 };
 

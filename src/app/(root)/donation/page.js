@@ -237,7 +237,7 @@ const DonationPage = () => {
   }, [qrCode, status]); // Empty dependency array ensures the interval starts on mount
 
   return (
-    <>
+    <main>
       <section>
         <div className="min-h-[calc(100vh-100px)]  grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
           <div
@@ -570,7 +570,7 @@ const DonationPage = () => {
           </motion.div>
         </div>
       </section> */}
-    </>
+    </main>
   );
 };
 

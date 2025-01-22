@@ -68,7 +68,7 @@ const Header = () => {
           <div>
             {language === "en" ? (
               <Link href="/">
-                <div className="w-[80px]  md:w-[100px]">
+                <div className="w-[80px]  md:w-[90px]">
                   <Image
                     src={assets.bigLogo}
                     alt="logo"
@@ -152,21 +152,11 @@ const Header = () => {
             <div className="h-full bg-primary grid place-content-center">
               <Link
                 href="/donation"
-                className=" text-white px-5 xl:px-10 text-2xl font-primary"
+                className="text-white px-5 xl:px-10 text-2xl font-primary"
               >
                 Donate
               </Link>
             </div>
-            {/* menu icon */}
-            {/* <div
-              className="lg:hidden"
-              onClick={() => setShowSideBar((prev) => !prev)}
-            >
-              <HiOutlineMenuAlt3
-                size={32}
-                className="cursor-pointer text-2xl md:text-3xl hover:text-primary"
-              />
-            </div> */}
           </div>
         </nav>
       </header>

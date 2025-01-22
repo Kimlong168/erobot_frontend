@@ -153,7 +153,7 @@ const CartPage = () => {
   };
 
   return (
-    <section className="container p-8 md:py-12">
+    <main className="container p-8 md:py-12">
       <div id="message">
         <div className={isOpenForm ? "p-4" : ""}>
           <section className="overflow-x-auto">
@@ -314,7 +314,7 @@ const CartPage = () => {
           totalPrice={getTotalPrice()}
         />
       )}
-    </section>
+    </main>
   );
 };
 

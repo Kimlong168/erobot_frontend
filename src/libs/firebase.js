@@ -10,6 +10,9 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  query,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -42,6 +45,9 @@ export {
   addDoc,
   updateDoc,
   deleteDoc,
+  query,
+  orderBy,
+  limit,
   ref,
   uploadBytes,
   getDownloadURL,

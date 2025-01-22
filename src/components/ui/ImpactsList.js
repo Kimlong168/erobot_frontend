@@ -9,28 +9,28 @@ import { FaUsers } from "react-icons/fa";
 const impactData = [
   {
     icon: (
-      <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all cursor-pointer" />
+      <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
     ),
     number: "0",
     text: "participants reached",
   },
   {
     icon: (
-      <IoHeartCircle className="text-secondary hover:text-primary text-[82px] hover:scale-110 transform transition-all cursor-pointer" />
+      <IoHeartCircle className="text-secondary hover:text-primary text-[82px] hover:scale-110 transform transition-all" />
     ),
     number: "0",
     text: "projects completed",
   },
   {
     icon: (
-      <RiMoneyDollarCircleFill className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all cursor-pointer" />
+      <RiMoneyDollarCircleFill className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
     ),
     number: "0",
     text: "fund raised",
   },
   {
     icon: (
-      <MdVolunteerActivism className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all cursor-pointer" />
+      <MdVolunteerActivism className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
     ),
     number: "0",
     text: "members of the team",
@@ -46,28 +46,28 @@ const ImpactsList = ({ inView }) => {
       setInfo([
         {
           icon: (
-            <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all cursor-pointer" />
+            <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
           ),
           number: info.numberOfParticipants,
           text: "participants reached",
         },
         {
           icon: (
-            <IoHeartCircle className="text-secondary hover:text-primary text-[82px] hover:scale-110 transform transition-all cursor-pointer" />
+            <IoHeartCircle className="text-secondary hover:text-primary text-[82px] hover:scale-110 transform transition-all" />
           ),
           number: info.numberOfProjects,
           text: "projects completed",
         },
         {
           icon: (
-            <RiMoneyDollarCircleFill className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all cursor-pointer" />
+            <RiMoneyDollarCircleFill className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
           ),
           number: info.amountOfDonations,
           text: "fund raised",
         },
         {
           icon: (
-            <MdVolunteerActivism className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all cursor-pointer" />
+            <MdVolunteerActivism className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
           ),
           number: info.numberOfMembers,
           text: "members of the team",

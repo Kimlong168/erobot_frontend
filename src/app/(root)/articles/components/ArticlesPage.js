@@ -70,7 +70,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   if (isError) return <p>Error loading articles.</p>;
 
   return (
-    <section className="container py-8 md:py-12">
+    <main className="container py-8 md:py-12">
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center gap-2 lg:gap-8">
         <div className="text-30-semibold w-full">
           {query && !query.includes("filter") ? (
@@ -128,7 +128,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
           </button>
         )}
       </div>
-    </section>
+    </main>
   );
 };
 

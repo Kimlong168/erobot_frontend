@@ -52,8 +52,8 @@ const DownloadPage = () => {
     },
   ];
   return (
-    <section className="container p-8 md:py-12">
-      <div className="mb-12">
+    <main className="container p-8 md:py-12">
+      <section className="mb-12">
         <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
           Brand Information
         </h3>
@@ -78,9 +78,9 @@ const DownloadPage = () => {
           essential to convey a consistent and compelling voice in every aspect
           of our communications and operations.
         </p>
-      </div>
+      </section>
 
-      <div className="mb-12">
+      <section className="mb-12">
         <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
           Logos
         </h3>
@@ -105,15 +105,15 @@ const DownloadPage = () => {
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
           Stickers
         </h3>
         <div className="flex gap-4">Comming Soon...</div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

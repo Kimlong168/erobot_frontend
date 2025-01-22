@@ -27,7 +27,7 @@ const ArticleDetail = async ({ params }) => {
   if (!article) return notFound();
 
   return (
-    <section className="container mt-6 overflow-x-hidden">
+    <main className="container mt-6 overflow-x-hidden">
       {/* title */}
       <div className="pb-4 border-b-2 border-gray-5 mt-6">
         <h2 className="text-3xl md:text-4xl font-bold leading-normal">
@@ -92,7 +92,7 @@ const ArticleDetail = async ({ params }) => {
       </div>
 
       <Comment />
-    </section>
+    </main>
   );
 };
 

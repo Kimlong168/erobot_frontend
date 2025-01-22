@@ -5,7 +5,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
-import {scrollToTop} from "@/utils/scrollToTop";
+import { scrollToTop } from "@/utils/scrollToTop";
 import assets from "@/assets/assets";
 import { CiLight } from "react-icons/ci";
 const SideBar = ({ setShowSideBar, showSideBar }) => {
@@ -22,49 +22,49 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
           <LinkContainer
             heading={language == "en" ? "Home" : "ទំព័រដើម"}
             subheading={"Welcome to ERobot Cambodia"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/"
           />{" "}
           <LinkContainer
             heading={"Articles"}
             subheading={"Read our latest articles"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/articles"
           />
           <LinkContainer
             heading={"Shop"}
             subheading={"Explore our amazing products for charity"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/products"
           />
           <LinkContainer
             heading={"Contact"}
             subheading={"In case you want to contact us"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/contact"
           />
           <LinkContainer
             heading={"About"}
             subheading={"Learn what we do here"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/about"
           />
           <LinkContainer
             heading={"Members"}
             subheading={"Get to know our team members"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/members"
           />
           <LinkContainer
             heading={"Projects"}
             subheading={"Explore our projects"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/projects"
           />
           <LinkContainer
             heading={"Download"}
             subheading={"Download our logo and stickers"}
-            imgSrc={assets.whiteLogo}
+            imgSrc={assets.whiteLogoNbg}
             href="/download"
           />
           <div

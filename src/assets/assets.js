@@ -11,6 +11,7 @@ import whiteLogo from "./white.png";
 import removeIcon from "./remove_icon_red.png";
 import addIcon from "./add_icon_green.png";
 import KHQR from "./KHQR.png";
+import whiteLogoNbg from "./whiteLogoNbg.png";
 const assets = {
   khqrLogo,
   KHQR,
@@ -23,6 +24,7 @@ const assets = {
   darkLogo,
   lightLogo,
   whiteLogo,
+  whiteLogoNbg,
   removeIcon,
   addIcon,
 };
