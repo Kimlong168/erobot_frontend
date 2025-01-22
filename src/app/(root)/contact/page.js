@@ -119,7 +119,7 @@ const ContactPage = () => {
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
                 <label className="lg:prose-xl ">
-                  Full name
+                  Full Name
                   <RedStar />
                 </label>
                 <input
@@ -135,13 +135,25 @@ const ContactPage = () => {
                 {/* input social media  */}
                 <label className="lg:prose-xl ">
                   {" "}
-                  Social media(Telegram, Line, Facebook,...)
+                  Social Media (Telegram, Line, Facebook,...)
                 </label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="url"
                   value={formData.socialMediaLink}
                   name="socialMediaLink"
+                  onChange={handleOnChange}
+                />
+              </div>
+
+              <div className="flex flex-col gap-0.5">
+                {/* input phone */}
+                <label className="lg:prose-xl ">Phone Number</label>
+                <input
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleOnChange}
                 />
               </div>
@@ -159,20 +171,8 @@ const ContactPage = () => {
               </div>
 
               <div className="flex flex-col gap-0.5">
-                {/* input phone */}
-                <label className="lg:prose-xl ">Phone number</label>
-                <input
-                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleOnChange}
-                />
-              </div>
-
-              <div className="flex flex-col gap-0.5">
                 {/* input country */}
-                <label className="lg:prose-xl "> Address</label>
+                <label className="lg:prose-xl ">Address</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="text"
