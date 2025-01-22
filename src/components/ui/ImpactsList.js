@@ -86,18 +86,18 @@ const ImpactsList = ({ inView }) => {
             className="flex flex-col items-center justify-center space-y-4"
           >
             {item.icon}
-            <h3 className="text-4xl font-primary">
+            <h3 className="text-4xl font-primary text-dark">
               {inView ? (
                 <>
                   {" "}
                   {item.number != "0" ? (
                     <CountUp end={item.number} duration={3} />
                   ) : (
-                    "..."
+                    "0"
                   )}
                 </>
               ) : (
-                "..."
+                "0"
               )}
             </h3>
             <p className=" text-gray-600 capitalize">{item.text}</p>

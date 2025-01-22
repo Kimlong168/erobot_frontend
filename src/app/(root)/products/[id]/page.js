@@ -1,8 +1,3 @@
-import Image from "next/image";
-import { BiCategory } from "react-icons/bi";
-import { FaRegUser } from "react-icons/fa6";
-import { FaRegCalendarCheck } from "react-icons/fa6";
-import ContentDisplay from "@/components/ui/ContentDisplay";
 import SharingBtn from "@/components/ui/SharingBtn";
 import BackToPrevBtn from "@/components/ui/BackToPrevBtn";
 import { getProductById } from "@/queries/product";

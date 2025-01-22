@@ -19,7 +19,10 @@ const FlyoutLink = ({ children, href }) => {
       onMouseLeave={() => setOpen(false)}
       className="relative w-fit h-fit group"
     >
-      <Link href={href} className="relative  text-xl">
+      <Link
+        href={href}
+        className="relative  text-xl text-dark hover:text-black"
+      >
         {children}
         <span
           style={{

@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       <section ref={ref} className="container text-center pb-14 bg-white">
-        <h2 className="text-3xl font-primary mb-6 group">
+        <h2 className="text-3xl font-primary mb-6 group text-dark">
           Our Impact to our community in{" "}
           <span className=" group-hover:text-primary text-secondary">
             Cambodia

@@ -12,6 +12,10 @@ import removeIcon from "./remove_icon_red.png";
 import addIcon from "./add_icon_green.png";
 import KHQR from "./KHQR.png";
 import whiteLogoNbg from "./whiteLogoNbg.png";
+import about from "./about.jpg";
+import founder from "./founder.jpg";
+import coFounder from "./co-founder.jpg";
+import leader from "./leader.jpg";
 const assets = {
   khqrLogo,
   KHQR,
@@ -27,6 +31,10 @@ const assets = {
   whiteLogoNbg,
   removeIcon,
   addIcon,
+  about,
+  founder,
+  coFounder,
+  leader
 };
 
 export default assets;

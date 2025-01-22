@@ -28,8 +28,8 @@ export default {
         "bakong-red": "#E1232E",
         primary: "#0330a3", //blue
         secondary: "#de0025", //red
-        "primary-dark": "#fbb80f", //yellow
-        "secondary-dark": "#000000", //black
+        tertiary: "#fbb80f", //yellow
+        dark: "#333333", //black
         success: "#27AE60",
         warning: "#E2B93B",
         error: "#EB5757",

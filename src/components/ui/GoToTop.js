@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { SlArrowUp } from "react-icons/sl";
-import { scrollToTopSmooth } from "@/utils/scrollToTop";
+import { TfiArrowCircleUp } from "react-icons/tfi";
 const GoToTop = () => {
   const [showScroll, setShowScroll] = useState(false);
 
@@ -15,14 +14,19 @@ const GoToTop = () => {
     });
   }, []);
 
+  // this function is used to scroll to the top of the page
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div>
       {showScroll && (
         <div
-          onClick={scrollToTopSmooth}
-          className="fixed z-10 right-5 bottom-10 rounded-full hover:bg-primary/50 bg-secondary/50 w-[40px] h-[40px] grid place-items-center cursor-pointer"
+          onClick={scrollTop}
+          className="fixed animate-bounce right-5 bottom-10 rounded-full bg-gray-400 hover:bg-secondary/80 w-[40px] h-[40px] grid place-items-center cursor-pointer z-10"
         >
-          <SlArrowUp color="white" />
+          <TfiArrowCircleUp size={24} color="white" />
         </div>
       )}
     </div>

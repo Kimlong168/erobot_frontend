@@ -153,7 +153,7 @@ const CartPage = () => {
   };
 
   return (
-    <main className="container p-8 md:py-12">
+    <main className="container py-8 md:py-12">
       <div id="message">
         <div className={isOpenForm ? "p-4" : ""}>
           <section className="overflow-x-auto">

@@ -3,16 +3,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import contactInfo from "@/data/contactInfo";
-const ContactInfo =  () => {
-
+const ContactInfo = () => {
   return (
     <div>
       {" "}
       {/* contact info */}
       <div className="mt-10">
-        <h3 className="text-nowrap font-bold text-3xl md:text-4xl ">
+        <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
           Our Contact
-        </h3>
+        </h2>
 
         {contactInfo && (
           <motion.div
@@ -25,7 +24,7 @@ const ContactInfo =  () => {
             <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
               {/* phone */}
               <div>
-                Phone
+                Phone:{" "}
                 <Link href={`tel:${contactInfo.phoneNumber}`}>
                   {contactInfo.phoneNumber}
                 </Link>
@@ -34,7 +33,7 @@ const ContactInfo =  () => {
             <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
               {/* email */}
               <div>
-                Email
+                Email:{" "}
                 <Link href={`mailto:${contactInfo.email}`}>
                   {contactInfo.email}
                 </Link>
@@ -44,7 +43,7 @@ const ContactInfo =  () => {
               {/* telegram */}
               <div>
                 {" "}
-                Telegram
+                Telegram:{" "}
                 <Link href={contactInfo.telegram}>@erobotcambodia</Link>
               </div>
             </div>
@@ -58,7 +57,7 @@ const ContactInfo =  () => {
               <Link
                 href={item.url}
                 key={index}
-                className="hover:text-primary-light hover:underline"
+                className="hover:text-primary-light hover:underline text-dark hover:text-black"
               >
                 <LinkIcon title={item.title} size={32} />
               </Link>

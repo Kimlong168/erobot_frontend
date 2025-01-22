@@ -1,11 +1,11 @@
 const contactInfo = {
-  phoneNumber: "(855) 12 345 678",
+  phoneNumber: "(855) 10 567 014",
   email: "erobotteam@gmail.com",
-  telegram: "",
+  telegram: "https://t.me/erobot_generalknowledge",
   socialMedia: [
     {
       title: "Facebook",
-      url: "#",
+      url: "https://www.facebook.com/ERobotCambodia",
     },
 
     {
@@ -14,11 +14,11 @@ const contactInfo = {
     },
     {
       title: "Tiktok",
-      url: "#",
+      url: "https://www.tiktok.com/@e_robot_cambodia",
     },
     {
       title: "Telegram",
-      url: "#",
+      url: "https://t.me/erobot_generalknowledge",
     },
   ],
 };

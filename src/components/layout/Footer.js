@@ -71,7 +71,7 @@ const Footer = () => {
                       <Link
                         key={index}
                         href={social.url}
-                        className="text-grey-700 hover:text-grey-900"
+                        className="text-grey-700 hover:text-grey-900 text-dark hover:text-black"
                       >
                         <LinkIcon title={social.title} size={24} />
                       </Link>

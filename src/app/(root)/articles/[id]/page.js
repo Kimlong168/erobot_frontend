@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import Comment from "@/components/ui/Comment";
 import { getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
+import GoToTop from "@/components/ui/GoToTop";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ArticleDetail = async ({ params }) => {
@@ -92,6 +93,7 @@ const ArticleDetail = async ({ params }) => {
       </div>
 
       <Comment />
+      <GoToTop />
     </main>
   );
 };

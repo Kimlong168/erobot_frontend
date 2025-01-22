@@ -52,9 +52,9 @@ const DownloadPage = () => {
     },
   ];
   return (
-    <main className="container p-8 md:py-12">
+    <main className="container py-8 md:py-12">
       <section className="mb-12">
-        <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
+        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
           Brand Information
         </h3>
         <p className="text-justify">
@@ -81,7 +81,7 @@ const DownloadPage = () => {
       </section>
 
       <section className="mb-12">
-        <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
+        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
           Logos
         </h3>
         <div className="flex flex-col md:flex-row gap-4">
@@ -108,7 +108,7 @@ const DownloadPage = () => {
       </section>
 
       <section>
-        <h3 className="font-bold text-3xl md:text-4xl text-secondary mb-4">
+        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
           Stickers
         </h3>
         <div className="flex gap-4">Comming Soon...</div>

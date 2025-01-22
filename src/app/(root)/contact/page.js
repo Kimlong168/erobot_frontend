@@ -61,15 +61,15 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="container p-8 md:py-12">
+    <main className="container py-8 md:py-12">
       <div className="flex flex-col lg:flex-row gap-12 md:gap-18 lg:gap-24">
         {/* contact information */}
         <section className="w-full">
           {/* map */}
           <div>
-            <h3 className="text-nowrap font-bold text-3xl md:text-4xl ">
+            <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
               Our Organization
-            </h3>
+            </h2>
             <motion.div
               variants={fadeIn("right", 0.2)}
               initial="hidden"
@@ -103,9 +103,9 @@ const ContactPage = () => {
 
         {/* contact form */}
         <section className="w-full">
-          <h3 className="text-nowrap font-bold text-3xl md:text-4xl">
+        <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
             Send a message
-          </h3>
+          </h2>
 
           {/* form submit message */}
           <form
@@ -188,7 +188,7 @@ const ContactPage = () => {
                   <RedStar />
                 </label>
                 <textarea
-                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent min-h-[140px]"
                   name="description"
                   cols="30"
                   rows="5"

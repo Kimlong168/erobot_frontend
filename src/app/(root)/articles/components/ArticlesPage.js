@@ -7,6 +7,7 @@ import { useArticleContext } from "@/contexts/ArticleContext";
 import { useEffect, useState } from "react";
 import SearchForm from "@/components/form/SearchForm";
 import { FaHeart } from "react-icons/fa";
+import GoToTop from "@/components/ui/GoToTop";
 
 const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   const { state: articles, setState } = useArticleContext();
@@ -76,8 +77,8 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
-            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate">
-              All Articles
+            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate text-dark font-primary">
+              Our Articles
             </h3>
           )}
         </div>{" "}
@@ -128,6 +129,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
           </button>
         )}
       </div>
+      <GoToTop />
     </main>
   );
 };

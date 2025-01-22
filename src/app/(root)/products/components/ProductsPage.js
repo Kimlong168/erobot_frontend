@@ -77,8 +77,8 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
-            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate">
-              All Products
+            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate text-dark font-primary">
+              Our Products
             </h3>
           )}
         </div>{" "}
