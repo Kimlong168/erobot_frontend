@@ -1,7 +1,17 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { FaRegQuestionCircle } from "react-icons/fa";
+
 const ConfirmModal = ({ show, setShow, title, message, onConfirm }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleConfirm = () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    onConfirm();
+  };
+
   return (
     <AnimatePresence>
       {show && (
@@ -29,7 +39,8 @@ const ConfirmModal = ({ show, setShow, title, message, onConfirm }) => {
               <p className="text-center mb-6">{message}</p>
               <div className="flex gap-2">
                 <button
-                  onClick={onConfirm}
+                  disabled={isSubmitting}
+                  onClick={handleConfirm}
                   className="bg-white hover:opacity-90 transition-opacity text-gray-900 font-semibold w-full py-2 rounded"
                 >
                   Yeah, I am sure!

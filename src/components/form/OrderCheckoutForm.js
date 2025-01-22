@@ -13,11 +13,9 @@ import ConfirmModal from "../ui/ConfirmModal";
 import contactInfo from "@/data/contactInfo";
 import Image from "next/image";
 import assets from "@/assets/assets";
-import { enqueueSnackbar } from "notistack";
 import QRCode from "qrcode";
 import { BakongKHQR, khqrData, IndividualInfo, SourceInfo } from "bakong-khqr";
 import downloadQrcode from "@/utils/downloadQrcode";
-import { PiHandsPrayingFill } from "react-icons/pi";
 import { LuDownload } from "react-icons/lu";
 import { FaX } from "react-icons/fa6";
 // import lineLogo from "../../assets/images/line-logo.jpg";
@@ -123,6 +121,7 @@ const CustomerContactForm = ({
     setFormData({ ...formData, md5: individual?.data.md5 });
   };
 
+  // Check transaction status by MD5
   const checkTransactionStatusByMD5 = async () => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTc2OTU2MmFiNTVjNDY5NCJ9LCJpYXQiOjE3MzY0MzY3MzYsImV4cCI6MTc0NDIxMjczNn0.XGrA6oESHwt5dr0-wMzRMo5nGxhZFwYqSN9F3b5UEzE";
@@ -248,7 +247,9 @@ const CustomerContactForm = ({
 
                   <div
                     onClick={() => setIsOpenForm(false)}
-                    className="cursor-pointer hover:text-primary"
+                    className={`cursor-pointer hover:text-primary ${
+                      isSending && "hidden"
+                    }`}
                   >
                     <FaWindowClose size={18} />
                   </div>
@@ -648,7 +649,9 @@ const CustomerContactForm = ({
 
                       <div
                         onClick={() => setIsOpenForm(false)}
-                        className="cursor-pointer hover:text-primary"
+                        className={`cursor-pointer hover:text-primary ${
+                          isSending && "hidden"
+                        }`}
                       >
                         <FaWindowClose size={18} />
                       </div>

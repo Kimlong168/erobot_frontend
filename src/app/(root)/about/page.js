@@ -123,7 +123,13 @@ innovative learning opportunities.`,
     <main className="py-8 md:py-12">
       <section className="container flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24">
         <motion.div
-          variants={fadeIn("up", 0.2)}
+          variants={fadeIn(
+            {
+              default: "up",
+            },
+            0.2,
+            "all"
+          )}
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.3 }}
@@ -197,7 +203,7 @@ innovative learning opportunities.`,
           )}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           className="flex flex-col items-center gap-8"
         >
           <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark">

@@ -18,6 +18,7 @@ const ContactPage = () => {
     email: "",
     socialMediaLink: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowWarning, setIsShowWarning] = useState(false);
 
@@ -29,11 +30,12 @@ const ContactPage = () => {
 
   const sendToTelegram = async (e) => {
     e.preventDefault();
+
     if (!formData.fullname || !formData.description) {
       setIsShowWarning(true);
       return;
     }
-
+    setIsSubmitting(true);
     try {
       const messageToSend = contactMessage(formData);
 
@@ -58,6 +60,7 @@ const ContactPage = () => {
     } catch (error) {
       console.error("Error sending message:", error);
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -103,7 +106,7 @@ const ContactPage = () => {
 
         {/* contact form */}
         <section className="w-full">
-        <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
+          <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
             Send a message
           </h2>
 
@@ -198,6 +201,7 @@ const ContactPage = () => {
               </div>
 
               <button
+                disabled={isSubmitting}
                 // onClick={sendToTelegram}
                 type="submit"
                 className="lg:prose-xl border-2 rounded-lg bg-secondary hover:bg-primary border-white px-6 py-2 font-semibold text-white"
