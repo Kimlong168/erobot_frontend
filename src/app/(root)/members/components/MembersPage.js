@@ -2,12 +2,9 @@
 import { useQuery } from "react-query";
 import { getMembers } from "@/queries/member";
 import Team from "./Team";
+import { useEffect, useState } from "react";
 const MembersPage = ({ initialData = [] }) => {
-  const {
-    data: members,
-    isLoading,
-    isError,
-  } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     "members", // queryKey
     getMembers, // Custom hook used here
     {
@@ -15,23 +12,36 @@ const MembersPage = ({ initialData = [] }) => {
       staleTime: 60000,
     }
   );
-  
-  const memberOnly = members.filter((member) => member.position === "Member");
-  const volunteerOnly = members.filter(
-    (volunteer) => volunteer.position === "Volunteer"
-  );
-  const alumniOnly = members.filter((alumni) => alumni.position === "Alumni");
-  const leaderOnly = members.filter(
-    (leader) =>
-      leader.position === "Leader" ||
-      leader.position === "Co-founder" ||
-      leader.position === "Founder"
-  );
+
+  const [leaders, setLeaders] = useState([]);
+  const [members, setMembers] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
+  const [alumni, setAlumni] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      const memberOnly = data.filter((member) => member.position === "Member");
+      const volunteerOnly = data.filter(
+        (volunteer) => volunteer.position === "Volunteer"
+      );
+      const alumniOnly = data.filter((alumni) => alumni.position === "Alumni");
+      const leaderOnly = data.filter(
+        (leader) =>
+          leader.position === "Leader" ||
+          leader.position === "Co-founder" ||
+          leader.position === "Founder"
+      );
+      setAlumni(alumniOnly);
+      setLeaders(leaderOnly);
+      setMembers(memberOnly);
+      setVolunteers(volunteerOnly);
+    }
+  }, [data]);
 
   return (
     <div>
       <Team
-        teamMembers={leaderOnly}
+        teamMembers={leaders}
         title="Our Leaders"
         description="  Our team is made up of passionate individuals who are dedicated to
           helping you succeed. We are committed to providing you with the best
@@ -40,7 +50,7 @@ const MembersPage = ({ initialData = [] }) => {
           or concerns you may have."
       />
       <Team
-        teamMembers={memberOnly}
+        teamMembers={members}
         title="Our Team Members"
         description="  Our team is made up of passionate individuals who are dedicated to
           helping you succeed. We are committed to providing you with the best
@@ -49,7 +59,7 @@ const MembersPage = ({ initialData = [] }) => {
           or concerns you may have."
       />
       <Team
-        teamMembers={volunteerOnly}
+        teamMembers={volunteers}
         title="Our Volunteers"
         description="  Our team is made up of passionate individuals who are dedicated to
           helping you succeed. We are committed to providing you with the best
@@ -58,7 +68,7 @@ const MembersPage = ({ initialData = [] }) => {
           or concerns you may have."
       />
       <Team
-        teamMembers={alumniOnly}
+        teamMembers={alumni}
         title="Our Alumni"
         description="  Our team is made up of passionate individuals who are dedicated to
           helping you succeed. We are committed to providing you with the best
