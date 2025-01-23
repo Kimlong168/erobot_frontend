@@ -1,4 +1,3 @@
-export const revalidate = 0;
 import Image from "next/image";
 import { getArticlesByAuthorId } from "@/queries/article";
 import { getAuthorById } from "@/queries/author";
