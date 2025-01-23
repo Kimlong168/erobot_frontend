@@ -18,7 +18,7 @@ const ArticleCard = ({ article }) => {
   } = article;
 
   return (
-    <div className="startup-card group w-full">
+    <div className="startup-card group w-full h-full">
       <div className="flex-between">
         <p className="startup_card_date">{publicationDate}</p>
         <div className="flex gap-1.5 text-[20px]">
@@ -29,7 +29,7 @@ const ArticleCard = ({ article }) => {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
+          <Link href={`/authors/${authorId}`}>
             <p className="text-16-medium line-clamp-1">
               {authorId == "default" ? "Admin" : author.fullName}
             </p>
@@ -38,7 +38,7 @@ const ArticleCard = ({ article }) => {
             <h3 className="text-26-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
-        <Link href={`/user/${authorId}`}>
+        <Link href={`/authors/${authorId}`}>
           <Image
             className="w-[48px] h-[48px] rounded-full border"
             src={

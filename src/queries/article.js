@@ -20,6 +20,19 @@ export const getArticles = async () => {
   return activeArticles;
 };
 
+export const getArticlesByAuthorId = async (authorId) => {
+  const querySnapshot = await getDocs(collection(db, "blogs"));
+  const articles = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  const activeArticles = articles.filter(
+    (article) => article.isActive && article.authorId === authorId
+  );
+
+  return activeArticles;
+};
+
 export const getArticleById = async (id) => {
   try {
     const docRef = doc(db, "blogs", id);
