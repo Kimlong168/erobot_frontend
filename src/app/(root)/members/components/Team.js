@@ -31,8 +31,6 @@ const TeamMemberItem = ({ member }) => (
                 href={item.url}
                 className="w-10 h-10 text-[26px] text-center hover:text-blue-600 mt-2 mr-2 opacity-90 p-0 relative z-[1] inline-flex justify-center items-center before:absolute before:w-full before:h-full before:opacity-0 before:translate-y-full before:bg-slate-800 before:-z-[1] hover:before:opacity-100 hover:before:translate-y-0 transition duration-300"
               >
-                {/* <FontAwesomeIcon icon={item.icon} /> */}
-                {/* <FaFacebook /> */}
                 <LinkIcon title={item.title} size={24} />
               </Link>
             </li>
