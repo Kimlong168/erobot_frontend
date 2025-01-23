@@ -1,4 +1,4 @@
-// export const revalidate = 0;
+export const revalidate = 0;
 import { db, collection, getDocs } from "@/libs/firebase";
 import MembersPage from "./components/MembersPage";
 
