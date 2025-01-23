@@ -9,7 +9,6 @@ import ArticleCard from "@/components/ui/ArticleCard";
 import assets from "@/assets/assets";
 import LinkIcon from "@/components/ui/LinkIcon";
 import Link from "next/link";
-import { position } from "html2canvas/dist/types/css/property-descriptors/position";
 
 const AuhtorDetail = async ({ params }) => {
   const id = (await params).id;
