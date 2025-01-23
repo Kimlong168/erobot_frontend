@@ -1,22 +1,33 @@
-// "use client";
-// import { useQuery } from "react-query";
-// import { getMembers } from "@/queries/member";
+"use client";
+import { useQuery } from "react-query";
+import { getMembers } from "@/queries/member";
 import Team from "./Team";
-const MembersPage = ({
-  initialData = [],
-  memberOnly = [],
-  leaderOnly = [],
-  alumniOnly = [],
-  volunteerOnly = [],
-}) => {
-  // const { data, isLoading, isError } = useQuery(
-  //   "members", // queryKey
-  //   getMembers, // Custom hook used here
-  //   {
-  //     initialData, // Use the server-side fetched data as initial cache
-  //     staleTime: 60000,
-  //   }
-  // );
+const MembersPage = ({ initialData = [] }) => {
+  const {
+    data: members,
+    isLoading,
+    isError,
+  } = useQuery(
+    "members", // queryKey
+    getMembers, // Custom hook used here
+    {
+      initialData, // Use the server-side fetched data as initial cache
+      staleTime: 60000,
+    }
+  );
+  
+  const memberOnly = members.filter((member) => member.position === "Member");
+  const volunteerOnly = members.filter(
+    (volunteer) => volunteer.position === "Volunteer"
+  );
+  const alumniOnly = members.filter((alumni) => alumni.position === "Alumni");
+  const leaderOnly = members.filter(
+    (leader) =>
+      leader.position === "Leader" ||
+      leader.position === "Co-founder" ||
+      leader.position === "Founder"
+  );
+
   return (
     <div>
       <Team
