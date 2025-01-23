@@ -21,7 +21,9 @@ const ProductCard = ({ product }) => {
       </div>
       <div>
         <Link href={`/products?query=filter${categoryId?.toLowerCase()}`}>
-          <p className="text-16-medium mb-3">{categoryName}</p>
+          <p className="text-16-medium mb-3">
+            {categoryName ? categoryName : "No Category"}
+          </p>
         </Link>
 
         <Link href={`/products/${id}`}>
@@ -66,7 +68,6 @@ const ProductCard = ({ product }) => {
           </button>
         )}
       </div>
-  
     </div>
   );
 };

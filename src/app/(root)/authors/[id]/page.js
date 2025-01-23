@@ -9,6 +9,7 @@ import ArticleCard from "@/components/ui/ArticleCard";
 import assets from "@/assets/assets";
 import LinkIcon from "@/components/ui/LinkIcon";
 import Link from "next/link";
+import { position } from "html2canvas/dist/types/css/property-descriptors/position";
 
 const AuhtorDetail = async ({ params }) => {
   const id = (await params).id;
@@ -17,8 +18,10 @@ const AuhtorDetail = async ({ params }) => {
   if (id === "default") {
     author = {
       fullName: "Admin",
+      position: "Admin",
       profilePicture: assets.lightLogo,
       bio: "I am who I am",
+      links: [],
     };
   } else {
     author = await getAuthorById(id);
@@ -56,15 +59,16 @@ const AuhtorDetail = async ({ params }) => {
           </p>
 
           <div>
-            {author?.links.map((item, i) => (
-              <Link
-                key={i}
-                href={item.url}
-                className="w-10 h-10 text-[26px] text-white hover:text-primary text-center mt-4 mr-2 opacity-90 p-0 relative z-[1] inline-flex justify-center items-center before:absolute before:w-full before:h-full before:opacity-0 before:translate-y-full before:bg-white before:-z-[1] hover:before:opacity-100 hover:before:translate-y-0 transition duration-300"
-              >
-                <LinkIcon title={item.title} size={24} />
-              </Link>
-            ))}
+            {author.links.length > 0 &&
+              author?.links.map((item, i) => (
+                <Link
+                  key={i}
+                  href={item.url}
+                  className="w-10 h-10 text-[26px] text-white hover:text-primary text-center mt-4 mr-2 opacity-90 p-0 relative z-[1] inline-flex justify-center items-center before:absolute before:w-full before:h-full before:opacity-0 before:translate-y-full before:bg-white before:-z-[1] hover:before:opacity-100 hover:before:translate-y-0 transition duration-300"
+                >
+                  <LinkIcon title={item.title} size={24} />
+                </Link>
+              ))}
           </div>
         </div>
 

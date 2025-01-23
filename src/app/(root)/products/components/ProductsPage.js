@@ -101,12 +101,10 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
               (category) => category.id === product.categoryId
             );
 
-            const { categoryName } = category;
-
             return (
               <ProductCard
                 key={product.id}
-                product={{ ...product, categoryName }}
+                product={{ ...product, categoryName: category?.categoryName }}
               />
             );
           })
