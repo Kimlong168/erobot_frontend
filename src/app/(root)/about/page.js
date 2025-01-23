@@ -8,28 +8,10 @@ import { GoGoal } from "react-icons/go";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import PartnersList from "@/components/ui/PartnersList";
+import Leader from "@/components/ui/LeaderList";
+
 const AboutPage = () => {
   const theme = "light";
-  const teamMebers = [
-    {
-      name: "Han Leangsiv",
-      position: "Co-Founder",
-      image: assets.coFounder,
-      link: "https://www.linkedin.com/in/chhouden-chhim-83265a47?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "Suy Kosal",
-      position: "Founder",
-      image: assets.founder,
-      link: "https://www.linkedin.com/in/chem-thida-347b00343?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "John Liza",
-      position: "Leader",
-      image: assets.leader,
-      link: "https://www.linkedin.com/in/ngo-kokchor-037698331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-  ];
 
   const events = [
     {
@@ -229,53 +211,7 @@ innovative learning opportunities.`,
           </h2>
           <div className="container">
             <div className="grid auto-rows-auto grid-cols-2 md:grid-cols-3 gap-5 gap-y-7 md:gap-y-0 lg:gap-12 w-full sm:w-[80%] mx-auto">
-              {teamMebers.map((item, index) => (
-                <motion.div
-                  variants={fadeIn(
-                    {
-                      default: "right",
-                      md: index == 0 ? "left" : index == 1 ? "up" : "right", // direction for small screens
-                    },
-                    0.2,
-                    "all"
-                  )}
-                  initial="hidden"
-                  whileInView={"show"}
-                  viewport={{ once: true, amount: 0.3 }}
-                  key={index}
-                  className={`${
-                    index === 2
-                      ? "w-[48%] md:w-full col-span-2 md:col-span-1 justify-self-center md:justify-self-auto"
-                      : "w-full"
-                  }`}
-                >
-                  <div>
-                    <div className="w-full h-[200px] sm:h-[300px] md:h-[350px] 2xl:h-[470px]">
-                      <Image
-                        width={500}
-                        height={350}
-                        className="w-full h-full object-cover rounded-lg overflow-hidden  shadow"
-                        src={item.image}
-                        alt={item.index}
-                      />
-                    </div>
-                    <div className="text-center">
-                      <h3 className="mt-4 font-bold font-primary uppercase text-xl text-dark">
-                        {item.name}
-                      </h3>
-                      <div className="text-primary  mt-3 italic">
-                        {item.position}
-                      </div>
-                      {/* <Link
-                        href={item.link}
-                        className="flex items-center gap-2 justify-center mt-3 hover:gap-4 transition-all hover:text-primary"
-                      >
-                        View more <FaArrowRightLong />
-                      </Link> */}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              <Leader />
             </div>
             <div className="w-fit mx-auto mt-8">
               <Link
