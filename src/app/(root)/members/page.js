@@ -1,14 +1,9 @@
 export const revalidate = 0;
-import { db, collection, getDocs } from "@/libs/firebase";
 import MembersPage from "./components/MembersPage";
+import { getMembers } from "@/queries/member";
 
 const MembersServerComponent = async () => {
-  const querySnapshot = await getDocs(collection(db, "members"));
-  const members = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-
+  const members = await getMembers();
   return <MembersPage initialData={members} />;
 };
 
