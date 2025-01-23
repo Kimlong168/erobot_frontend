@@ -71,7 +71,9 @@ const AuhtorDetail = async ({ params }) => {
         </div>
 
         <div className="flex-1 flex flex-col gap-5 lg:-mt-5">
-          <p className="text-30-bold">All Articles</p>
+          <p className=" text-dark font-primary text-xl lg:text-2xl">
+            All Articles
+          </p>
           <div className="card_grid-sm">
             {articles?.length === 0
               ? "No articles found!"
