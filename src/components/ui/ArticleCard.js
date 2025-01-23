@@ -31,7 +31,11 @@ const ArticleCard = ({ article }) => {
         <div className="flex-1">
           <Link href={`/authors/${authorId}`}>
             <p className="text-16-medium line-clamp-1">
-              {authorId == "default" ? "Admin" : author.fullName}
+              {authorId == "default"
+                ? "Admin"
+                : author?.fullName
+                ? author?.fullName
+                : "No Author"}
             </p>
           </Link>
           <Link href={`/articles/${id}`}>
@@ -42,7 +46,9 @@ const ArticleCard = ({ article }) => {
           <Image
             className="w-[48px] h-[48px] rounded-full border"
             src={
-              authorId == "default" ? assets.lightLogo : author.profilePicture
+              authorId !== "default" && author?.profilePicture
+                ? author?.profilePicture
+                : assets.lightLogo
             }
             alt={authorId}
             height={48}

@@ -37,12 +37,12 @@ const AuhtorDetail = async ({ params }) => {
         <div className="profile_card">
           <div className="profile_title">
             <h3 className="text-24-black uppercase text-center line-clamp-1">
-              {author.fullName}
+              {author?.fullName}
             </h3>
           </div>
 
           <Image
-            src={author.profilePicture}
+            src={author?.profilePicture}
             alt={author.fullName}
             width={220}
             height={220}
