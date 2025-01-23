@@ -490,6 +490,7 @@ const CustomerContactForm = ({
                         </label>
                         <textarea
                           name="message"
+                          placeholder="List down all the sizes of each item you need here..."
                           value={formData.message}
                           onChange={handleChange}
                           rows="3"

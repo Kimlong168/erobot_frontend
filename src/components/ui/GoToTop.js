@@ -24,7 +24,7 @@ const GoToTop = () => {
       {showScroll && (
         <div
           onClick={scrollTop}
-          className="fixed animate-bounce right-5 bottom-10 rounded-full bg-gray-400 hover:bg-secondary/80 w-[40px] h-[40px] grid place-items-center cursor-pointer z-10"
+          className="fixed animate-bounce right-5 bottom-10 rounded-full bg-tertiary hover:bg-secondary/80 w-[40px] h-[40px] grid place-items-center cursor-pointer z-10"
         >
           <TfiArrowCircleUp size={24} color="white" />
         </div>

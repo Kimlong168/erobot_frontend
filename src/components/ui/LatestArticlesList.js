@@ -34,10 +34,9 @@ const LatestArticlesList = () => {
         );
 
         return (
-          <ArticleCard
-            key={article?.id}
-            article={{ ...article, author, category }}
-          />
+          <div key={article?.id} className="min-h-full w-full">
+            <ArticleCard article={{ ...article, author, category }} />
+          </div>
         );
       })}
     </div>
