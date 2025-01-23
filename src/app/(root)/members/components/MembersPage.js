@@ -1,3 +1,6 @@
+// "use client";
+// import { useQuery } from "react-query";
+// import { getMembers } from "@/queries/member";
 import Team from "./Team";
 const MembersPage = ({
   initialData = [],
@@ -6,6 +9,14 @@ const MembersPage = ({
   alumniOnly = [],
   volunteerOnly = [],
 }) => {
+  // const { data, isLoading, isError } = useQuery(
+  //   "members", // queryKey
+  //   getMembers, // Custom hook used here
+  //   {
+  //     initialData, // Use the server-side fetched data as initial cache
+  //     staleTime: 60000,
+  //   }
+  // );
   return (
     <div>
       <Team

@@ -8,13 +8,13 @@ const TeamMemberItem = ({ member }) => (
       <Image
         src={member.profilePicture}
         alt={member.fullName}
-        className="h-full w-full object-contain"
+        className="h-full w-full object-cover"
         width={400}
         height={500}
       />
     </div>
-    <div className="absolute -bottom-12 left-[10%] p-5 w-[80%] bg-white border shadow-xl rounded-lg text-center overflow-hidden z-[1] group-hover:bg-blue-600 group-hover:pt-7 group-hover:px-5 group-hover:pb-20 duration-300 group-hover:text-white">
-      <h3 className="text-xl font-semibold leading-normal  mb-1 font-primary text-dark group-hover:text-white">
+    <div className="absolute -bottom-12 left-[10%] p-5 w-[80%] bg-white border shadow-xl rounded-lg text-center overflow-hidden z-[1] group-hover:bg-[#cd2f34] group-hover:pt-7 group-hover:px-5 group-hover:pb-20 duration-300 group-hover:text-white">
+      <h3 className="text-xl font-semibold leading-normal  mb-1 font-primaryc text-dark group-hover:text-white">
         {member.fullName}
       </h3>
       <p className="text-[17px] leading-normal  mb-2 text-primary group-hover:text-white italic">
@@ -57,7 +57,7 @@ const Team = ({ teamMembers, title, description }) => {
         </p>
         <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  gap-14 gap-y-24  pb-12">
           {teamMembers?.map((member, i) => (
-            <div key={i}>
+            <div className={i == 1 ? "order-1 lg:order-2" : "order-2"} key={i}>
               <TeamMemberItem member={member} />
             </div>
           ))}
