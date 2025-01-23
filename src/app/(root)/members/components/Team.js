@@ -2,7 +2,7 @@ import LinkIcon from "@/components/ui/LinkIcon";
 import Image from "next/image";
 import Link from "next/link";
 
-const TeamMemberItem = ({ member, bg, color }) => (
+const TeamMemberItem = ({ member, bg, color, hColor }) => (
   <div className="group relative w-full ">
     <div className="h-[400px] w-full  mx-auto overflow-hidden relative rounded-lg ">
       <Image
@@ -19,7 +19,9 @@ const TeamMemberItem = ({ member, bg, color }) => (
       <h3 className="text-xl font-semibold leading-normal  mb-1 font-primaryc text-dark group-hover:text-white">
         {member.fullName}
       </h3>
-      <p className="text-[17px] leading-normal  mb-2 text-primary group-hover:text-white italic">
+      <p
+        className={`text-[17px] leading-normal  mb-2 ${color} group-hover:text-white italic`}
+      >
         {member.position}
       </p>
       <small className="text-sm italic line-clamp-1 group-hover:line-clamp-none">
@@ -31,7 +33,7 @@ const TeamMemberItem = ({ member, bg, color }) => (
             <li key={i}>
               <Link
                 href={item.url}
-                className={`w-10 h-10 text-[26px] text-center ${color} mt-2 mr-2 opacity-90 p-0 relative z-[1] inline-flex justify-center items-center before:absolute before:w-full before:h-full before:opacity-0 before:translate-y-full before:bg-white before:-z-[1] hover:before:opacity-100 hover:before:translate-y-0 transition duration-300`}
+                className={`w-10 h-10 text-[26px] text-center ${hColor} mt-2 mr-2 opacity-90 p-0 relative z-[1] inline-flex justify-center items-center before:absolute before:w-full before:h-full before:opacity-0 before:translate-y-full before:bg-white before:-z-[1] hover:before:opacity-100 hover:before:translate-y-0 transition duration-300`}
               >
                 <LinkIcon title={item.title} size={24} />
               </Link>
@@ -49,6 +51,7 @@ const Team = ({
   description,
   bg,
   color,
+  hcolor,
   isLeader = false,
 }) => {
   if (teamMembers.length == 0) return null;
@@ -74,7 +77,8 @@ const Team = ({
               <TeamMemberItem
                 member={member}
                 bg={bg || "group-hover:bg-[#cd2f34]"}
-                color={color || "hover:text-bakong-red"}
+                color={color || "text-[#cd2f34]"}
+                hcolor={hcolor || "hover:text-[#cd2f34]"}
               />
             </div>
           ))}

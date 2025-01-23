@@ -102,7 +102,7 @@ innovative learning opportunities.`,
   };
 
   return (
-    <main className="py-8 md:py-12">
+    <main className="py-8 md:py-12 overflow-x-hidden min-w-screen">
       <section className="container flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24">
         <motion.div
           variants={fadeIn(
