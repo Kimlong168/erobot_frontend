@@ -18,6 +18,7 @@ const MembersPage = ({ initialData = [] }) => {
   return (
     <div>
       <Team
+        isLeader={true}
         teamMembers={leaderOnly}
         title="Our Leaders"
         description="  Our team is made up of passionate individuals who are dedicated to
@@ -25,6 +26,8 @@ const MembersPage = ({ initialData = [] }) => {
           possible service and support. Our team members are experts in their
           respective fields and are always ready to help you with any questions
           or concerns you may have."
+        bg="group-hover:bg-[#cd2f34]"
+        color="hover:text-[#cd2f34]"
       />
       <Team
         teamMembers={memberOnly}
@@ -34,6 +37,8 @@ const MembersPage = ({ initialData = [] }) => {
           possible service and support. Our team members are experts in their
           respective fields and are always ready to help you with any questions
           or concerns you may have."
+        bg="group-hover:bg-[#FCB810]"
+        color="hover:text-[#FCB810]"
       />
       <Team
         teamMembers={volunteerOnly}
@@ -43,6 +48,8 @@ const MembersPage = ({ initialData = [] }) => {
           possible service and support. Our team members are experts in their
           respective fields and are always ready to help you with any questions
           or concerns you may have."
+        bg="group-hover:bg-[#FCB810]"
+        color="hover:text-[#FCB810]"
       />
       <Team
         teamMembers={alumniOnly}
@@ -52,6 +59,8 @@ const MembersPage = ({ initialData = [] }) => {
           possible service and support. Our team members are experts in their
           respective fields and are always ready to help you with any questions
           or concerns you may have."
+        bg="group-hover:bg-[#cd2f34]"
+        color="hover:text-[#cd2f34]"
       />
     </div>
   );
