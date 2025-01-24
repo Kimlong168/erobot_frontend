@@ -13,11 +13,11 @@ const ProductDetail = async ({ params }) => {
   const product = await getProductById(id);
   const categories = await getProductCategories();
 
-  const category = categories.find(
-    (category) => category.id === product.categoryId
-  );
-
   if (!product) return notFound();
+
+  const category = categories.find(
+    (category) => category.id === product?.categoryId
+  );
 
   return (
     <main className="container mt-6 overflow-x-hidden">

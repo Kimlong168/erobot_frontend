@@ -82,7 +82,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
             </h3>
           )}
         </div>{" "}
-        <div className="">
+        <div className="w-full sm:w-fit ">
           <SearchForm
             actionPath="/products"
             query={

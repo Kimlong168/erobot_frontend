@@ -20,12 +20,12 @@ const ArticleDetail = async ({ params }) => {
   const authors = await getAuthors();
   const categories = await getArticleCategories();
 
-  const author = authors.find((author) => author.id === article.authorId);
-  const category = categories.find(
-    (category) => category.id === article.categoryId
-  );
-
   if (!article) return notFound();
+
+  const author = authors.find((author) => author.id === article?.authorId);
+  const category = categories.find(
+    (category) => category.id === article?.categoryId
+  );
 
   return (
     <main className="container mt-6 overflow-x-hidden">

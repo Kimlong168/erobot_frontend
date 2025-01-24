@@ -140,7 +140,7 @@ body {
 
   /* searchform */
   .search-form {
-    @apply lg:max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black/70 rounded-[80px] text-[24px] px-5 flex flex-row items-center gap-5;
+    @apply lg:max-w-3xl w-full min-h-[80px] border-[5px] border-black/70 rounded-[80px] text-[24px] px-5 flex flex-row items-center gap-5;
   }
 
   .search-input {

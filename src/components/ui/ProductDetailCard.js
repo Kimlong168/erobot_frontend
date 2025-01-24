@@ -127,10 +127,7 @@ const ProductDetailCard = ({ product }) => {
         <div className="flex items-center justify-center w-full">
           <div className="border-2 border-gray-5 rounded-xl p-4 md:p-8 flex flex-col w-full md:flex-row gap-5 md:gap-24  text-gray-700 ">
             <div className="w-full md:w-2/5 ">
-              <div
-                onClick={() => setShowImage(true)}
-                className="relative m-0 overflow-hidden rounded text-white"
-              >
+              <div className="relative m-0 overflow-hidden rounded text-white">
                 {/* product image */}
 
                 <PopupImage
@@ -140,9 +137,9 @@ const ProductDetailCard = ({ product }) => {
                   height={500}
                 />
                 {/* open button */}
-                <div className="absolute top-0 rounded cursor-pointer bg-secondary grid place-content-center w-[30px] h-[30px]">
+                {/* <div className="absolute top-0 rounded cursor-pointer bg-secondary grid place-content-center w-[30px] h-[30px]">
                   <MdOutlineOpenWith />
-                </div>
+                </div> */}
               </div>
               <div className="hidden md:block">
                 <div className="font-semibold text-center p-4">
