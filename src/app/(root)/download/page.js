@@ -55,28 +55,27 @@ const DownloadPage = () => {
     <main className="container py-8 md:py-12">
       <section className="mb-12">
         <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
-          Brand Information
+          Our Brand Story
         </h3>
         <p className="text-justify">
-          Brand Information ERobot Cambodia is a leading innovator in robotics
-          and technology education, dedicated to empowering the next generation
-          of problem-solvers and creative thinkers in Cambodia. With a vision to
-          inspire and equip Cambodian youth with the skills necessary for a
-          tech-driven future, ERobot Cambodia stands as a symbol of innovation,
-          education, and progress in the nation.
+          Founded in 2018 by Suy Kosol, ERobot aims to bridge educational gaps
+          in Cambodia by offering teaching, training, and collaboration for
+          youth, especially in rural areas. It strives to equip young Cambodians
+          with skills for a tech-driven future, becoming a symbol of innovation
+          and progress.
           <br />
           <br />
           The ERobot Cambodia brand is our most valuable asset, representing our
           passion for excellence, creativity, and commitment to advancing
-          technology education. It defines who we are and what we do as pioneers
-          in nurturing a tech-savvy society.
+          education. It defines who we are, what we do and serves as a powerful
+          symbol of our values and aspirations.
           <br />
           <br />
-          This brand guide ensures that all elements of our identity work
-          cohesively to communicate a unified and impactful image. As we address
-          a diverse audience in a dynamic technological landscape, it is
-          essential to convey a consistent and compelling voice in every aspect
-          of our communications and operations.
+          We provide access to our official logos, updated in 2024, to ensure a
+          consistent and impactful representation of our brand. This enables
+          everyone to use our latest branding elements appropriately when
+          engaging with diverse audiences in an ever-evolving technological
+          landscape.
         </p>
       </section>
 

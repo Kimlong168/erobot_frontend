@@ -16,27 +16,23 @@ const AboutPage = () => {
   const events = [
     {
       year: "2026",
-      title: "Building Partnerships",
-      description: `In 2022, we focused on building meaningful partnerships with organizations like NICC, CamboJob, TI, 
-BVS, PN, and GU to enhance educational outreach. We introduced five specialized courses, continued 
-exploring technology in aviation through Air & Tech workshops, participated in the World Robotics 
-Olympiad, and strengthened internal capacity to drive impactful learning experiences.`,
+      title: "Continuing Growth and Innovation",
+      description: `In 2026, we remain dedicated to advancing our mission of promoting STEM and STEAM education. 
+      Our focus will be on exploring new opportunities, fostering collaborations, and finding innovative ways 
+      to make a lasting impact in education and the community.`,
     },
     {
       year: "2025",
-      title: "Building Partnerships",
-      description: `In 2022, we focused on building meaningful partnerships with organizations like NICC, CamboJob, TI, 
-BVS, PN, and GU to enhance educational outreach. We introduced five specialized courses, continued 
-exploring technology in aviation through Air & Tech workshops, participated in the World Robotics 
-Olympiad, and strengthened internal capacity to drive impactful learning experiences.`,
+      title: "Expanding STEM and STEAM Initiatives",
+      description: `In 2025, we are planning various activities to promote STEM and STEAM, including charity events, workshops, 
+      and engaging community-focused projects. These initiatives aim to foster creativity and innovation among students and 
+      educators, bridging the gap between traditional education and hands-on learning.`,
     },
     {
       year: "2024",
-      title: "Building Partnerships",
-      description: `In 2022, we focused on building meaningful partnerships with organizations like NICC, CamboJob, TI, 
-BVS, PN, and GU to enhance educational outreach. We introduced five specialized courses, continued 
-exploring technology in aviation through Air & Tech workshops, participated in the World Robotics 
-Olympiad, and strengthened internal capacity to drive impactful learning experiences.`,
+      title: "Focusing on Charity and Workshops",
+      description: `In 2024, we successfully implemented two impactful projects: one in Preah Vihear Province and another in Siem Reap Province. 
+      These projects combined charity and workshops to deliver valuable educational resources and hands-on learning experiences to students in rural area.`,
     },
     {
       year: "2023",
