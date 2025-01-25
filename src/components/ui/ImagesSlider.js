@@ -77,7 +77,7 @@ const ImagesSlider = ({ images = [] }) => {
                     handlePrev();
                   }
                 }}
-                className="bg-center bg-cover rounded-lg h-[150px] md:h-[250px] lg:h-[360px] 2xl:h-[500px] flex justify-center items-center"
+                className="bg-center bg-cover rounded-lg h-[150px] md:h-[250px] lg:h-[360px] 2xl:h-[500px] flex justify-center items-center cursor-pointer"
               ></div>
             </div>
           ))}
@@ -103,7 +103,7 @@ const ImagesSlider = ({ images = [] }) => {
                 onClick={() => {
                   handleNext();
                 }}
-                className="bg-center bg-cover rounded-lg h-[250px] flex justify-center items-center"
+                className="bg-center bg-cover rounded-lg h-[250px] flex justify-center items-center cursor-pointer"
               ></div>
             </div>
           ))}

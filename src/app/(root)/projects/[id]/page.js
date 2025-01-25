@@ -14,6 +14,9 @@ import Countdown from "@/components/ui/Countdown";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import { FaHeart, FaUsers } from "react-icons/fa";
 import ImagesSlider from "@/components/ui/ImagesSlider";
+import SharingBtn from "@/components/ui/SharingBtn";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 const ProjectDetail = async ({ params }) => {
   const id = (await params).id;
 
@@ -80,7 +83,7 @@ const ProjectDetail = async ({ params }) => {
         </div>
       </section>
 
-      <section className="mt-8">
+      <section className="mt-10">
         <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
           Donate Now
         </h2>
@@ -234,17 +237,44 @@ const ProjectDetail = async ({ params }) => {
               </div>
             </div>
           )}
+
+          {project?.volunteers.length > 0 && (
+            <div className="mt-10">
+              <p className="text-center text-gray-600 italic">Our Volunteers</p>
+              <div className="flex flex-wrap justify-center items-center gap-4 mt-6 max-w-screen">
+                {project?.volunteers.map((item, index) => {
+                  return (
+                    <div key={index} className="flex-shrink-0">
+                      {item.name}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="mt-12">
-        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
-          Love & Curiousity
-        </h2>
-        <div className="mt-12">
-          <ImagesSlider images={project?.images.map((item) => item.url)} />
+      {project?.images.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
+            Love & Curiousity
+          </h2>
+          <div className="mt-8 md:mt-12">
+            <ImagesSlider images={project?.images.map((item) => item.url)} />
+          </div>
+        </section>
+      )}
+
+      {/* share button */}
+
+      <div className="py-3 mt-12">
+        <div className="container flex flex-col gap-2 items-center">
+          <span className="italic">Share this project:</span>
+          <SharingBtn url={`${baseUrl}/projects/${id}`} title={project.name} />
         </div>
-      </section>
+      </div>
+
       <GoToTop />
     </main>
   );
