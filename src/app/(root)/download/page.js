@@ -1,7 +1,6 @@
 "use client";
 import assets from "@/assets/assets";
 import { LuDownload } from "react-icons/lu";
-import Image from "next/image";
 import PopupImage from "@/components/ui/PopupImage";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const DownloadPage = () => {

@@ -16,6 +16,7 @@ import about from "./about.jpg";
 import founder from "./founder.jpg";
 import coFounder from "./co-founder.jpg";
 import leader from "./leader.jpg";
+
 const assets = {
   khqrLogo,
   KHQR,
@@ -34,7 +35,7 @@ const assets = {
   about,
   founder,
   coFounder,
-  leader
+  leader,
 };
 
 export default assets;

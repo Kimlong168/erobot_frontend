@@ -26,10 +26,8 @@ const AuhtorDetail = async ({ params }) => {
   }
 
   const articles = await getArticlesByAuthorId(id);
-
+  if (!articles) return notFound();
   const categories = await getArticleCategories();
-
-  if (!author) return notFound();
 
   return (
     <main className="container py-8 md:py-12 overflow-x-hidden">

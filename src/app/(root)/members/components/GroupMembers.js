@@ -45,7 +45,7 @@ const TeamMemberItem = ({ member, bg, color, hcolor }) => (
   </div>
 );
 
-const Team = ({
+const GroupMembers = ({
   teamMembers,
   title,
   description,
@@ -88,4 +88,4 @@ const Team = ({
   );
 };
 
-export default Team;
+export default GroupMembers;
