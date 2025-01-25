@@ -13,6 +13,7 @@ import getFormatedDate from "@/utils/getFormatedDate";
 import Countdown from "@/components/ui/Countdown";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import { FaHeart, FaUsers } from "react-icons/fa";
+import ImagesSlider from "@/components/ui/ImagesSlider";
 const ProjectDetail = async ({ params }) => {
   const id = (await params).id;
 
@@ -96,7 +97,7 @@ const ProjectDetail = async ({ params }) => {
                   cy="50%"
                 />
                 <circle
-                  className="text-red-500"
+                  className="text-secondary"
                   strokeWidth="12"
                   strokeDasharray="502.4" /* Circumference: 2 * Math.PI * radius (80) */
                   strokeDashoffset={502.4 - (progress / 100) * 502.4}
@@ -208,7 +209,9 @@ const ProjectDetail = async ({ params }) => {
           </div>
           {project?.coOrganizers.length > 0 && (
             <div className="mt-4">
-              <p className="text-center text-gray-600 italic">Our Co-organizers</p>
+              <p className="text-center text-gray-600 italic">
+                Our Co-organizers
+              </p>
               <div className="flex justify-center items-center gap-8 mt-2">
                 {project?.coOrganizers.map((item, index) => {
                   return (
@@ -229,6 +232,14 @@ const ProjectDetail = async ({ params }) => {
         </div>
       </section>
 
+      <section className="mt-12">
+        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
+          Love & Curiousity
+        </h2>
+        <div className="mt-12">
+          <ImagesSlider images={project?.images.map((item) => item.url)} />
+        </div>
+      </section>
       <GoToTop />
     </main>
   );
