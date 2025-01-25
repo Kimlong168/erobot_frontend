@@ -1,3 +1,4 @@
+export const revalidate = 0;
 import { getProjects } from "@/queries/project";
 import GroupProjects from "./components/GroupProjects";
 
