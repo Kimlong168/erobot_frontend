@@ -22,10 +22,13 @@ const ProjectDetail = async ({ params }) => {
 
   const totalGoal = project.fundingGoal;
   const raisedAmount = project.fundsRaised;
-  const progress = (parseFloat(raisedAmount) / parseFloat(totalGoal)) * 100;
+  const progress = (
+    (parseFloat(raisedAmount) / parseFloat(totalGoal)) *
+    100
+  ).toFixed(2);
   const remainingAmount = totalGoal - raisedAmount;
   return (
-    <main>
+    <main className="max-w-screen overflow-hidden">
       <section
         style={{
           backgroundImage: `url(${project.coverImage})`,
@@ -67,7 +70,7 @@ const ProjectDetail = async ({ params }) => {
           </p>
 
           {/* show countdown for current and upcomming project only */}
-          {project.status == "previous" && (
+          {project.status !== "previous" && (
             <Countdown countdownFrom={project.startDate} />
           )}
 
@@ -192,19 +195,21 @@ const ProjectDetail = async ({ params }) => {
           <div className="mt-4">
             <p className="text-center text-gray-600 italic ">Our Organizers</p>
             <div className="flex justify-center items-center gap-8 mt-2">
-              {project?.organizers.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <Image
-                      className="max-w-[140px] md:max-w-[160px] hover:scale-110 transition-transform"
-                      src={item.partnerLogo}
-                      alt="organizers"
-                      width={160}
-                      height={120}
-                    />
-                  </div>
-                );
-              })}
+              <div className="flex flex-wrap justify-center items-center gap-8 mt-2 max-w-screen">
+                {project?.organizers.map((item, index) => {
+                  return (
+                    <div key={index} className="flex-shrink-0">
+                      <Image
+                        className="max-w-[140px] md:max-w-[160px] hover:scale-110 transition-transform "
+                        src={item.partnerLogo}
+                        alt="organizers"
+                        width={160}
+                        height={120}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
           {project?.coOrganizers.length > 0 && (
@@ -212,12 +217,12 @@ const ProjectDetail = async ({ params }) => {
               <p className="text-center text-gray-600 italic">
                 Our Co-organizers
               </p>
-              <div className="flex justify-center items-center gap-8 mt-2">
+              <div className="flex flex-wrap justify-center items-center gap-8 mt-2 max-w-screen">
                 {project?.coOrganizers.map((item, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index} className="flex-shrink-0 ">
                       <Image
-                        className="max-w-[100px] md:max-w-[120px] hover:scale-110 transition-transform"
+                        className="max-w-[100px] md:max-w-[120px] hover:scale-110 transition-transform "
                         src={item.partnerLogo}
                         alt="organizers"
                         width={120}
