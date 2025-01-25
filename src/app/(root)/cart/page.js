@@ -40,6 +40,7 @@ const CartPage = () => {
     telegram: "",
     address: "",
     message: "",
+    status: "",
     paymentMethod: "", //khqr, cod
     md5: "",
   });
@@ -69,6 +70,7 @@ const CartPage = () => {
             const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
 
             try {
+              // throw new Error("Fake error for testing");
               // caption for the image to send to telegram
               const messageToSend = orderMessage(
                 orderId,
@@ -94,14 +96,26 @@ const CartPage = () => {
               console.error("Error sending image:", error);
 
               // send notifitaion to telegram if error
-              // const messageToSend = orderMessage(
-              //   baseUrl,
-              //   orderId,
-              //   formData,
-              //   getTotalPrice()
-              // );
+              const messageToSend = orderMessage(
+                orderId,
+                formData,
+                getTotalPrice()
+              );
 
-              // sendTelegramMessage(messageToSend, topicId);
+              const send = async () => {
+                const response = await sendTelegramMessage(
+                  messageToSend,
+                  topicId
+                );
+                console.log(
+                  "response sending order message to telegram (send image error)",
+                  response
+                );
+              };
+
+              // excute send function
+              send();
+              recordOrder();
             }
             // Delete the cart image after 5s to save storage space
             setTimeout(() => {

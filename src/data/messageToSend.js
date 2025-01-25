@@ -21,6 +21,12 @@ ${formData.address ? `Address: *${formData.address}*` : ""}
 
 ${
   formData.paymentMethod
+    ? `Status: *${formData.paymentMethod === "khqr" ? "Paid" : "Pending"}*`
+    : ""
+}
+
+${
+  formData.paymentMethod
     ? `Payment Method: *${formData.paymentMethod.toUpperCase()}*`
     : ""
 }

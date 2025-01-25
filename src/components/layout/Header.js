@@ -36,27 +36,11 @@ const Header = () => {
 
         {/* social media icon */}
         <div className="flex item-center gap-3">
-          {contactInfo ? (
-            contactInfo?.socialMedia?.map((item, index) => (
-              <Link href={"/"} key={index}>
-                <LinkIcon title={item.title} size={18} />
-              </Link>
-            ))
-          ) : (
-            <>
-              <Link href="https://www.facebook.com/sorakhmer1">
-                <FaFacebook />
-              </Link>
-
-              <Link href="https://line.me/ti/p/KqXNVPfm2p">
-                <FaLine />
-              </Link>
-
-              <Link href="https://t.me/+85512739573">
-                <FaTelegram />
-              </Link>
-            </>
-          )}
+          {contactInfo?.socialMedia?.map((item, index) => (
+            <Link href={item.url} key={index}>
+              <LinkIcon title={item.title} size={18} />
+            </Link>
+          ))}
         </div>
       </div>
 
