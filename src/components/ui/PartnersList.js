@@ -36,7 +36,7 @@ const PartnersList = ({ direction = "left" }) => {
             return (
               <div key={index}>
                 <Image
-                  className="max-w-[100px] md:max-w-[120px] mr-8 md:mr-16 hover:scale-125 rounded-lg cursor-pointer" //80px
+                  className="max-w-[100px] md:max-w-[120px] mr-8 md:mr-16 hover:scale-125 transition-transform rounded-lg cursor-pointer" //80px
                   src={partner.partnerLogo}
                   alt="partner"
                   width={120}
