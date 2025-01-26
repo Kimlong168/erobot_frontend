@@ -203,10 +203,10 @@ const ProjectDetail = async ({ params }) => {
                   return (
                     <div key={index} className="flex-shrink-0">
                       <Image
-                        className="max-w-[140px] md:max-w-[160px] hover:scale-110 transition-transform "
+                        className="max-w-[120px] md:max-w-[140px] hover:scale-110 transition-transform "
                         src={item.partnerLogo}
-                        alt="organizers"
-                        width={160}
+                        alt={item.partnerName}
+                        width={140}
                         height={120}
                       />
                     </div>
@@ -227,7 +227,7 @@ const ProjectDetail = async ({ params }) => {
                       <Image
                         className="max-w-[100px] md:max-w-[120px] hover:scale-110 transition-transform "
                         src={item.partnerLogo}
-                        alt="organizers"
+                        alt={item.partnerName}
                         width={120}
                         height={80}
                       />
@@ -270,7 +270,7 @@ const ProjectDetail = async ({ params }) => {
 
       <div className="py-3 mt-12">
         <div className="container flex flex-col gap-2 items-center">
-          <span className="italic">Share this project:</span>
+          <span className="italic text-gray-600">Share this project:</span>
           <SharingBtn url={`${baseUrl}/projects/${id}`} title={project.name} />
         </div>
       </div>
