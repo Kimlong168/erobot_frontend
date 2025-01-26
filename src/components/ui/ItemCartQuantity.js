@@ -4,7 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 
 const ItemCartQuantity = ({ number }) => {
-  if (number == 0) return null;
+  // if (number == 0) return null;
   return (
     <div className="relative">
       <Link

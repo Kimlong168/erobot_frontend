@@ -107,8 +107,11 @@ const ProductDetailCard = ({ product }) => {
 
     console.log("Order recorded: ", result);
 
-    // store orderId to order history and local storage
-    // recordOrderHistory(orderId);
+    // store order ID in local storage as array list of order ID
+    const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    orderHistory.push(orderId);
+    localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+    window.dispatchEvent(new Event("localStorageUpdated"));
   };
 
   // generate order id

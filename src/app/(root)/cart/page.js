@@ -18,7 +18,7 @@ import {
   sendTelegramImage,
   sendTelegramMessage,
 } from "@/utils/sendTelegramMessage";
-
+import OrderHistorySection from "./components/OrderHistorySection";
 const CartPage = () => {
   const {
     cartItems,
@@ -162,12 +162,16 @@ const CartPage = () => {
 
     const result = await createOrder(order);
     clearCart();
-    // store orderId to order history and local storage
-    // recordOrderHistory(orderId);
+    // store order ID in local storage as array list of order ID
+    const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    orderHistory.push(orderId);
+    localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+    window.dispatchEvent(new Event("localStorageUpdated"));
   };
 
   return (
     <main className="container py-8 md:py-12">
+      {/* shopping cart */}
       <div id="message">
         <div className={isOpenForm ? "p-4" : ""}>
           <section className="overflow-x-auto">
@@ -318,6 +322,12 @@ const CartPage = () => {
           </section>
         </div>
       </div>
+
+      {/* order history */}
+      <div>
+        <OrderHistorySection />
+      </div>
+
       {/* order checkout form */}
       {isOpenForm && (
         <OrderCheckoutForm
