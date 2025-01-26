@@ -81,7 +81,7 @@ const DonationPage = () => {
     };
 
     const individualInfo = new IndividualInfo(
-      "kimlong_chann@aclb",
+      process.env.NEXT_PUBLIC_BAKONG_ACCOUNT_ID,
       "Kimlong Chann",
       "PHNOM PENH",
       optionalData
@@ -116,8 +116,8 @@ const DonationPage = () => {
   };
 
   const checkTransactionStatusByMD5 = async () => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTc2OTU2MmFiNTVjNDY5NCJ9LCJpYXQiOjE3MzY0MzY3MzYsImV4cCI6MTc0NDIxMjczNn0.XGrA6oESHwt5dr0-wMzRMo5nGxhZFwYqSN9F3b5UEzE";
+    const token = process.env.NEXT_PUBLIC_BAKONG_API_TOKEN;
+
     const baseUrl = "https://api-bakong.nbc.gov.kh";
     try {
       // Define the endpoint URL
