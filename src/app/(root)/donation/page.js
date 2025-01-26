@@ -81,7 +81,7 @@ const DonationPage = () => {
     };
 
     const individualInfo = new IndividualInfo(
-      process.env.NEXT_PUBLIC_BAKONG_ACCOUNT_ID,
+      process.env.BAKONG_ACCOUNT_ID,
       "Kimlong Chann",
       "PHNOM PENH",
       optionalData
@@ -116,7 +116,7 @@ const DonationPage = () => {
   };
 
   const checkTransactionStatusByMD5 = async () => {
-    const token = process.env.NEXT_PUBLIC_BAKONG_API_TOKEN;
+    const token = process.env.BAKONG_API_TOKEN;
 
     const baseUrl = "https://api-bakong.nbc.gov.kh";
     try {
@@ -150,7 +150,7 @@ const DonationPage = () => {
           `🎉 Donation received from ${paymentData.name || "anonymous"} for ${
             paymentData.amount
           } ${currency} on ${getCurrentTime()}`,
-          process.env.NEXT_PUBLIC_TELEGRAM_DONATION_CHAT_ID
+          process.env.TELEGRAM_DONATION_CHAT_ID
         );
 
         const amountInUSD =

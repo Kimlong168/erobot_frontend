@@ -67,7 +67,7 @@ const CartPage = () => {
         // Get the download URL for the uploaded image
         getDownloadURL(imageRef)
           .then((downloadURL) => {
-            const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
+            const topicId = process.env.TELEGRAM_ORDER_CHAT_ID;
 
             try {
               // throw new Error("Fake error for testing");

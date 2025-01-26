@@ -64,7 +64,7 @@ const ProductDetailCard = ({ product }) => {
 
       await sendTelegramMessage(
         messageToSend,
-        process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID
+        process.env.TELEGRAM_ORDER_CHAT_ID
       );
 
       recordOrder();
