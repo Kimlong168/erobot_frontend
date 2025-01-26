@@ -58,18 +58,18 @@ const Footer = () => {
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Projects
+                    </Link>{" "}
+                    <Link
+                      href="/cart"
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      Cart
                     </Link>
                     <Link
                       href="/donation"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Donate
-                    </Link>
-                    <Link
-                      href="/cart"
-                      className="text-gray-600 hover:text-gray-900"
-                    >
-                      Cart
                     </Link>
                   </div>
                   <div className="flex items-center gap-8">
