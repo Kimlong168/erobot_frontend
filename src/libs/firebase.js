@@ -21,12 +21,12 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBVTcL7oqtf27A4eQh5Vke1ptP8u7EXl6E",
-  authDomain: "news-project-aa768.firebaseapp.com",
-  projectId: "news-project-aa768",
-  storageBucket: "news-project-aa768.appspot.com",
-  messagingSenderId: "205111506884",
-  appId: "1:205111506884:web:68decbf3b068227b1d1691",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
