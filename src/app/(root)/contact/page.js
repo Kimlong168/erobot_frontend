@@ -42,7 +42,7 @@ const ContactPage = () => {
       // Wait for the message to be sent to Telegram
       await sendTelegramMessage(
         messageToSend,
-        process.env.TELEGRAM_MESSAGE_CHAT_ID
+        process.env.NEXT_PUBLIC_TELEGRAM_MESSAGE_CHAT_ID
       );
 
       // Clear form data
