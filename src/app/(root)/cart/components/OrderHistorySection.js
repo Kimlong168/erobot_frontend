@@ -183,19 +183,22 @@ const OrderHistorySection = () => {
                             You can input your order ID in the search bar to
                             find your order!
                           </p>
-                          <div
-                            className="mt-3 p-3 py-2 h-full text-center rounded bg-blue-500/20 text-blue-500 border-blue-600 border text-xs w-fit mx-auto"
-                            onClick={() => {
-                              const orderHistory = orderList?.filter((order) =>
-                                orderHistoryIdList?.includes(order.orderId)
-                              );
-                              setOrderHistoryList(orderHistory);
+                          {orderHistoryIdList.length > 0 && (
+                            <div
+                              className="mt-3 p-3 py-2 h-full text-center rounded bg-blue-500/20 text-blue-500 border-blue-600 border text-xs w-fit mx-auto"
+                              onClick={() => {
+                                const orderHistory = orderList?.filter(
+                                  (order) =>
+                                    orderHistoryIdList?.includes(order.orderId)
+                                );
+                                setOrderHistoryList(orderHistory);
 
-                              setSearchKeyword("");
-                            }}
-                          >
-                            Show all
-                          </div>
+                                setSearchKeyword("");
+                              }}
+                            >
+                              Show all
+                            </div>
+                          )}
                         </td>
                       </tr>
                     )}
