@@ -67,6 +67,12 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
             imgSrc={assets.whiteLogoNbg}
             href="/download"
           />
+          <LinkContainer
+            heading={"Cart"}
+            subheading={"Go to your shopping cart"}
+            imgSrc={assets.whiteLogoNbg}
+            href="/cart"
+          />
           <div
             onClick={() => setShowSideBar((prev) => !prev)}
             className="text-4xl  text-neutral-500 group hover:text-neutral-50 md:text-6xl mt-6 cursor-pointer"

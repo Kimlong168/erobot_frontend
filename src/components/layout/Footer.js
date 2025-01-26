@@ -65,6 +65,12 @@ const Footer = () => {
                     >
                       Donate
                     </Link>
+                    <Link
+                      href="/cart"
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      Cart
+                    </Link>
                   </div>
                   <div className="flex items-center gap-8">
                     {contactInfo.socialMedia.map((social, index) => (
