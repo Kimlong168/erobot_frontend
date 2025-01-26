@@ -494,14 +494,10 @@ const DonationPage = () => {
 
                     <button
                       className="mt-2 w-full flex justify-center items-center gap-3 px-4 py-3 bg-blue-500 text-white font-medium text-sm rounded-xl hover:bg-blue-600"
-                      onClick={
-                        () =>
-                          handleCopyLink(
-                            `${process.env.NEXT_PUBLIC_BASE_URL}/donation?name=${paymentData.name}&amount=${paymentData.amount}&curr=${currency}`
-                          )
-                        // handleCopyLink(
-                        //   `http://localhost:3000/donation?name=${paymentData.name}&amount=${paymentData.amount}&curr=${currency}`
-                        // )
+                      onClick={() =>
+                        handleCopyLink(
+                          `${process.env.NEXT_PUBLIC_BASE_URL}/donation?name=${paymentData.name}&amount=${paymentData.amount}&curr=${currency}`
+                        )
                       }
                     >
                       <LuLink /> Copy link to invite friends
@@ -535,10 +531,8 @@ const DonationPage = () => {
         </div>
       </section>
 
-      <section className="overflow-hidden border-t-2 border-black/80 ">
-        <h2 className="text-2xl font-primary bg-secondary hover:bg-primary text-center py-1 text-white">
-          Our Donors
-        </h2>
+      <section className="overflow-hidden">
+   
         <motion.div
           variants={fadeIn("up", 0.2)}
           initial="hidden"

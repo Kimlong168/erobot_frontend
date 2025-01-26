@@ -216,7 +216,7 @@ const ProjectDetail = async ({ params }) => {
             </div>
           </div>
           {project?.coOrganizers.length > 0 && (
-            <div className="mt-4">
+            <div className="mt-8">
               <p className="text-center text-gray-600 italic">
                 Our Co-organizers
               </p>
@@ -239,12 +239,12 @@ const ProjectDetail = async ({ params }) => {
           )}
 
           {project?.volunteers.length > 0 && (
-            <div className="mt-10">
+            <div className="mt-8">
               <p className="text-center text-gray-600 italic">Our Volunteers</p>
               <div className="flex flex-wrap justify-center items-center gap-4 mt-6 max-w-screen">
                 {project?.volunteers.map((item, index) => {
                   return (
-                    <div key={index} className="flex-shrink-0">
+                    <div key={index} className="flex-shrink-0 text-dark">
                       {item.name}
                     </div>
                   );
