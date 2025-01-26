@@ -11,7 +11,7 @@ const WordCloudChart = (props) => {
     //   return r.value;
     // });
     // setMax(Math.max(...values));
-
+    console.log("props", props.data);
     setData(props.data);
   }, [props.data]);
 
@@ -26,7 +26,7 @@ const WordCloudChart = (props) => {
 
   return (
     <WordCloud
-      width={props.width || 800}
+      width={props.width}
       height={200}
       data={data}
       fontStyle="italic"
