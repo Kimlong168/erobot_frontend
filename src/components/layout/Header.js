@@ -2,12 +2,7 @@
 import assets from "@/assets/assets";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
-import {
-  FaFacebook,
-  FaLine,
-  FaPhoneSquareAlt,
-  FaTelegram,
-} from "react-icons/fa";
+import { FaPhoneSquareAlt } from "react-icons/fa";
 import { scrollToTop } from "@/utils/scrollToTop";
 import LinkIcon from "../ui/LinkIcon";
 import NavLink from "../ui/NavLink";
@@ -17,6 +12,7 @@ import SideBar from "./SideBar";
 import { CiLight } from "react-icons/ci";
 import { useState } from "react";
 import contactInfo from "@/data/contactInfo";
+import { enqueueSnackbar } from "notistack";
 const Header = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const language = "en";
@@ -124,7 +120,14 @@ const Header = () => {
               <CiLight className="hidden lg:block" />{" "}
               <IoIosArrowDown className="lg:hidden" />
             </div>
-            <div className="px-5 border-l border-primary-content h-full grid place-content-center">
+            <div
+              onClick={() => {
+                enqueueSnackbar("This feature is currently not available!", {
+                  variant: "info",
+                });
+              }}
+              className="px-5 border-l border-primary-content h-full grid place-content-center"
+            >
               <Image
                 width={30}
                 height={30}
