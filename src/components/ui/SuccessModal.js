@@ -38,7 +38,7 @@ const SuccessModal = ({ isOpen, setIsOpen, title, description }) => {
                   onClick={setIsOpen}
                   className="bg-white hover:opacity-90 transition-opacity text-gray-900 font-semibold w-full py-2 rounded"
                 >
-                  {language == "en" ? "Understood!" : "យល់ហើយ!"}
+                  Understood!
                 </button>
               </div>
             </div>

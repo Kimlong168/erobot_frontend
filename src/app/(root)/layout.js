@@ -5,27 +5,28 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ArticleProvider } from "@/contexts/ArticleContext";
 import { ProductProvider } from "@/contexts/ProductContext";
 import { CartProvider } from "@/contexts/CartContext";
-import GoToTop from "@/components/ui/GoToTop";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SnackbarProvider } from "notistack";
 const queryClient = new QueryClient();
 
 function Layout({ children }) {
   return (
-    <>
+    <main className="dark:bg-neutral-950 dark:text-white">
       <QueryClientProvider client={queryClient}>
-        <CartProvider>
-          <ProductProvider>
-            <ArticleProvider>
-              <Header />
-              {children}
-              <Footer />
-              {/* <GoToTop /> */}
-              <SnackbarProvider />
-            </ArticleProvider>
-          </ProductProvider>
-        </CartProvider>
+        <ThemeProvider>
+          <CartProvider>
+            <ProductProvider>
+              <ArticleProvider>
+                <Header />
+                {children}
+                <Footer />
+                <SnackbarProvider />
+              </ArticleProvider>
+            </ProductProvider>
+          </CartProvider>
+        </ThemeProvider>
       </QueryClientProvider>
-    </>
+    </main>
   );
 }
 

@@ -13,9 +13,10 @@ import { CiLight } from "react-icons/ci";
 import { useState } from "react";
 import contactInfo from "@/data/contactInfo";
 import { enqueueSnackbar } from "notistack";
+import { useThemeContext } from "@/contexts/ThemeContext";
 const Header = () => {
+  const { handleThemeSwitch } = useThemeContext();
   const [showSideBar, setShowSideBar] = useState(false);
-  const language = "en";
 
   return (
     <>
@@ -41,70 +42,41 @@ const Header = () => {
       </div>
 
       {/* header */}
-      <header className="text-primary-content sticky top-0 z-[10] shadow-xl bg-white">
+      <header className="text-primary-content sticky top-0 z-[10] shadow-xl bg-white ">
         <nav className="flex justify-between items-center gap-4 sm:gap-5 pl-2 sm:pl-6 md:pl-8 bg-primary-content ">
           {" "}
           {/* logo */}
           <div>
-            {language === "en" ? (
-              <Link href="/">
-                <div className="w-[80px]  md:w-[90px]">
-                  <Image
-                    src={assets.bigLogo}
-                    alt="logo"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-              </Link>
-            ) : (
-              <Link href="/">
-                <div className="w-[80px]  md:w-[100px]">
-                  <Image
-                    src={assets.logo}
-                    alt="khlogo"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-              </Link>
-            )}
+            <Link href="/">
+              <div className="w-[80px]  md:w-[90px]">
+                <Image
+                  src={assets.bigLogo}
+                  alt="logo"
+                  width={100}
+                  height={100}
+                />
+              </div>
+            </Link>
           </div>
           <div
             className="flex justify-center item-center gap-10 md:gap-20 w-full"
             onClick={scrollToTop}
           >
             {/* tab */}
-            <ul
-              className={`hidden lg:flex justify-center items-center gap-7 xl:gap-10 uppercase font-primary ${
-                language !== "en" && "text-lg"
-              }`}
-            >
+            <ul className="hidden lg:flex justify-center items-center gap-7 xl:gap-10 uppercase font-primary text-lg">
               <li className="cursor-pointer">
-                <NavLink
-                  href="/"
-                  title={`${language == "en" ? "Home" : "ទំព័រដើម"}`}
-                />
+                <NavLink href="/" title="Home" />
               </li>
 
               <li className="cursor-pointer">
-                <NavLink
-                  href="/articles"
-                  title={`${language == "en" ? "Articles" : "អត្ថបទ"}`}
-                />
+                <NavLink href="/articles" title="Articles" />
               </li>
               <li className="cursor-pointer">
-                <NavLink
-                  href="/products"
-                  title={`${language == "en" ? "Shop" : "ទិញទំនិញ"}`}
-                />
+                <NavLink href="/products" title="Shop" />
               </li>
 
               <li className="cursor-pointer">
-                <NavLink
-                  href="/contact"
-                  title={`${language == "en" ? "Contact" : "ទំនាក់ទំនង"}`}
-                />
+                <NavLink href="/contact" title="Contact" />
               </li>
               <li className="cursor-pointer">
                 <NavLinkDropdown />
@@ -114,15 +86,16 @@ const Header = () => {
           {/* left buttons */}
           <div className="flex items-center justify-end text-xl md:text-2xl h-[80px] lg:h-[85px]">
             <div
-              className="px-5 border-l border-primary-content h-full grid place-content-center cursor-pointer"
-              onClick={() => {
-                enqueueSnackbar("This feature is currently not available!", {
-                  variant: "info",
-                });
-              }}
+              className="hidden px-5 border-l border-primary-content h-full lg:grid place-content-center cursor-pointer"
+              onClick={handleThemeSwitch}
             >
-              <CiLight className="hidden lg:block" />{" "}
-              <IoIosArrowDown className="lg:hidden" />
+              <CiLight />
+            </div>
+            <div
+              className="lg:hidden px-5 border-l border-primary-content h-full grid place-content-center cursor-pointer"
+              onClick={() => setShowSideBar(true)}
+            >
+              <IoIosArrowDown />
             </div>
             <div
               onClick={() => {

@@ -8,8 +8,10 @@ import Image from "next/image";
 import { scrollToTop } from "@/utils/scrollToTop";
 import assets from "@/assets/assets";
 import { CiLight } from "react-icons/ci";
+import { useThemeContext } from "@/contexts/ThemeContext";
 const SideBar = ({ setShowSideBar, showSideBar }) => {
-  const language = "en";
+  const { handleThemeSwitch } = useThemeContext();
+
   return (
     <div
       id="sideBar"
@@ -20,7 +22,7 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
       <section className="bg-neutral-950 p-4 md:p-8">
         <div className="mx-auto max-w-5xl " onClick={scrollToTop}>
           <LinkContainer
-            heading={language == "en" ? "Home" : "ទំព័រដើម"}
+            heading={"Home"}
             subheading={"Welcome to ERobot Cambodia"}
             imgSrc={assets.whiteLogoNbg}
             href="/"
@@ -74,7 +76,10 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
             href="/cart"
           />
           <div
-            onClick={() => setShowSideBar((prev) => !prev)}
+            onClick={() => {
+              setShowSideBar((prev) => !prev);
+              handleThemeSwitch();
+            }}
             className="text-4xl  text-neutral-500 group hover:text-neutral-50 md:text-6xl mt-6 cursor-pointer"
           >
             <div className="flex items-center gap-3 font-bold">
@@ -99,7 +104,6 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
 };
 
 const LinkContainer = ({ heading, imgSrc, subheading, href }) => {
-  const language = "en";
   const ref = useRef(null);
 
   const x = useMotionValue(0);
@@ -149,25 +153,19 @@ const LinkContainer = ({ heading, imgSrc, subheading, href }) => {
             }}
             className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
           >
-            {language == "en" ? (
-              <>
-                {heading.split("").map((l, i) => (
-                  <motion.span
-                    variants={{
-                      initial: { x: 0 },
-                      whileHover: { x: 16 },
-                    }}
-                    transition={{ type: "spring" }}
-                    className="inline-block"
-                    key={i}
-                  >
-                    {l}
-                  </motion.span>
-                ))}
-              </>
-            ) : (
-              <span>{heading}</span>
-            )}
+            {heading.split("").map((l, i) => (
+              <motion.span
+                variants={{
+                  initial: { x: 0 },
+                  whileHover: { x: 16 },
+                }}
+                transition={{ type: "spring" }}
+                className="inline-block"
+                key={i}
+              >
+                {l}
+              </motion.span>
+            ))}
           </motion.span>
           <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
             {subheading}

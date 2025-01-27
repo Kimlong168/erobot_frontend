@@ -6,12 +6,9 @@ import assets from "@/assets/assets";
 import Image from "next/image";
 // drop down link in the navigation bar with the underline animation
 const NavLinkDropdown = () => {
-  const language = "en";
   return (
     <div className="flex justify-center font-primary text-xl ">
-      <FlyoutLink FlyoutContent={AboutContent}>
-        {language == "en" ? "About" : "អំពីយើង"}
-      </FlyoutLink>
+      <FlyoutLink FlyoutContent={AboutContent}>About</FlyoutLink>
     </div>
   );
 };
@@ -66,7 +63,6 @@ const FlyoutLink = ({ children, FlyoutContent }) => {
 };
 
 const AboutContent = () => {
-  const language = "en";
   return (
     <div
       className={`w-64  bg-white text-dark hover:text-black p-6 shadow-xl rounded-lg  border text-lg font-semibold font-secondary capitalize`}
@@ -85,7 +81,7 @@ const AboutContent = () => {
               height={100}
             />
           </div>
-          {language == "en" ? "Organization" : "អំពីយើង"}
+          Organization
         </Link>
         <Link
           href="/members"
@@ -100,7 +96,7 @@ const AboutContent = () => {
               height={100}
             />
           </div>
-          {language == "en" ? "Members" : "ដំណើរការផលិត"}
+          Members
         </Link>{" "}
         <Link
           href="/projects"
@@ -115,7 +111,7 @@ const AboutContent = () => {
               height={100}
             />
           </div>
-          {language == "en" ? "Projects" : "ដំណើរការផលិត"}
+          Projects
         </Link>
         <Link
           href="/download"
@@ -130,7 +126,7 @@ const AboutContent = () => {
               height={100}
             />
           </div>
-          {language == "en" ? "Download" : "រោងចក្រផលិត"}
+          Download
         </Link>
       </div>
     </div>
