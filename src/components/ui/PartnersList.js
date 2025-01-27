@@ -20,8 +20,8 @@ const PartnersList = ({ direction = "left" }) => {
     <>
       <div className="">
         <Marquee
-          // pauseOnClick={true}
-          pauseOnHover={true}
+          pauseOnClick={true}
+          // pauseOnHover={true}
           autoFill={true}
           speed={80}
           delay={3}
@@ -36,11 +36,11 @@ const PartnersList = ({ direction = "left" }) => {
             return (
               <div key={index}>
                 <Image
-                  className="max-w-[100px] md:max-w-[120px] mr-8 md:mr-16 hover:scale-125 transition-transform rounded-lg cursor-pointer" //80px
+                  className="max-w-[100px] md:max-w-[120px] mr-8 md:mr-16 hover:scale-125 transition-transform rounded-lg" //80px
                   src={partner.partnerLogo}
                   alt="partner"
-                  width={120}
-                  height={80}
+                  width={150}
+                  height={150}
                 />
               </div>
             );
