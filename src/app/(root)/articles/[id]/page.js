@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import Comment from "@/components/ui/Comment";
 import { getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
+import { getLongMonth } from "@/utils/getFormatedDate";
 import GoToTop from "@/components/ui/GoToTop";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -53,7 +54,7 @@ const ArticleDetail = async ({ params }) => {
         <div className="flex items-center gap-2">
           <FaRegCalendarCheck />
           <span className="font-semibold">Date:</span>
-          <span>{article.publicationDate}</span>
+          <span>{getLongMonth(article.publicationDate)}</span>
         </div>
       </div>
 

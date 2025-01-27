@@ -87,7 +87,12 @@ const Header = () => {
           <div className="flex items-center justify-end text-xl md:text-2xl h-[80px] lg:h-[85px]">
             <div
               className="hidden px-5 border-l border-primary-content h-full lg:grid place-content-center cursor-pointer"
-              onClick={handleThemeSwitch}
+              onClick={() => {
+                enqueueSnackbar("This feature is currently not available!", {
+                  variant: "info",
+                });
+                // handleThemeSwitch();
+              }}
             >
               <CiLight />
             </div>

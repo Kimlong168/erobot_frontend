@@ -3,8 +3,17 @@ import { createContext, useContext, useState, useEffect } from "react";
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(localStorage.getItem("mode") || "light");
-  // dark mode and light mode
+  const [theme, setTheme] = useState("light");
+
+  // Set initial theme based on localStorage, only on the client
+  useEffect(() => {
+    const savedTheme = localStorage?.getItem("mode");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
+  // Add or remove dark mode class
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -13,14 +22,11 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [theme]);
 
+  // switch theme
   const handleThemeSwitch = () => {
-    if (theme === "dark") {
-      localStorage.setItem("mode", "light");
-      setTheme("light");
-    } else {
-      localStorage.setItem("mode", "dark");
-      setTheme("dark");
-    }
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("mode", newTheme);
   };
 
   return (

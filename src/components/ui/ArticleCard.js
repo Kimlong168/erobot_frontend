@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import assets from "@/assets/assets";
+import { getLongMonth } from "@/utils/getFormatedDate";
 // import { Button } from "@/components/ui/button";
 // import { Skeleton } from "@/components/ui/skeleton";
 
@@ -20,7 +21,7 @@ const ArticleCard = ({ article }) => {
   return (
     <div className="startup-card group w-full h-full">
       <div className="flex-between">
-        <p className="startup_card_date">{publicationDate}</p>
+        <p className="startup_card_date">{getLongMonth(publicationDate)}</p>
         <div className="flex gap-1.5 text-[20px]">
           {/* <EyeIcon className="size-6 text-primary" /> */}
           {/* <span className="text-16-medium">{views}</span> */}❤️
