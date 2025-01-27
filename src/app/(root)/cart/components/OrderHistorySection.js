@@ -268,10 +268,10 @@ const OrderDetail = ({ setShowOrderDetail, order }) => {
     <>
       <div className="fixed inset-0 bg-slate-900/20 backdrop-blur grid place-content-center text-black z-[300]">
         <div
-          className="overflow-auto my-10 pt-0 w-fit bg-white rounded relative"
+          className="overflow-auto my-10 pt-0 w-fit relative"
           id="orderHistory"
         >
-          <div className="md:w-[600px] lg:w-[700px] bg-white">
+          <div className="w-[calc(100vw-18px)] sm:w-[calc(100vw-100px)] md:w-[600px] lg:w-[700px] bg-white">
             {/* title */}
             <div className="px-6  sticky top-0 bg-white z-10">
               <div className="pb-3 pt-5 mb-4 border-b-4 border-gray-400  bg-white flex justify-between items-center gap-4 ">

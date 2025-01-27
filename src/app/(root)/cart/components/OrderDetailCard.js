@@ -19,7 +19,7 @@ const OrderDetailCard = ({
 }) => {
   return (
     <div
-      className="border bg-card text-card-foreground w-full max-w-3xl min-w-[100%] mx-auto bg-white shadow-xl"
+      className="border bg-card text-card-foreground w-full max-w-3xl min-w-[100%] mx-auto shadow-xl"
       data-v0-t="card"
     >
       <div className="w-full overflow-x-auto">
