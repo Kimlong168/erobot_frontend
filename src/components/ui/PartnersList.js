@@ -32,7 +32,7 @@ const PartnersList = ({ direction = "left" }) => {
         >
           {partnerList.map((partner, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="bg-neutral-900b">
                 {/* <Image
                   className="max-w-[100px] md:max-w-[120px] mr-8 md:mr-16 hover:scale-125 transition-transform rounded-lg" //80px
                   src={partner.partnerLogo}
@@ -42,8 +42,8 @@ const PartnersList = ({ direction = "left" }) => {
                 /> */}
                 <div
                   key={index}
-                  className="bg-cover bg-center mr-8 md:mr-14 w-[110px] h-[110px] md:w-[120px] md:h-[120px] rounded-lg hover:scale-125 transition-transform"
-                  style={{ backgroundImage: `url(${partner.partnerLogo})` }}
+                  className="bg-cover bg-center mr-8 md:mr-14 w-[110px] h-[110px] md:w-[120px] md:h-[120px] rounded-lg hover:scale-125 transition-transform " // invert brightness-0 contrast-200
+                  style={{ backgroundImage: `url(${partner.partnerLogo})` }} // invert brightness-[0.8] sepia-[1] contrast-[1.5] //invert grayscale contrast-200
                 ></div>
               </div>
             );
