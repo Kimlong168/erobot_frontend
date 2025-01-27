@@ -81,39 +81,27 @@ const ProductDetailCard = ({ product }) => {
 
   // record order to firestore database
   const recordOrder = async () => {
-    const sanitize = (value, defaultValue = null) =>
-      value !== undefined ? value : defaultValue;
     // data to be recorded
     const order = {
-      orderId: sanitize(orderId, "Unknown Order ID"),
-      fullName: sanitize(formData.fullName, "Anonymous"),
-      phoneNumber: sanitize(formData.phoneNumber, "No Phone Number"),
-      contactLink: sanitize(formData.telegram, "No Contact Link"),
-      address: sanitize(formData.address, "No Address"),
-      message: sanitize(formData.message, "No Message"),
-      paymentMethod: sanitize(formData.paymentMethod, "No Payment Method"),
-      md5: sanitize(formData.md5, "No MD5"),
-      cartItems: sanitize(
-        [
-          {
-            ...product,
-            quantity: quantity,
-          },
-        ],
-        []
-      ), // Ensure it's an array
-
-      total: sanitize(parseFloat(price) * quantity, 0), // Ensure total is a number
-      status: sanitize(
-        formData.paymentMethod === "khqr" ? "paid" : "pending",
-        "pending"
-      ),
+      orderId: orderId,
+      fullName: formData.fullName,
+      phoneNumber: formData.phoneNumber,
+      contactLink: formData.telegram,
+      address: formData.address,
+      message: formData.message,
+      paymentMethod: formData.paymentMethod,
+      md5: formData.md5,
+      cartItems: [
+        {
+          ...product,
+          quantity: quantity,
+        },
+      ],
+      total: parseFloat(price) * quantity,
+      status: formData.paymentMethod === "khqr" ? "paid" : "pending",
       date: new Date().toLocaleString("en-GB"),
       timeStamp: new Date().getTime(),
     };
-
-    // Log the sanitized object for debugging
-    console.log("Sanitized buy now Data: ", order);
 
     const result = await createOrder(order);
 

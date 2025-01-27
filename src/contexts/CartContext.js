@@ -23,6 +23,11 @@ export const CartProvider = ({ children }) => {
 
   // add item and increate quantity
   const addItemOrIncreaseQuantity = (item, quantity = 1) => {
+    // check if categoryName is undefined
+    if (item.categoryName === undefined) {
+      item.categoryName = "No Category";
+    }
+    
     setCartItems((prevItems) => {
       const existingItem = prevItems.find(
         (i) => String(i.id).toLowerCase() == String(item.id).toLowerCase()
