@@ -184,7 +184,7 @@ const OrderHistorySection = () => {
                   <tbody>
                     {/* if there is no order */}
                     {orderList && orderList.length === 0 && (
-                      <motion.tr
+                      <tr
                         variants={fadeIn(
                           {
                             default: "up",
@@ -203,12 +203,12 @@ const OrderHistorySection = () => {
                         >
                           Loading...
                         </td>
-                      </motion.tr>
+                      </tr>
                     )}
 
                     {/* if there is no order */}
                     {orderList.length > 0 && orderHistoryList.length === 0 && (
-                      <motion.tr
+                      <tr
                         variants={fadeIn(
                           {
                             default: "up",
@@ -247,7 +247,7 @@ const OrderHistorySection = () => {
                             </div>
                           )}
                         </td>
-                      </motion.tr>
+                      </tr>
                     )}
 
                     {/* listing all the order history */}

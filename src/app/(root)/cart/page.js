@@ -177,124 +177,114 @@ const CartPage = () => {
       <div id="message">
         <div className={isOpenForm ? "p-4" : ""}>
           <section className="overflow-x-auto">
-            <div className="overflow-hidden">
-              <table className="w-full min-w-[300px]">
-                <thead>
-                  <tr className="border-b border-gray-300 text-gray-600 ">
-                    <th className="text-start pr-6 py-4">Item</th>
-                    <th className="text-start pr-6 py-4">Name</th>
-                    <th className="text-start pr-6 py-4">Price</th>
-                    <th className="text-start pr-6 py-4">
-                      <span>{isOpenForm ? "Qty" : "Quantity"}</span>
-                    </th>
-                    <th className="text-start pr-6 py-4">Total</th>
-                    <th
-                      className={`text-start pr-6 py-4 w-[100px] ${
-                        isOpenForm || cartItems.length == 0 ? "hidden" : ""
-                      }`}
-                    >
-                      Remove
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartItems?.length === 0 && (
-                    <motion.tr
-                      variants={fadeIn(
-                        {
-                          default: "up",
-                        },
-                        0.3,
-                        "all"
-                      )}
-                      initial="hidden"
-                      whileInView={"show"}
-                      viewport={{ once: true, amount: 0.3 }}
-                      className="border-b border-gray-300"
-                    >
-                      <td colSpan="6" className="text-center py-4">
-                        <p className="text-gray-600 mt-4">
-                          Your cart is empty.
-                        </p>
-                        <Link
-                          className="mt-2 text-sm text-blue-500 underline"
-                          href="/products"
-                        >
-                          Shop Now!
-                        </Link>
-                      </td>
-                    </motion.tr>
-                  )}
-                  {cartItems?.map((item, index) => (
-                    <motion.tr
-                      variants={fadeIn(
-                        {
-                          default: "left",
-                        },
-                        0.3 * (index + 1),
-                        "all"
-                      )}
-                      initial="hidden"
-                      whileInView={"show"}
-                      viewport={{ once: true, amount: 0.3 }}
-                      key={index}
-                      className="border-b border-gray-300"
-                    >
-                      <td className=" py-4">
-                        <Image
-                          width={50}
-                          height={50}
-                          src={item.image}
-                          alt="product"
-                        />
-                      </td>
-                      <td className="pr-3">{item.name}</td>
-                      <td className="pr-3">$ {item.price}</td>
-                      <td className="pr-3">
-                        {" "}
-                        <div className="flex items-center gap-1 md:gap-3">
-                          <Image
-                            width={50}
-                            height={50}
-                            onClick={() => decreaseQuantity(item.id)}
-                            className={`w-7 h-7 cursor-pointer ${
-                              isOpenForm ? "hidden" : ""
-                            }`}
-                            src={assets.removeIcon}
-                            alt="remove_icon_red"
-                          />
-                          {item.quantity}
-                          <Image
-                            width={50}
-                            height={50}
-                            onClick={() => addItemOrIncreaseQuantity(item)}
-                            className={`w-7 h-7 cursor-pointer ${
-                              isOpenForm ? "hidden" : ""
-                            }`}
-                            src={assets.addIcon}
-                            alt="add_icon_green"
-                          />
-                        </div>
-                      </td>
-                      <td className="pr-3">${item.price * item.quantity}</td>
-                      <td
-                        className={`cursor-pointer text-secondary ${
-                          isOpenForm ? "hidden" : ""
+            <div className="inline-block min-w-full">
+              <div className="overflow-hidden">
+                <table className="w-full min-w-full">
+                  <thead>
+                    <tr className="border-b border-gray-300 text-gray-600 ">
+                      <th className="text-start pr-6 py-4">Item</th>
+                      <th className="text-start pr-6 py-4">Name</th>
+                      <th className="text-start pr-6 py-4">Price</th>
+                      <th className="text-start pr-6 py-4">
+                        <span>{isOpenForm ? "Qty" : "Quantity"}</span>
+                      </th>
+                      <th className="text-start pr-6 py-4">Total</th>
+                      <th
+                        className={`text-start pr-6 py-4 w-[100px] ${
+                          isOpenForm || cartItems.length == 0 ? "hidden" : ""
                         }`}
-                        onClick={() => {
-                          removeItem(item.id);
-                          enqueueSnackbar(`Remove ${item.name} from cart!`, {
-                            variant: "error",
-                            autoHideDuration: 1500,
-                          });
-                        }}
                       >
-                        <FaX />
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+                        Remove
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartItems?.length === 0 && (
+                      <tr className="border-b border-gray-300">
+                        <td colSpan="6" className="text-center py-4">
+                          <p className="text-gray-600 mt-4">
+                            Your cart is empty.
+                          </p>
+                          <Link
+                            className="mt-2 text-sm text-blue-500 underline"
+                            href="/products"
+                          >
+                            Shop Now!
+                          </Link>
+                        </td>
+                      </tr>
+                    )}
+                    {cartItems?.map((item, index) => (
+                      <motion.tr
+                        variants={fadeIn(
+                          {
+                            default: "left",
+                          },
+                          0.3 * (index + 1),
+                          "all"
+                        )}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: true, amount: 0.3 }}
+                        key={index}
+                        className="border-b border-gray-300"
+                      >
+                        <td className=" py-4">
+                          <Image
+                            width={50}
+                            height={50}
+                            src={item.image}
+                            alt="product"
+                          />
+                        </td>
+                        <td className="pr-3">{item.name}</td>
+                        <td className="pr-3">$ {item.price}</td>
+                        <td className="pr-3">
+                          {" "}
+                          <div className="flex items-center gap-1 md:gap-3">
+                            <Image
+                              width={50}
+                              height={50}
+                              onClick={() => decreaseQuantity(item.id)}
+                              className={`w-7 h-7 cursor-pointer ${
+                                isOpenForm ? "hidden" : ""
+                              }`}
+                              src={assets.removeIcon}
+                              alt="remove_icon_red"
+                            />
+                            {item.quantity}
+                            <Image
+                              width={50}
+                              height={50}
+                              onClick={() => addItemOrIncreaseQuantity(item)}
+                              className={`w-7 h-7 cursor-pointer ${
+                                isOpenForm ? "hidden" : ""
+                              }`}
+                              src={assets.addIcon}
+                              alt="add_icon_green"
+                            />
+                          </div>
+                        </td>
+                        <td className="pr-3">${item.price * item.quantity}</td>
+                        <td
+                          className={`cursor-pointer text-secondary ${
+                            isOpenForm ? "hidden" : ""
+                          }`}
+                          onClick={() => {
+                            removeItem(item.id);
+                            enqueueSnackbar(`Remove ${item.name} from cart!`, {
+                              variant: "error",
+                              autoHideDuration: 1500,
+                            });
+                          }}
+                        >
+                          <FaX />
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>{" "}
           <section className="mt-12">
