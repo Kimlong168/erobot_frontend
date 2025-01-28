@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center p-1 px-3 sm:px-6 md:px-8 bg-bakong-red text-white">
+      <div className="flex justify-between items-center p-1 px-3 sm:px-6 md:px-8 bg-bakong-red dark:bg-secondary text-white dark:text-white/80 ">
         {/* phone number */}
         <div className="flex items-center gap-2">
           <FaPhoneSquareAlt />
@@ -42,7 +42,7 @@ const Header = () => {
       </div>
 
       {/* header */}
-      <header className="text-primary-content sticky top-0 z-[10] shadow-xl bg-white ">
+      <header className="text-primary-content sticky top-0 z-[10] shadow-xl dark:shadow-xl-dark bg-white  dark:bg-dark-mode dark:text-white dark:text-white/80 ">
         <nav className="flex justify-between items-center gap-4 sm:gap-5 pl-2 sm:pl-6 md:pl-8 bg-primary-content ">
           {" "}
           {/* logo */}
@@ -54,6 +54,7 @@ const Header = () => {
                   alt="logo"
                   width={100}
                   height={100}
+                  className="dark:invert dark:brightness-0 dark:contrast-200"
                 />
               </div>
             </Link>
@@ -88,10 +89,10 @@ const Header = () => {
             <div
               className="hidden px-5 border-l border-primary-content h-full lg:grid place-content-center cursor-pointer"
               onClick={() => {
-                enqueueSnackbar("This feature is currently not available!", {
-                  variant: "info",
-                });
-                // handleThemeSwitch();
+                // enqueueSnackbar("This feature is currently not available!", {
+                //   variant: "info",
+                // });
+                handleThemeSwitch();
               }}
             >
               <CiLight />
@@ -108,7 +109,7 @@ const Header = () => {
                   variant: "info",
                 });
               }}
-              className="px-5 border-l border-primary-content h-full grid place-content-center"
+              className="px-5 border-l dark:border-x border-primary-content h-full grid place-content-center"
             >
               <Image
                 width={30}
@@ -118,14 +119,14 @@ const Header = () => {
                 alt="flag"
               />
             </div>
-            <div className="h-full bg-primary grid place-content-center">
-              <Link
-                href="/donation"
-                className="text-white px-5 xl:px-10 text-2xl font-primary"
-              >
+            <Link
+              href="/donation"
+              className="h-full dark:bg-dark-mode bg-primary grid place-content-center"
+            >
+              <button className="text-white dark:text-white/80 px-5 xl:px-10 text-2xl font-primary">
                 Donate
-              </Link>
-            </div>
+              </button>
+            </Link>
           </div>
         </nav>
       </header>

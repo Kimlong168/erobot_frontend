@@ -16,12 +16,14 @@ const ProductCard = ({ product }) => {
     <div className="startup-card group w-full">
       <div>
         <Link href={`/products/${id}`}>
-          <h3 className="text-26-semibold line-clamp-1">{name}</h3>
+          <h3 className="text-26-semibold line-clamp-1 dark:text-white/90">
+            {name}
+          </h3>
         </Link>
       </div>
       <div>
         <Link href={`/products?query=filter${categoryId?.toLowerCase()}`}>
-          <p className="text-16-medium mb-3">
+          <p className="text-16-medium mb-3 dark:text-white/70">
             {categoryName ? categoryName : "No Category"}
           </p>
         </Link>
@@ -38,7 +40,9 @@ const ProductCard = ({ product }) => {
       </div>
       <div className="flex-between gap-3 mt-5">
         <div className="flex-1">
-          <h3 className="text-26-semibold line-clamp-1">{price} $</h3>
+          <h3 className="text-26-semibold line-clamp-1 dark:text-white/90">
+            {price} $
+          </h3>
         </div>
         {isItemInCart ? (
           <button

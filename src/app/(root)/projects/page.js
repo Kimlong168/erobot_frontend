@@ -18,7 +18,7 @@ const ProjectsPage = async () => {
   );
 
   return (
-    <main>
+    <main className="container">
       <GroupProjects
         projects={previousProject}
         title="Our Previous Projects"

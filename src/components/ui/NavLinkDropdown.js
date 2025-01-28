@@ -24,7 +24,7 @@ const FlyoutLink = ({ children, FlyoutContent }) => {
       onMouseLeave={() => setOpen(false)}
       className="relative w-fit h-fit"
     >
-      <div className="relative text-dark hover:text-black">
+      <div className="relative text-dark dark:text-white/80 dark:hover:text-secondary hover:text-black">
         {children}
         <span
           style={{
@@ -45,7 +45,7 @@ const FlyoutLink = ({ children, FlyoutContent }) => {
           >
             <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
 
-            <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white">
+            <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white ">
               <Image
                 className="block border  "
                 src={assets.kbachkhmer}
@@ -65,12 +65,12 @@ const FlyoutLink = ({ children, FlyoutContent }) => {
 const AboutContent = () => {
   return (
     <div
-      className={`w-64  bg-white text-dark hover:text-black p-6 shadow-xl rounded-lg  border text-lg font-semibold font-secondary capitalize`}
+      className={`w-64  bg-white dark:bg-dark-mode text-dark dark:text-white/80  hover:text-black p-6 shadow-xl rounded-lg  border text-lg font-semibold font-secondary capitalize`}
     >
       <div className="mb-3 space-y-3">
         <Link
           href="/about"
-          className="group hover:underline hover:text-primary flex items-center gap-2 italic"
+          className="group hover:underline hover:text-primary  dark:hover:text-secondary flex items-center gap-2 italic"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45  ">
             <Image
@@ -85,7 +85,7 @@ const AboutContent = () => {
         </Link>
         <Link
           href="/members"
-          className="group hover:underline hover:text-primary flex items-center gap-2 italic"
+          className="group hover:underline hover:text-primary dark:hover:text-secondary flex items-center gap-2 italic"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45  ">
             <Image
@@ -100,7 +100,7 @@ const AboutContent = () => {
         </Link>{" "}
         <Link
           href="/projects"
-          className="group hover:underline hover:text-primary flex items-center gap-2 italic"
+          className="group hover:underline hover:text-primary dark:hover:text-secondary flex items-center gap-2 italic"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45  ">
             <Image
@@ -115,7 +115,7 @@ const AboutContent = () => {
         </Link>
         <Link
           href="/download"
-          className="group hover:underline hover:text-primary flex items-center gap-2 italic"
+          className="group hover:underline hover:text-primary dark:hover:text-secondary flex items-center gap-2 italic"
         >
           <div className="hidden group-hover:block h-2 w-2 rotate-45  ">
             <Image

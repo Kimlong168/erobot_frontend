@@ -239,7 +239,7 @@ const DonationPage = () => {
   return (
     <main>
       <section>
-        <div className="min-h-[calc(100vh-100px)]  grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
+        <div className="min-h-[calc(100vh-100px)] dark:brightness-75 grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
           <motion.div
             variants={bounceIn(0.5)}
             initial="hidden"
@@ -283,7 +283,7 @@ const DonationPage = () => {
                   onChange={handleOnChange}
                   value={paymentData.name}
                   placeholder="Your cute name"
-                  className="w-full px-4 py-2 border text-black rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border text-black dark:bg-gray-900 dark:text-white rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-white"
                 />
                 <input
                   type="text"
@@ -293,7 +293,7 @@ const DonationPage = () => {
                   placeholder={
                     currency === "USD" ? "Amount in USD" : "Amount in KHR"
                   }
-                  className="w-full px-4 py-2 border text-black rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border text-black dark:bg-gray-900 dark:text-white  rounded-md border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-white"
                 />
                 {currency === "USD" ? (
                   <div className="flex gap-2">

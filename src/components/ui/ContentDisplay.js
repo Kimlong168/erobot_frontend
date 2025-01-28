@@ -14,7 +14,7 @@ const ContentDisplay = ({ htmlString }) => {
   }
 
   return (
-    <div className="prose-pre:w-[100%] text-gray-2 prose prose-h1:mt-7 prose-h2:mt-6 prose-h3:mt-4 prose-h4:mt-3 prose-p:m-0 prose-p:mt-2 prose-a:text-blue-500 prose-a:cursor-pointer max-w-full text-justify">
+    <div className="prose-pre:w-[100%] text-gray-2 dark:prose-dark dark:text-white/70 prose prose-h1:mt-7 prose-h2:mt-6 prose-h3:mt-4 prose-h4:mt-3 prose-p:m-0 prose-p:mt-2 prose-a:text-blue-500 prose-a:cursor-pointer max-w-full text-justify">
       <div dangerouslySetInnerHTML={{ __html: htmlString }} />
     </div>
   );

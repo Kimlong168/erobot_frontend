@@ -12,6 +12,7 @@ import removeIcon from "./remove_icon_red.png";
 import addIcon from "./add_icon_green.png";
 import KHQR from "./KHQR.png";
 import whiteLogoNbg from "./whiteLogoNbg.png";
+import lightLogoNbg from "./lightLogoNbg.png";
 import about from "./about.jpg";
 import founder from "./founder.jpg";
 import coFounder from "./co-founder.jpg";
@@ -30,6 +31,7 @@ const assets = {
   lightLogo,
   whiteLogo,
   whiteLogoNbg,
+  lightLogoNbg,
   removeIcon,
   addIcon,
   about,

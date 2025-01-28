@@ -21,7 +21,7 @@ const FlyoutLink = ({ children, href }) => {
     >
       <Link
         href={href}
-        className="relative  text-xl text-dark hover:text-black"
+        className="relative  text-xl text-dark dark:text-white/80 dark:hover:text-secondary hover:text-black"
       >
         {children}
         <span

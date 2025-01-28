@@ -74,7 +74,7 @@ const DonorsList = ({ direction = "left" }) => {
             return (
               <div key={index}>
                 {donor.name && donor.name !== "Anonymous" ? (
-                  <div className="pl-5 py-6 capitalize text-dark italic">
+                  <div className="pl-5 py-6 capitalize text-dark dark:text-white/80 italic">
                     {donor.name}
                   </div>
                 ) : null}

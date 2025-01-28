@@ -128,7 +128,7 @@ const ProductDetailCard = ({ product }) => {
       <ItemCartQuantity number={cartItems?.length} />
       <div className=" w-full mt-5">
         <div className="flex items-center justify-center w-full">
-          <div className="border-2 border-gray-5 rounded-xl p-4 md:p-8 flex flex-col w-full md:flex-row gap-5 md:gap-24  text-gray-700 ">
+          <div className="border-2 border-gray-5 rounded-xl p-4 md:p-8 flex flex-col w-full md:flex-row gap-5 md:gap-24  text-gray-700 dark:text-white/90">
             <div className="w-full md:w-2/5 ">
               <div className="relative m-0 overflow-hidden rounded text-white">
                 {/* product image */}
@@ -145,7 +145,7 @@ const ProductDetailCard = ({ product }) => {
                 </div> */}
               </div>
               <div className="hidden md:block">
-                <div className="font-semibold text-center p-4">
+                <div className="font-semibold text-center p-4 ">
                   Share this product
                 </div>
                 <SharingBtn url={currentURL} title={name} />
@@ -161,9 +161,9 @@ const ProductDetailCard = ({ product }) => {
                 </h6>
 
                 {/* category */}
-                <h4 className="mb-5 text-gray-900 text-sm flex items-center gap-2">
+                <h4 className="mb-5 text-gray-900 dark:text-white/80 text-sm flex items-center gap-2">
                   <span>Category: </span>
-                  <div className="text-primary">
+                  <div className="text-primary dark:text-secondary">
                     {categoryName || "No Category"}
                   </div>
                 </h4>
@@ -174,7 +174,8 @@ const ProductDetailCard = ({ product }) => {
                     <div
                       onClick={() => setShowDetail(false)}
                       className={` ${
-                        !showDetail && "text-primary border-b-2 border-primary "
+                        !showDetail &&
+                        "text-primary dark:text-secondary border-b-2 border-primary dark:border-secondary"
                       } cursor-pointer `}
                     >
                       Description:
@@ -182,7 +183,8 @@ const ProductDetailCard = ({ product }) => {
                     <div
                       onClick={() => setShowDetail(true)}
                       className={` ${
-                        showDetail && "text-primary border-b-2 border-primary "
+                        showDetail &&
+                        "text-primary dark:text-secondary border-b-2 border-primary dark:border-secondary"
                       } cursor-pointer `}
                     >
                       Detail:

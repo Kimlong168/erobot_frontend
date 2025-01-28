@@ -17,9 +17,9 @@ const TeamMemberItem = ({ member, bg, color, hcolor }) => (
       />
     </div>
     <div
-      className={`absolute -bottom-12 left-[10%] p-5 w-[80%] bg-white border shadow-xl rounded-lg text-center overflow-hidden z-[1] ${bg} group-hover:pt-7 group-hover:px-5 group-hover:pb-20 duration-300 group-hover:text-white`}
+      className={`absolute -bottom-12 left-[10%] p-5 w-[80%] bg-white dark:bg-gray-900 border shadow-xl rounded-lg text-center overflow-hidden z-[1] ${bg} group-hover:pt-7 group-hover:px-5 group-hover:pb-20 duration-300 group-hover:text-white`}
     >
-      <h3 className="text-xl font-semibold leading-normal  mb-1 font-primaryc text-dark group-hover:text-white">
+      <h3 className="text-xl font-semibold leading-normal  mb-1 font-primaryc text-dark dark:text-white/90 group-hover:text-white">
         {member.fullName}
       </h3>
       <p
@@ -64,10 +64,10 @@ const GroupMembers = ({
         {/* <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white mb-12">
           Our Team
         </h2> */}
-        <h3 className="text-center font-primary text-3xl md:text-4xl text-dark mb-2">
+        <h3 className="text-center font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-2">
           {title}
         </h3>
-        <p className="container text-center text-sm text-dark mb-12 italic">
+        <p className="container text-center text-sm text-dark dark:text-white/70 mb-12 italic">
           {description}
         </p>
         <div

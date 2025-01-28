@@ -6,15 +6,15 @@ import { PiCopyrightBold } from "react-icons/pi";
 import contactInfo from "@/data/contactInfo";
 const Footer = () => {
   return (
-    <footer className="overflow-hidden ">
-      <div className="bg-white">
+    <footer className="overflow-hidden dark:bg-dark-mode dark:text-white">
+      <div className="bg-white dark:bg-dark-mode ">
         <div className="flex flex-col mx-3 rounded-lg">
           <div className="w-full draggable">
             <div className="container flex flex-col mx-auto">
               <div className="flex flex-col items-center w-full mt-16 mb-5">
                 <span className="mb-8">
                   <Image
-                    className="w-[120px]"
+                    className="w-[120px] dark:invert dark:brightness-0 dark:contrast-200"
                     src={assets.bigLogo}
                     alt="logo"
                     width={120}
@@ -25,49 +25,49 @@ const Footer = () => {
                   <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-12 gap-y-3 lg:flex-nowrap text-dark-grey-900">
                     <Link
                       href="/"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Home
                     </Link>
                     <Link
                       href="/articles"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Articles
                     </Link>
                     <Link
                       href="/products"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Shop
                     </Link>
                     <Link
                       href="/contact"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Contact
                     </Link>
                     <Link
                       href="/about"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       About
                     </Link>
                     <Link
                       href="/projects"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Projects
                     </Link>{" "}
                     <Link
                       href="/cart"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Cart
                     </Link>
                     <Link
                       href="/donation"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-gray-600 hover:text-gray-900 dark:text-white/80 dark:hover:text-[#eee]"
                     >
                       Donate
                     </Link>
@@ -77,7 +77,7 @@ const Footer = () => {
                       <Link
                         key={index}
                         href={social.url}
-                        className="text-grey-700 hover:text-grey-900 text-dark hover:text-black"
+                        className="text-grey-700 hover:text-grey-900 text-dark hover:text-black dark:text-[#eee] dark:hover:text-white"
                       >
                         <LinkIcon title={social.title} size={24} />
                       </Link>

@@ -109,7 +109,7 @@ body {
   }
 
   .profile_title {
-    @apply w-11/12 bg-white border-[5px] border-black rounded-[20px] px-5 py-3 absolute -top-9 after:absolute after:content-[''] after:-top-1 after:right-0 after:-skew-y-6 after:bg-black after:-z-[1] after:rounded-[20px] after:w-full after:h-[60px] before:absolute before:content-[''] before:-bottom-1 before:left-0 before:-skew-y-6 before:w-full before:h-[60px] before:bg-black before:-z-[1] before:rounded-[20px] shadow-lg;
+    @apply w-11/12 bg-white border-[5px] border-black rounded-[20px] px-5 py-3 absolute -top-9 after:absolute after:content-[''] after:-top-1 after:right-0 after:-skew-y-6 after:bg-black dark:after:bg-gray-600 after:-z-[1] after:rounded-[20px] after:w-full after:h-[60px] before:absolute before:content-[''] before:-bottom-1 before:left-0 before:-skew-y-6 before:w-full before:h-[60px] before:bg-black before:-z-[1] before:rounded-[20px] shadow-lg;
   }
 
   .profile_image {
@@ -140,20 +140,20 @@ body {
 
   /* searchform */
   .search-form {
-    @apply lg:max-w-3xl w-full min-h-[80px] border-[5px] border-black/70 rounded-[80px] text-[24px] px-5 flex flex-row items-center gap-5;
+    @apply lg:max-w-3xl w-full min-h-[80px] border-[5px] dark:bg-transparent border-black/70 dark:border-white/60 rounded-[80px] text-[24px] px-5 flex flex-row items-center gap-5;
   }
 
   .search-input {
-    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black/70 w-full h-auto;
+    @apply flex-1 font-bold placeholder:font-semibold dark:bg-transparent placeholder:text-black/70 dark:placeholder:text-white/70 w-full h-auto;
   }
 
   .search-btn {
-    @apply size-[50px] rounded-full bg-black/80 flex justify-center items-center !important;
+    @apply size-[50px] rounded-full bg-black/80 dark:bg-white/70 dark:text-black flex justify-center items-center !important;
   }
 
   /* startupcard */
   .startup-card {
-    @apply bg-white border-[5px] border-black/70 py-6 px-5 rounded-[22px] shadow-xl hover:border-secondary/90 transition-all duration-500 hover:shadow-2xl hover:bg-secondary/10;
+    @apply bg-white dark:bg-dark-mode border-[5px] border-black/70 dark:border-white/60 py-6 px-5 rounded-[22px] shadow-xl hover:border-secondary/90 transition-all duration-500 hover:shadow-2xl hover:bg-secondary/10;
   }
 
   .startup-card_date {
@@ -161,7 +161,7 @@ body {
   }
 
   .startup-card_desc {
-    @apply font-normal text-[16px] line-clamp-2 my-3 text-black break-all;
+    @apply font-normal text-[16px] line-clamp-2 my-3 break-all;
   }
 
   .startup-card_img {
@@ -239,7 +239,8 @@ body {
 #searchResult::-webkit-scrollbar,
 #cart::-webkit-scrollbar,
 #placeOrder::-webkit-scrollba,
-#orderHistory::-webkit-scrollbar {
+#orderHistory::-webkit-scrollbar,
+#projects::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }

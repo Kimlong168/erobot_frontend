@@ -13,7 +13,7 @@ const DAY = HOUR * 24;
 const Countdown = ({ countdownFrom }) => {
   return (
     <div>
-      <div className="mx-auto flex w-full max-w-5xl items-center bg-white">
+      <div className="mx-auto flex w-full max-w-5xl items-center bg-white dark:bg-transparent">
         <CountdownItem unit="Day" text="days" countdownFrom={countdownFrom} />
         <CountdownItem unit="Hour" text="hours" countdownFrom={countdownFrom} />
         <CountdownItem
@@ -35,11 +35,11 @@ const CountdownItem = ({ unit, text, countdownFrom }) => {
   const { ref, time } = useTimer(unit, countdownFrom);
 
   return (
-    <div className="flex h-24 w-1/4 flex-col items-center justify-center gap-1 border-r-[1px] border-slate-200 font-mono md:h-36 md:gap-2">
+    <div className="flex h-24 w-1/4 flex-col items-center justify-center gap-1 border-r-[1px] dark:border-none border-slate-200 font-mono md:h-36 md:gap-2">
       <div className="relative w-full overflow-hidden text-center">
         <span
           ref={ref}
-          className="block text-2xl font-medium text-black md:text-4xl lg:text-6xl xl:text-7xl"
+          className="block text-2xl font-medium text-black dark:text-white/90 md:text-4xl lg:text-6xl xl:text-7xl"
         >
           {time}
         </span>

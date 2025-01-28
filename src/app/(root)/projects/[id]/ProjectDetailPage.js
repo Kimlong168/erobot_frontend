@@ -28,23 +28,31 @@ const ProjectDetailPage = ({ project }) => {
   const projectImpacts = [
     <>
       {" "}
-      <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-      <h3 className="text-3xl font-primary text-dark">
+      <FaUsers className="text-secondary hover:text-primary dark:text-white/90 dark:hover:text-secondary text-[80px] hover:scale-110 transform transition-all" />
+      <h3 className="text-3xl font-primary text-dark dark:text-white/80">
         {project.beneficiariesCount}
       </h3>
-      <p className=" text-gray-600 capitalize">Beneficiaries</p>
+      <p className=" text-gray-600 dark:text-white/70 capitalize">
+        Beneficiaries
+      </p>
     </>,
     <>
       {" "}
-      <FaHeart className="text-secondary hover:text-primary text-[70px] hover:scale-110 transform transition-all" />
-      <h3 className="text-3xl font-primary text-dark">{project.targetGroup}</h3>
-      <p className=" text-gray-600 capitalize">Target Audience</p>
+      <FaHeart className="text-secondary hover:text-primary dark:text-white/90 dark:hover:text-secondary text-[70px] hover:scale-110 transform transition-all" />
+      <h3 className="text-3xl font-primary text-dark dark:text-white/80">
+        {project.targetGroup}
+      </h3>
+      <p className=" text-gray-600 dark:text-white/70 capitalize">
+        Target Audience
+      </p>
     </>,
     <>
       {" "}
-      <MdLocationOn className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-      <h3 className="text-3xl font-primary text-dark">{project.location}</h3>
-      <p className=" text-gray-600 capitalize">Location</p>
+      <MdLocationOn className="text-secondary hover:text-primary dark:text-white/90 dark:hover:text-secondary text-[80px] hover:scale-110 transform transition-all" />
+      <h3 className="text-3xl font-primary text-dark dark:text-white/80">
+        {project.location}
+      </h3>
+      <p className=" text-gray-600 dark:text-white/70 capitalize">Location</p>
     </>,
   ];
 
@@ -54,7 +62,7 @@ const ProjectDetailPage = ({ project }) => {
         style={{
           backgroundImage: `url(${project.coverImage})`,
         }}
-        className={`relative bg-cover bg-center h-[calc(100vh-5rem)]`}
+        className={`relative bg-cover bg-center h-[calc(100vh-5rem)] dark:brightness-75`}
       >
         <div className="absolute inset-0 bg-black/50 opacity-50"></div>
         <motion.div
@@ -183,29 +191,33 @@ const ProjectDetailPage = ({ project }) => {
                 <p className="text-xl font-semibold text-secondary">
                   $ {raisedAmount.toLocaleString()}
                 </p>
-                <p className="text-sm text-gray-500">RAISED</p>
+                <p className="text-sm text-gray-500 dark:text-white/80">
+                  RAISED
+                </p>
               </div>
               <div className="bg-gray-400 h-14 min-w-[1px] w-[1px]"></div>
               <div>
                 <p className="text-xl font-semibold text-tertiary">
                   $ {totalGoal.toLocaleString()}
                 </p>
-                <p className="text-sm text-gray-500">GOALS</p>
+                <p className="text-sm text-gray-500 dark:text-white/80">
+                  GOALS
+                </p>
               </div>
               <div className="bg-gray-400 h-14 min-w-[1px] w-[1px]"></div>
               <div>
                 <p className="text-xl font-semibold text-primary">
                   $ {remainingAmount.toLocaleString()}
                 </p>
-                <p className="text-sm text-gray-500">LEFT</p>
+                <p className="text-sm text-gray-500 dark:text-white/80">LEFT</p>
               </div>
             </motion.div>
 
             <div className="flex justify-center mt-4">
               <Link href="/donation">
-                <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg">
+                <button className="flex items-center gap-2 bg-white dark:bg-transparent dark:border-white dark:text-white/90 text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg">
                   <span>
-                    <FaHeart fill="#E1232E" />
+                    <FaHeart />
                   </span>{" "}
                   Donate Now
                 </button>
@@ -248,7 +260,9 @@ const ProjectDetailPage = ({ project }) => {
 
         <div className="container">
           <div className="mt-4">
-            <p className="text-center text-gray-600 italic ">Our Organizers</p>
+            <p className="text-center text-gray-600 dark:text-white/80  italic ">
+              Our Organizers
+            </p>
             <div className="flex justify-center items-center gap-8 mt-2">
               <div className="flex flex-wrap justify-center items-center gap-8 mt-2 max-w-screen">
                 {project?.organizers.map((item, index) => {
@@ -268,7 +282,7 @@ const ProjectDetailPage = ({ project }) => {
                       className="flex-shrink-0"
                     >
                       <Image
-                        className="max-w-[120px] md:max-w-[140px] hover:scale-110 transition-transform "
+                        className="max-w-[120px] md:max-w-[140px] hover:scale-110 transition-transform dark:invert dark:grayscale dark:contrast-200"
                         src={item.partnerLogo}
                         alt={item.partnerName}
                         width={140}
@@ -282,7 +296,7 @@ const ProjectDetailPage = ({ project }) => {
           </div>
           {project?.coOrganizers.length > 0 && (
             <div className="mt-8">
-              <p className="text-center text-gray-600 italic">
+              <p className="text-center text-gray-600 dark:text-white/80  italic">
                 Our Co-organizers
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8 mt-2 max-w-screen">
@@ -303,7 +317,7 @@ const ProjectDetailPage = ({ project }) => {
                       className="flex-shrink-0 "
                     >
                       <Image
-                        className="max-w-[100px] md:max-w-[120px] hover:scale-110 transition-transform "
+                        className="max-w-[100px] md:max-w-[120px] hover:scale-110 transition-transform dark:invert dark:grayscale dark:contrast-200"
                         src={item.partnerLogo}
                         alt={item.partnerName}
                         width={120}
@@ -318,11 +332,16 @@ const ProjectDetailPage = ({ project }) => {
 
           {project?.volunteers.length > 0 && (
             <div className="mt-8">
-              <p className="text-center text-gray-600 italic">Our Volunteers</p>
+              <p className="text-center text-gray-600 dark:text-white/80 italic">
+                Our Volunteers
+              </p>
               <div className="flex flex-wrap justify-center items-center gap-4 mt-6 max-w-screen">
                 {project?.volunteers.map((item, index) => {
                   return (
-                    <div key={index} className="flex-shrink-0 text-dark">
+                    <div
+                      key={index}
+                      className="flex-shrink-0 text-dark dark:text-white/90"
+                    >
                       {item.name}
                     </div>
                   );
@@ -348,7 +367,9 @@ const ProjectDetailPage = ({ project }) => {
 
       <div className="py-3 mt-12">
         <div className="container flex flex-col gap-2 items-center">
-          <span className="italic text-gray-600">Share this project:</span>
+          <span className="italic text-gray-600 dark:text-white/80 ">
+            Share this project:
+          </span>
           <SharingBtn
             url={`${baseUrl}/projects/${project.id}`}
             title={project.name}

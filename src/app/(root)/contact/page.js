@@ -70,7 +70,7 @@ const ContactPage = () => {
         <section className="w-full">
           {/* map */}
           <div>
-            <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
+            <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark dark:text-white/90">
               Our Organization
             </h2>
             <motion.div
@@ -125,7 +125,7 @@ const ContactPage = () => {
 
         {/* contact form */}
         <section className="w-full">
-          <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
+          <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark dark:text-white/90">
             Send a message
           </h2>
 
@@ -229,7 +229,7 @@ const ContactPage = () => {
                 disabled={isSubmitting}
                 // onClick={sendToTelegram}
                 type="submit"
-                className="lg:prose-xl border-2 rounded-lg bg-secondary hover:bg-primary border-white px-6 py-2 font-semibold text-white"
+                className="lg:prose-xl border-2 rounded-lg bg-secondary hover:bg-primary dark:bg-transparent dark:hover:bg-secondary border-white px-6 py-2 font-semibold text-white"
               >
                 Send Message
               </button>

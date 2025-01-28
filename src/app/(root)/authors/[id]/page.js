@@ -41,7 +41,7 @@ const AuhtorDetail = async ({ params }) => {
 
           <Image
             src={author?.profilePicture}
-            alt={author.fullName}
+            alt={author?.fullName}
             width={220}
             height={220}
             className="profile_image"
@@ -69,7 +69,7 @@ const AuhtorDetail = async ({ params }) => {
         </div>
 
         <div className="flex-1 flex flex-col gap-5 lg:-mt-5">
-          <p className=" text-dark font-primary text-xl lg:text-2xl">
+          <p className=" text-dark dark:text-white/90 font-primary text-xl lg:text-2xl">
             All Articles
           </p>
           <div className="card_grid-sm">

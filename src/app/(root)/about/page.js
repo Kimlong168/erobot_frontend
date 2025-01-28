@@ -123,7 +123,7 @@ innovative learning opportunities.`,
         </motion.div>
 
         <div className="flex items-end w-full">
-          <article className="prose lg:prose-xl text-justify ">
+          <article className="prose lg:prose-xl text-justify dark:text-white/70 ">
             <p>
               Born in 2018, ERobot was found by founder <b>Suy Kosol</b> in
               hopes to bridge the gaps of education in Cambodia through
@@ -160,13 +160,13 @@ innovative learning opportunities.`,
           viewport={{ once: true, amount: 0.3 }}
           className="flex flex-col items-center gap-8"
         >
-          <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark">
+          <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90">
             Our Mission
           </h3>
           <div className="text-secondary text-[150px]">
             <GoGoal />
           </div>
-          <p className="lg:w-[80%] text-center">
+          <p className="lg:w-[80%] text-center dark:text-white/70">
             Bridge gaps, inspire leaders, and empower change-makers through
             education and collaboration.
           </p>
@@ -184,13 +184,13 @@ innovative learning opportunities.`,
           viewport={{ once: true, amount: 0.3 }}
           className="flex flex-col items-center gap-8"
         >
-          <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark">
+          <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90">
             Our Vision
           </h3>
           <div className="text-primary text-[150px]">
             <FaRegEye />
           </div>
-          <p className="lg:w-[80%] text-center">
+          <p className="lg:w-[80%] text-center dark:text-white/70">
             Inspire innovation, foster compassion, and empower through education
             for a better world.
           </p>
@@ -212,10 +212,10 @@ innovative learning opportunities.`,
             <div className="w-fit mx-auto mt-8">
               <Link
                 href="/members"
-                className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full hover:shadow-lg"
+                className="flex items-center gap-2 bg-white dark:bg-transparent dark:text-white dark:border-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full hover:shadow-lg"
               >
                 <span>
-                  <FaHeart fill="#E1232E" />
+                  <FaHeart />
                 </span>{" "}
                 Our Members
               </Link>
@@ -243,8 +243,8 @@ innovative learning opportunities.`,
               width={70}
               height={70}
               ref={cartoonRef}
-              className="md:mx-auto"
-              src={assets.lightLogo}
+              className="md:mx-auto dark:invert dark:brightness-0 dark:contrast-200"
+              src={assets.lightLogoNbg}
               alt="emoji"
             />
           </motion.div>
@@ -296,11 +296,11 @@ innovative learning opportunities.`,
                   }`}
                 >
                   <div
-                    className={`bg-white p-6 rounded-xl shadow-lg border hover:border-secondary/50 w-fit ${
+                    className={`bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border hover:border-secondary/50 dark:hover:border-secondary w-fit ${
                       index % 2 === 0 ? "block" : "block md:hidden"
                     }`}
                   >
-                    <h2 className="text-xl font-semibold text-gray-800">
+                    <h2 className="text-xl font-semibold text-gray-800 dark:text-white/90">
                       <a href={`#${event.year}`}>{event.title}</a>
                     </h2>
                     <p className="mt-2 text-sm text-gray-500 font-semibold leading-8">
@@ -348,11 +348,11 @@ innovative learning opportunities.`,
                   }`}
                 >
                   <div
-                    className={`bg-white p-6 rounded-xl shadow-lg border hover:border-secondary/50 w-fit ${
+                    className={`bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border hover:border-secondary/50 dark:hover:border-secondary w-fit ${
                       index % 2 !== 0 ? "block" : "md:hidden"
                     }`}
                   >
-                    <h2 className="text-xl font-semibold text-dark">
+                    <h2 className="text-xl font-semibold text-dark dark:text-white/90">
                       <a href={`#${event.year}`}>{event.title}</a>
                     </h2>
                     <p className="mt-2 text-sm text-gray-500 font-semibold leading-8">

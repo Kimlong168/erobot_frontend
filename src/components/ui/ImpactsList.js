@@ -10,30 +10,24 @@ import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 const impactData = [
   {
-    icon: (
-      <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-    ),
+    icon: <FaUsers />,
     number: "0",
     text: "participants reached",
   },
   {
     icon: (
-      <IoHeartCircle className="text-secondary hover:text-primary text-[82px] hover:scale-110 transform transition-all" />
+      <IoHeartCircle className=" text-[82px] hover:scale-110 transform transition-all" />
     ),
     number: "0",
     text: "projects completed",
   },
   {
-    icon: (
-      <RiMoneyDollarCircleFill className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-    ),
+    icon: <RiMoneyDollarCircleFill />,
     number: "0",
     text: "fund raised",
   },
   {
-    icon: (
-      <MdVolunteerActivism className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-    ),
+    icon: <MdVolunteerActivism />,
     number: "0",
     text: "members of the team",
   },
@@ -47,30 +41,24 @@ const ImpactsList = ({ inView }) => {
       const info = await getImpactsInfo();
       setInfo([
         {
-          icon: (
-            <FaUsers className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-          ),
+          icon: <FaUsers />,
           number: info.numberOfParticipants,
           text: "participants reached",
         },
         {
           icon: (
-            <IoHeartCircle className="text-secondary hover:text-primary text-[82px] hover:scale-110 transform transition-all" />
+            <IoHeartCircle className=" text-[82px] hover:scale-110 transform transition-all" />
           ),
           number: info.numberOfProjects,
           text: "projects completed",
         },
         {
-          icon: (
-            <RiMoneyDollarCircleFill className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-          ),
+          icon: <RiMoneyDollarCircleFill />,
           number: info.amountOfDonations,
           text: "fund raised",
         },
         {
-          icon: (
-            <MdVolunteerActivism className="text-secondary hover:text-primary text-[80px] hover:scale-110 transform transition-all" />
-          ),
+          icon: <MdVolunteerActivism />,
           number: info.numberOfMembers,
           text: "members of the team",
         },
@@ -97,8 +85,11 @@ const ImpactsList = ({ inView }) => {
             key={index}
             className="flex flex-col items-center justify-center space-y-4"
           >
-            {item.icon}
-            <h3 className="text-4xl font-primary text-dark">
+            <div className="text-secondary hover:text-primary dark:text-white dark:hover:text-secondary text-[80px] hover:scale-110 transform transition-all">
+              {item.icon}
+            </div>
+
+            <h3 className="text-4xl font-primary text-dark dark:text-white ">
               {inView ? (
                 <>
                   {" "}
@@ -112,7 +103,9 @@ const ImpactsList = ({ inView }) => {
                 "0"
               )}
             </h3>
-            <p className=" text-gray-600 capitalize">{item.text}</p>
+            <p className=" text-gray-600 dark:text-[#eee] capitalize">
+              {item.text}
+            </p>
           </motion.div>
         ))}
       </div>

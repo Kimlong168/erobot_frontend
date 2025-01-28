@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 function Layout({ children }) {
   return (
-    <main className="dark:bg-neutral-950 dark:text-white max-w-screen overflow-x-hidden">
+    <>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <CartProvider>
@@ -20,13 +20,14 @@ function Layout({ children }) {
                 <Header />
                 {children}
                 <Footer />
+
                 <SnackbarProvider />
               </ArticleProvider>
             </ProductProvider>
           </CartProvider>
         </ThemeProvider>
       </QueryClientProvider>
-    </main>
+    </>
   );
 }
 

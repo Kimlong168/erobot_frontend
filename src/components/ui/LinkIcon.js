@@ -57,5 +57,4 @@ const LinkIcon = ({ title, size = 24 }) => {
   );
 };
 
-
 export default LinkIcon;

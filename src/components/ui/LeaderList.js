@@ -58,10 +58,12 @@ const LeaderList = () => {
               />
             </div>
             <div className="text-center">
-              <h3 className="mt-4 font-bold font-primary uppercase text-xl text-dark">
+              <h3 className="mt-4 font-bold font-primary uppercase text-xl text-dark dark:text-white/90">
                 {item.fullName}
               </h3>
-              <div className="text-dark  mt-3 italic">{item.position}</div>
+              <div className="text-dark dark:text-white/70  mt-3 italic ">
+                {item.position}
+              </div>
             </div>
           </div>
         </motion.div>

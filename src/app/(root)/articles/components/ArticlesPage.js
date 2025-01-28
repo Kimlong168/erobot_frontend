@@ -85,12 +85,12 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-30-semibold w-full"
+          className="text-30-semibold w-full text-dark dark:text-white/90"
         >
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
-            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate text-dark font-primary">
+            <h3 className="font-bold text-3xl md:text-4xl hidden lg:block truncate  font-primary">
               Our Articles
             </h3>
           )}
@@ -170,10 +170,10 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
         {visibleCount < articles.length && ( // Show "See More" button only if there are more articles
           <button
             onClick={handleSeeMore}
-            className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg"
+            className="flex items-center gap-2 bg-white dark:bg-transparent dark:text-white dark:border-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg"
           >
             <span>
-              <FaHeart fill="#E1232E" />
+              <FaHeart />
             </span>{" "}
             View More
           </button>

@@ -7,7 +7,11 @@ export const metadata = {
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`antialiased font-secondary`}>{children}</body>
+      <body
+        className={`antialiased font-secondary dark:bg-dark-mode dark:text-white max-w-screen overflow-x-hidden`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

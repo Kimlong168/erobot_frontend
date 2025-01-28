@@ -55,7 +55,7 @@ const DownloadPage = () => {
   return (
     <main className="container py-8 md:py-12">
       <section className="mb-12">
-        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
+        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Our Brand Story
         </h3>
         <motion.p
@@ -69,7 +69,7 @@ const DownloadPage = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-justify"
+          className="text-md lg:text-[17px] text-justify dark:text-white/70 text-dark"
         >
           Founded in 2018 by Suy Kosol, ERobot aims to bridge educational gaps
           in Cambodia by offering teaching, training, and collaboration for
@@ -93,7 +93,7 @@ const DownloadPage = () => {
       </section>
 
       <section className="mb-12">
-        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
+        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Logos
         </h3>
         <div className="flex flex-col md:flex-row gap-4">
@@ -132,7 +132,7 @@ const DownloadPage = () => {
       </section>
 
       <section>
-        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
+        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Stickers
         </h3>
         <motion.div

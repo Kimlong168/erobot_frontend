@@ -8,13 +8,13 @@ const ContactInfo = () => {
       {" "}
       {/* contact info */}
       <div className="mt-10">
-        <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark">
+        <h2 className="text-nowrap text-3xl md:text-4xl font-primary text-dark dark:text-white/90">
           Our Contact
         </h2>
 
         {contactInfo && (
           <div className="pt-6 pb-3 porse lg:prose-xl">
-            <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+            <div className=" hover:text-primary dark:hover:text-secondary hover:underline cursor-pointer w-fit">
               {/* phone */}
               <div>
                 Phone:{" "}
@@ -23,7 +23,7 @@ const ContactInfo = () => {
                 </Link>
               </div>
             </div>
-            <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+            <div className=" hover:text-primary dark:hover:text-secondary hover:underline cursor-pointer w-fit">
               {/* email */}
               <div>
                 Email:{" "}
@@ -32,7 +32,7 @@ const ContactInfo = () => {
                 </Link>
               </div>
             </div>
-            <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+            <div className=" hover:text-primary dark:hover:text-secondary hover:underline cursor-pointer w-fit">
               {/* telegram */}
               <div>
                 {" "}
@@ -50,7 +50,7 @@ const ContactInfo = () => {
               <Link
                 href={item.url}
                 key={index}
-                className="hover:text-primary-light hover:underline text-dark hover:text-black"
+                className="hover:text-primary-light hover:underline text-dark  hover:text-black dark:text-white/90 dark:hover:text-white"
               >
                 <LinkIcon title={item.title} size={32} />
               </Link>
