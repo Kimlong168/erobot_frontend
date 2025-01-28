@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 function Layout({ children }) {
   return (
-    <main className="dark:bg-neutral-950 dark:text-white">
+    <main className="dark:bg-neutral-950 dark:text-white max-w-screen overflow-x-hidden">
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <CartProvider>

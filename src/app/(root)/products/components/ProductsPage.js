@@ -120,19 +120,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
         </motion.div>
       </div>
 
-      <motion.ul
-        variants={fadeIn(
-          {
-            default: "up",
-          },
-          0.3,
-          "all"
-        )}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: true, amount: 0.3 }}
-        className="mt-7 product_grid"
-      >
+      <ul className="mt-7 product_grid">
         {products?.length > 0 ? (
           visibleProducts?.map((product) => {
             const category = productCategories.find(
@@ -140,10 +128,23 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
             );
 
             return (
-              <ProductCard
+              <motion.div
+                variants={fadeIn(
+                  {
+                    default: "up",
+                  },
+                  0.3,
+                  "all"
+                )}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0.3 }}
                 key={product.id}
-                product={{ ...product, categoryName: category?.categoryName }}
-              />
+              >
+                <ProductCard
+                  product={{ ...product, categoryName: category?.categoryName }}
+                />
+              </motion.div>
             );
           })
         ) : (
@@ -163,7 +164,7 @@ const ProductsPage = ({ initialData, productCategories, query }) => {
             No products found!
           </motion.p>
         )}
-      </motion.ul>
+      </ul>
 
       <div className="flex justify-center mt-4">
         {visibleCount < products.length && ( // Show "See More" button only if there are more products

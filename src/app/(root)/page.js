@@ -121,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-boy bg-cover bg-center h-[500px]">
+      <section className="relative bg-boy bg-cover bg-center h-[500px]  max-w-screen overflow-x-hidden">
         <div className="absolute inset-0 bg-black/50 opacity-50"></div>
         <div className="container relative z-2 h-full grid place-content-center items-center md:gap-12">
           <motion.div

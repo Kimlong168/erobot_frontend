@@ -119,19 +119,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
         </motion.div>
       </div>
 
-      <motion.ul
-        variants={fadeIn(
-          {
-            default: "up",
-          },
-          0.3,
-          "all"
-        )}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: true, amount: 0.3 }}
-        className="mt-7 card_grid"
-      >
+      <ul className="mt-7 card_grid">
         {articles?.length > 0 ? (
           visibleArticles?.map((article) => {
             const author = authors.find(
@@ -142,10 +130,21 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
             );
 
             return (
-              <ArticleCard
+              <motion.div
+                variants={fadeIn(
+                  {
+                    default: "up",
+                  },
+                  0.3,
+                  "all"
+                )}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0.3 }}
                 key={article?.id}
-                article={{ ...article, author, category }}
-              />
+              >
+                <ArticleCard article={{ ...article, author, category }} />
+              </motion.div>
             );
           })
         ) : (
@@ -165,7 +164,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
             No articles found!
           </motion.p>
         )}
-      </motion.ul>
+      </ul>
 
       <div className="flex justify-center mt-4">
         {visibleCount < articles.length && ( // Show "See More" button only if there are more articles

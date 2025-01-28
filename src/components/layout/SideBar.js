@@ -78,7 +78,7 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
           <div
             onClick={() => {
               setShowSideBar((prev) => !prev);
-              handleThemeSwitch();
+              // handleThemeSwitch();
             }}
             className="text-4xl  text-neutral-500 group hover:text-neutral-50 md:text-6xl mt-6 cursor-pointer"
           >
