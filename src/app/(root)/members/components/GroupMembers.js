@@ -80,9 +80,8 @@ const GroupMembers = ({
               variants={fadeIn(
                 {
                   default: "up",
-                  md: "left",
                 },
-                0.3 * (i + 1),
+                0.3,
                 "all"
               )}
               initial="hidden"
