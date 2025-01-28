@@ -87,7 +87,7 @@ const Header = () => {
           {/* left buttons */}
           <div className="flex items-center justify-end text-xl md:text-2xl h-[80px] lg:h-[85px]">
             <div
-              className="hidden px-5 border-l border-primary-content h-full lg:grid place-content-center cursor-pointer"
+              className="hidden px-5 border-l border-primary-content dark:border-white/30 h-full lg:grid place-content-center cursor-pointer"
               onClick={() => {
                 // enqueueSnackbar("This feature is currently not available!", {
                 //   variant: "info",
@@ -98,7 +98,7 @@ const Header = () => {
               <CiLight />
             </div>
             <div
-              className="lg:hidden px-5 border-l border-primary-content h-full grid place-content-center cursor-pointer"
+              className="lg:hidden px-5 border-primary-content dark:border-white/30 h-full grid place-content-center cursor-pointer"
               onClick={() => setShowSideBar(true)}
             >
               <IoIosArrowDown />
@@ -109,7 +109,7 @@ const Header = () => {
                   variant: "info",
                 });
               }}
-              className="px-5 border-l dark:border-x border-primary-content h-full grid place-content-center"
+              className="px-5 border-l dark:border-x border-primary-content dark:border-white/30 h-full grid place-content-center"
             >
               <Image
                 width={30}
