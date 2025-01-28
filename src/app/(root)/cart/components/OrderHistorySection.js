@@ -84,7 +84,7 @@ const OrderHistorySection = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="flex items-end w-full"
           >
-            <span className=" text-[28px] sm:text-3xl text-dark font-primary">
+            <span className=" text-[28px] sm:text-3xl text-dark dark:text-white/90 font-primary">
               Your Previous Order
             </span>
           </motion.div>
@@ -104,7 +104,7 @@ const OrderHistorySection = () => {
             className="w-full lg:w-auto md:min-w-[300px]"
             onSubmit={handleSearch}
           >
-            <div className="flex items-center gap-3 px-4 py-2 border">
+            <div className="flex items-center gap-3 px-4 py-2 border border-gray-800">
               {/* search input */}
               <input
                 className="outline-none border-none p-1 w-full bg-transparent"
@@ -140,42 +140,42 @@ const OrderHistorySection = () => {
             <div className="py-2 inline-block min-w-full">
               <div className="overflow-hidden">
                 <table className="min-w-full">
-                  <thead className="bg-white border-b">
+                  <thead className="border-b dark:border-gray-800 ">
                     <tr>
                       <th
                         scope="col"
-                        className="text-md font-bold text-gray-600 px-6 py-4 text-left truncate"
+                        className="text-md font-bold text-gray-600 dark:text-white/90 px-6 py-4 text-left truncate"
                       >
                         Order ID
                       </th>
                       <th
                         scope="col"
-                        className="text-md font-bold text-gray-600 px-6 py-4 text-left truncate"
+                        className="text-md font-bold text-gray-600 dark:text-white/90 px-6 py-4 text-left truncate"
                       >
                         Customer Name
                       </th>
                       <th
                         scope="col"
-                        className="text-md font-bold text-gray-600 px-6 py-4 text-left truncate"
+                        className="text-md font-bold text-gray-600 dark:text-white/90 px-6 py-4 text-left truncate"
                       >
                         Date
                       </th>
                       <th
                         scope="col"
-                        className="text-md font-bold text-gray-600 px-6 py-4 text-left truncate"
+                        className="text-md font-bold text-gray-600 dark:text-white/90 px-6 py-4 text-left truncate"
                       >
                         Total
                       </th>
                       <th
                         scope="col"
-                        className="text-md font-bold text-gray-600 px-6 py-4 text-left truncate"
+                        className="text-md font-bold text-gray-600 dark:text-white/90 px-6 py-4 text-left truncate"
                       >
                         Status
                       </th>
 
                       <th
                         scope="col"
-                        className="text-md font-bold text-gray-600 px-6 py-4 text-left truncate"
+                        className="text-md font-bold text-gray-600 dark:text-white/90 px-6 py-4 text-left truncate"
                       >
                         Action
                       </th>
@@ -198,7 +198,7 @@ const OrderHistorySection = () => {
                         className=" border-b"
                       >
                         <td
-                          className="px-6 py-4 whitespace-nowrap font-medium text-gray-600  text-center text-sm"
+                          className="px-6 py-4 whitespace-nowrap font-medium text-gray-600 dark:text-white/80  text-center text-sm"
                           colSpan="6"
                         >
                           Loading...
@@ -219,14 +219,16 @@ const OrderHistorySection = () => {
                         initial="hidden"
                         whileInView={"show"}
                         viewport={{ once: true, amount: 0.3 }}
-                        className=" border-b"
+                        className="border-b dark:border-gray-800"
                       >
                         <td
-                          className="px-6 py-4 whitespace-nowrap font-medium text-gray-600 text-center text-sm"
+                          className="px-6 py-4 whitespace-nowrap font-medium text-gray-600 dark:text-white/80 text-center text-sm"
                           colSpan="6"
                         >
-                          <p className="text-gray-600 mt-4">No Orders found!</p>
-                          <p className="text-gray-600 mt-4">
+                          <p className="text-gray-600 dark:text-white/80 mt-4">
+                            No Orders found!
+                          </p>
+                          <p className="text-gray-600 dark:text-white/80 mt-4">
                             You can input your order ID in the search bar to
                             find your order!
                           </p>
@@ -266,25 +268,25 @@ const OrderHistorySection = () => {
                               initial="hidden"
                               whileInView={"show"}
                               viewport={{ once: true, amount: 0.3 }}
-                              className=" border-b"
+                              className="border-b dark:border-gray-800"
                               key={order.orderId}
                             >
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 ">
+                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 dark:text-white/80 ">
                                 {order.orderId}
                               </td>
-                              <td className="text-sm text-gray-600  font-light px-6 py-4 whitespace-nowrap">
+                              <td className="text-sm text-gray-600 dark:text-white/80  font-light px-6 py-4 whitespace-nowrap">
                                 {order.fullName}
                               </td>
-                              <td className="text-sm text-gray-600  font-light px-6 py-4 whitespace-nowrap">
+                              <td className="text-sm text-gray-600 dark:text-white/80  font-light px-6 py-4 whitespace-nowrap">
                                 {order.date}
                               </td>
-                              <td className="text-sm text-gray-600  font-light px-6 py-4 whitespace-nowrap">
+                              <td className="text-sm text-gray-600 dark:text-white/80  font-light px-6 py-4 whitespace-nowrap">
                                 $ {order.total}
                               </td>
-                              <td className="text-sm text-gray-600  font-light px-6 py-4 whitespace-nowrap flex justify-center">
+                              <td className="text-sm text-gray-600 dark:text-white/80  font-light px-6 py-4 whitespace-nowrap flex justify-center">
                                 <StatusColor status={order.status} />
                               </td>
-                              <td className="text-sm text-gray-600  font-light px-6 py-4 whitespace-nowrap">
+                              <td className="text-sm text-gray-600 dark:text-white/80  font-light px-6 py-4 whitespace-nowrap">
                                 <button
                                   onClick={() =>
                                     setShowOrderDetail({

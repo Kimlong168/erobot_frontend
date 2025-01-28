@@ -181,7 +181,7 @@ const CartPage = () => {
               <div className="overflow-hidden">
                 <table className="w-full min-w-full">
                   <thead>
-                    <tr className="border-b border-gray-300 text-gray-600 ">
+                    <tr className="border-b  dark:border-gray-800 text-gray-600 dark:text-white/90">
                       <th className="text-start pr-6 py-4">Item</th>
                       <th className="text-start pr-6 py-4">Name</th>
                       <th className="text-start pr-6 py-4">Price</th>
@@ -200,9 +200,9 @@ const CartPage = () => {
                   </thead>
                   <tbody>
                     {cartItems?.length === 0 && (
-                      <tr className="border-b border-gray-300">
+                      <tr className="border-b  dark:border-gray-800">
                         <td colSpan="6" className="text-center py-4">
-                          <p className="text-gray-600 mt-4">
+                          <p className="text-gray-600 dark:text-white/80 mt-4">
                             Your cart is empty.
                           </p>
                           <Link
@@ -227,7 +227,7 @@ const CartPage = () => {
                         whileInView={"show"}
                         viewport={{ once: true, amount: 0.3 }}
                         key={index}
-                        className="border-b border-gray-300"
+                        className="border-b  dark:border-gray-800"
                       >
                         <td className=" py-4">
                           <Image
@@ -293,13 +293,13 @@ const CartPage = () => {
                 <h3 className="text-2xl font-semibold">Cart Total</h3>
                 <table className="w-full mt-3">
                   <tbody>
-                    <tr className="border-b">
+                    <tr className="border-b dark:border-gray-800">
                       <td className="font-semibold pb-3 text-gray-600">
                         Subtotal
                       </td>
                       <td className="text-end">$ {getTotalPrice()}</td>
                     </tr>
-                    <tr className="border-b">
+                    <tr className="border-b dark:border-gray-800">
                       <td className="font-semibold pb-3 text-gray-600">
                         Other
                       </td>
@@ -327,10 +327,10 @@ const CartPage = () => {
                             }
                             setIsOpenForm(true);
                           }}
-                          className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg"
+                          className="flex items-center gap-2 bg-white dark:bg-transparent dark:text-white dark:border-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg"
                         >
                           <span>
-                            <FaHeart fill="#E1232E" />
+                            <FaHeart />
                           </span>{" "}
                           Checkout
                         </button>

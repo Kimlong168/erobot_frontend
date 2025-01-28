@@ -1,7 +1,7 @@
 import "./globals.css";
 export const metadata = {
   title: "ERobot Cambodia",
-  description: "Welcome to erobotcambodia.org",
+  description: "Welcome to Erobotcambodia official website",
 };
 
 function RootLayout({ children }) {
