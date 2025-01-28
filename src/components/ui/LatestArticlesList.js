@@ -40,7 +40,7 @@ const LatestArticlesList = () => {
               {
                 default: "left",
               },
-              0.3 * (index + 1),
+              0.1 * (index + 1),
               "all"
             )}
             initial="hidden"
