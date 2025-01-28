@@ -17,8 +17,8 @@ const Footer = () => {
                     className="w-[120px]"
                     src={assets.bigLogo}
                     alt="logo"
-                    width={100}
-                    height={100}
+                    width={120}
+                    height={120}
                   />
                 </span>
                 <div className="flex flex-col items-center gap-6 mb-8">

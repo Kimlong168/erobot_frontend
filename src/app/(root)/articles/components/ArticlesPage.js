@@ -2,12 +2,13 @@
 import { useQuery } from "react-query";
 import { getArticles } from "@/queries/article";
 import ArticleCard from "@/components/ui/ArticleCard";
-import { BsSearch } from "react-icons/bs";
 import { useArticleContext } from "@/contexts/ArticleContext";
 import { useEffect, useState } from "react";
 import SearchForm from "@/components/form/SearchForm";
 import { FaHeart } from "react-icons/fa";
 import GoToTop from "@/components/ui/GoToTop";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 
 const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   const { state: articles, setState } = useArticleContext();
@@ -56,7 +57,7 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
       const visibleArticles = filteredArticles.slice(0, visibleCount);
       setVisibleArticles(visibleArticles);
     }
-  }, [query, data, setState]);
+  }, [query, data, setState, visibleCount]);
 
   const getCategoryName = (id) => {
     console.log(articleCategories);
@@ -73,7 +74,19 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
   return (
     <main className="container py-8 md:py-12">
       <div className="flex flex-col items-start lg:flex-row justify-between lg:items-center gap-2 lg:gap-8">
-        <div className="text-30-semibold w-full">
+        <motion.div
+          variants={fadeIn(
+            {
+              default: "right",
+            },
+            0.3,
+            "all"
+          )}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-30-semibold w-full"
+        >
           {query && !query.includes("filter") ? (
             `Search results for "${query}"`
           ) : (
@@ -81,8 +94,20 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
               Our Articles
             </h3>
           )}
-        </div>{" "}
-        <div className="w-full sm:w-fit ">
+        </motion.div>{" "}
+        <motion.div
+          variants={fadeIn(
+            {
+              default: "left",
+            },
+            0.3,
+            "all"
+          )}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full sm:w-fit "
+        >
           <SearchForm
             actionPath="/articles"
             query={
@@ -91,10 +116,22 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
                 : query
             }
           />
-        </div>
+        </motion.div>
       </div>
 
-      <ul className="mt-7 card_grid">
+      <motion.ul
+        variants={fadeIn(
+          {
+            default: "up",
+          },
+          0.3,
+          "all"
+        )}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.3 }}
+        className="mt-7 card_grid"
+      >
         {articles?.length > 0 ? (
           visibleArticles?.map((article) => {
             const author = authors.find(
@@ -112,9 +149,23 @@ const ArticlesPage = ({ initialData, authors, articleCategories, query }) => {
             );
           })
         ) : (
-          <p className="no-results">No articles found</p>
+          <motion.p
+            variants={fadeIn(
+              {
+                default: "up",
+              },
+              0.3,
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.3 }}
+            className="no-results"
+          >
+            No articles found!
+          </motion.p>
         )}
-      </ul>
+      </motion.ul>
 
       <div className="flex justify-center mt-4">
         {visibleCount < articles.length && ( // Show "See More" button only if there are more articles

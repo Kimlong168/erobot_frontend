@@ -1,7 +1,6 @@
 "use client";
 import { getPartners } from "@/queries/partner";
 import Marquee from "react-fast-marquee";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const PartnersList = ({ direction = "left" }) => {
@@ -18,10 +17,9 @@ const PartnersList = ({ direction = "left" }) => {
   if (partnerList.length === 0) return null; //skeleton loader
   return (
     <>
-      <div className="">
+      <div>
         <Marquee
           pauseOnClick={true}
-          // pauseOnHover={true}
           autoFill={true}
           speed={80}
           delay={3}

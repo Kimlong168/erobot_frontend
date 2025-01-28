@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { bounceIn } from "@/utils/variants";
 import DonorsList from "@/components/ui/DonorsList";
 import QRCode from "qrcode";
 import { BakongKHQR, khqrData, IndividualInfo, SourceInfo } from "bakong-khqr";
@@ -15,7 +16,6 @@ import Link from "next/link";
 import { sendTelegramMessage } from "@/utils/sendTelegramMessage";
 import { getCurrentTime, getCurrentTimeForDonor } from "@/utils/getCurrentTime";
 import { useSearchParams } from "next/navigation";
-import { fadeIn } from "@/utils/variants";
 import { createDonor } from "@/queries/donor";
 import { invitationMessage } from "@/data/messageToSend";
 
@@ -240,7 +240,11 @@ const DonationPage = () => {
     <main>
       <section>
         <div className="min-h-[calc(100vh-100px)]  grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
-          <div
+          <motion.div
+            variants={bounceIn(0.5)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
             className={`w-full max-w-sm md:max-w-md mx-auto p-6 rounded-2xl shadow-lg bg-black/50 border -mt-4 ${
               qrCode && "mt-0"
             }`}
@@ -527,43 +531,15 @@ const DonationPage = () => {
                 </p>
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       <section className="overflow-hidden">
-   
-        <motion.div
-          variants={fadeIn("up", 0.2)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div>
           <DonorsList direction="left" />
-        </motion.div>
-      </section>
-
-      {/* <section className="relative bg-boy bg-cover bg-center h-[500px]">
-        <div className="absolute inset-0 bg-black/50 opacity-50"></div>
-        <div className="container relative z-2 h-full grid place-content-center items-center md:gap-12">
-          <motion.div
-            variants={fadeIn(
-              {
-                default: "up",
-              },
-              0.5,
-              "all"
-            )}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <h3 className=" text-4xl md:text-[40px] text-[#eee] font-bold text-center md:text-left md:w-[70%] leading-relaxed">
-              <DrawCircleText />
-            </h3>
-          </motion.div>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 };

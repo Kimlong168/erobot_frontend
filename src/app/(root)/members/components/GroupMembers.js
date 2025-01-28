@@ -1,6 +1,9 @@
+"use client";
 import LinkIcon from "@/components/ui/LinkIcon";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 
 const TeamMemberItem = ({ member, bg, color, hcolor }) => (
   <div className="group relative w-full ">
@@ -73,14 +76,27 @@ const GroupMembers = ({
           }  gap-14 gap-y-24  pb-12`}
         >
           {teamMembers?.map((member, i) => (
-            <div className={i == 1 ? "order-1 lg:order-2" : "order-2"} key={i}>
+            <motion.div
+              variants={fadeIn(
+                {
+                  default: "left",
+                },
+                0.3 * (i + 1),
+                "all"
+              )}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: true, amount: 0.3 }}
+              className={i == 1 ? "order-1 lg:order-2" : "order-2"}
+              key={i}
+            >
               <TeamMemberItem
                 member={member}
                 bg={bg || "group-hover:bg-[#cd2f34]"}
                 color={color || "text-[#cd2f34]"}
                 hcolor={hcolor || "hover:text-[#cd2f34]"}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

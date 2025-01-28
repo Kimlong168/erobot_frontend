@@ -2,6 +2,8 @@
 import assets from "@/assets/assets";
 import { LuDownload } from "react-icons/lu";
 import PopupImage from "@/components/ui/PopupImage";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const DownloadPage = () => {
   const LOGO_LIGHT_URL = baseUrl + "/images/light.png";
@@ -56,7 +58,19 @@ const DownloadPage = () => {
         <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
           Our Brand Story
         </h3>
-        <p className="text-justify">
+        <motion.p
+          variants={fadeIn(
+            {
+              default: "left",
+            },
+            0.3,
+            "all"
+          )}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-justify"
+        >
           Founded in 2018 by Suy Kosol, ERobot aims to bridge educational gaps
           in Cambodia by offering teaching, training, and collaboration for
           youth, especially in rural areas. It strives to equip young Cambodians
@@ -75,7 +89,7 @@ const DownloadPage = () => {
           everyone to use our latest branding elements appropriately when
           engaging with diverse audiences in an ever-evolving technological
           landscape.
-        </p>
+        </motion.p>
       </section>
 
       <section className="mb-12">
@@ -85,14 +99,26 @@ const DownloadPage = () => {
         <div className="flex flex-col md:flex-row gap-4">
           {logos.map((logo, index) => (
             <div key={index}>
-              <div className="w-full md:w-[200px] md:h-[200px] overflow-hidden rounded-lg border border-gray-400">
+              <motion.div
+                variants={fadeIn(
+                  {
+                    default: "left",
+                  },
+                  0.3 * (index + 1),
+                  "all"
+                )}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0.3 }}
+                className="w-full md:w-[200px] md:h-[200px] overflow-hidden rounded-lg border border-gray-400"
+              >
                 <PopupImage
                   image={logo.image}
                   className=" w-full h-full object-cover hover:scale-110 transition-transform"
                   width={400}
                   height={400}
                 />
-              </div>
+              </motion.div>
 
               <button
                 onClick={() => downloadFileAtURL(logo.url)}
@@ -109,7 +135,21 @@ const DownloadPage = () => {
         <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark mb-4">
           Stickers
         </h3>
-        <div className="flex gap-4">Comming Soon...</div>
+        <motion.div
+          variants={fadeIn(
+            {
+              default: "left",
+            },
+            0.3,
+            "all"
+          )}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex gap-4"
+        >
+          Comming Soon...
+        </motion.div>
       </section>
     </main>
   );

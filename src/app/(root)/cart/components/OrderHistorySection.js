@@ -4,7 +4,8 @@ import { FaSearch, FaWindowClose } from "react-icons/fa";
 import OrderDetailCard from "./OrderDetailCard";
 import StatusColor from "@/components/ui/StatusColor";
 import { getOrders } from "@/queries/order";
-
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 const OrderHistorySection = () => {
   const [orderList, setOrderList] = useState([]);
   const [orderHistoryIdList, setOrderHistoryIdList] = useState([]);
@@ -70,14 +71,36 @@ const OrderHistorySection = () => {
       <div>
         <div className="flex flex-col md:flex-row md:items-end  gap-4 justify-between">
           {/* dragon with title */}
-          <div className="flex items-end w-full">
+          <motion.div
+            variants={fadeIn(
+              {
+                default: "right",
+              },
+              0.3,
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex items-end w-full"
+          >
             <span className=" text-[28px] sm:text-3xl text-dark font-primary">
               Your Previous Order
             </span>
-          </div>
+          </motion.div>
 
           {/* search bar */}
-          <form
+          <motion.form
+            variants={fadeIn(
+              {
+                default: "ledt",
+              },
+              0.3,
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
             className="w-full lg:w-auto md:min-w-[300px]"
             onSubmit={handleSearch}
           >
@@ -105,7 +128,7 @@ const OrderHistorySection = () => {
                 <FaSearch />
               </div>
             </div>
-          </form>
+          </motion.form>
         </div>
 
         {/*table order history */}
@@ -161,19 +184,43 @@ const OrderHistorySection = () => {
                   <tbody>
                     {/* if there is no order */}
                     {orderList && orderList.length === 0 && (
-                      <tr className=" border-b">
+                      <motion.tr
+                        variants={fadeIn(
+                          {
+                            default: "up",
+                          },
+                          0.3,
+                          "all"
+                        )}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: true, amount: 0.3 }}
+                        className=" border-b"
+                      >
                         <td
                           className="px-6 py-4 whitespace-nowrap font-medium text-gray-600  text-center text-sm"
                           colSpan="6"
                         >
                           Loading...
                         </td>
-                      </tr>
+                      </motion.tr>
                     )}
 
                     {/* if there is no order */}
                     {orderList.length > 0 && orderHistoryList.length === 0 && (
-                      <tr className=" border-b">
+                      <motion.tr
+                        variants={fadeIn(
+                          {
+                            default: "up",
+                          },
+                          0.3,
+                          "all"
+                        )}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: true, amount: 0.3 }}
+                        className=" border-b"
+                      >
                         <td
                           className="px-6 py-4 whitespace-nowrap font-medium text-gray-600 text-center text-sm"
                           colSpan="6"
@@ -200,15 +247,28 @@ const OrderHistorySection = () => {
                             </div>
                           )}
                         </td>
-                      </tr>
+                      </motion.tr>
                     )}
 
                     {/* listing all the order history */}
                     {orderHistoryList &&
-                      orderHistoryList.map((order) => {
+                      orderHistoryList.map((order, index) => {
                         return (
                           <>
-                            <tr className=" border-b" key={order.orderId}>
+                            <motion.tr
+                              variants={fadeIn(
+                                {
+                                  default: "left",
+                                },
+                                0.3 * (index + 1),
+                                "all"
+                              )}
+                              initial="hidden"
+                              whileInView={"show"}
+                              viewport={{ once: true, amount: 0.3 }}
+                              className=" border-b"
+                              key={order.orderId}
+                            >
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 ">
                                 {order.orderId}
                               </td>
@@ -237,7 +297,7 @@ const OrderHistorySection = () => {
                                   View Detail
                                 </button>
                               </td>
-                            </tr>
+                            </motion.tr>
                             {/* order detail popup */}
 
                             <div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { FaHeart } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../utils/variants";
+import { fadeIn } from "@/utils/variants";
 import PartnersList from "@/components/ui/PartnersList";
 import LatestArticlesList from "@/components/ui/LatestArticlesList";
 import ImpactsList from "@/components/ui/ImpactsList";
@@ -14,13 +14,23 @@ export default function Home() {
     threshold: 0.5,
   });
 
-  const theme = "light";
-
   return (
     <>
       {/* hero section */}
       <section className="relative h-[calc(100vh-100px)] bg-donate bg-cover bg-center mb-12">
-        <div className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg  shadow-xl p-8 md:w-[42%] 2xl:w-[30%]">
+        <motion.div
+          variants={fadeIn(
+            {
+              default: "right",
+            },
+            0.5,
+            "all"
+          )}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="absolute bottom-5 left-5 right-5 md:bottom-[50px] md:left-[50px] bg-black/10 bg-opacity-10 backdrop-blur-lg  shadow-xl p-8 md:w-[42%] 2xl:w-[30%]"
+        >
           <div className="font-primary text-3xl font-bold text-secondary mb-3 bg-white p-2  text-center md:text-left">
             <TypeAnimation
               speed={50}
@@ -55,10 +65,11 @@ export default function Home() {
               </button>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      <section ref={ref} className="container text-center pb-14 bg-white">
+      <section ref={ref} className="container text-center pb-8 bg-white">
+        {/* pb-14 */}
         <h2 className="text-3xl font-primary mb-6 group text-dark">
           Our Impact to our community in{" "}
           <span className=" group-hover:text-primary text-secondary">
@@ -67,6 +78,16 @@ export default function Home() {
         </h2>
 
         <ImpactsList inView={inView} />
+        <div className="flex justify-center mt-4">
+          <Link href="/projects">
+            <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg">
+              <span>
+                <FaHeart fill="#E1232E" />
+              </span>{" "}
+              What We Do?
+            </button>
+          </Link>
+        </div>
       </section>
 
       <section>
@@ -75,7 +96,9 @@ export default function Home() {
         </h2>
 
         <div className="container mt-8 mb-14">
-          <LatestArticlesList />
+          <div>
+            <LatestArticlesList />
+          </div>
           <div className="flex justify-center mt-4">
             <Link href="/articles">
               <button className="flex items-center gap-2 bg-white text-secondary border border-secondary font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg">
@@ -93,40 +116,10 @@ export default function Home() {
         <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
           Our Partners
         </h2>
-        <motion.div
-          variants={fadeIn("up", 0.2)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {theme == "dark" ? (
-            <div
-              className="w-[130%] my-8 bg-transparent "
-              style={{ filter: "brightness(0) invert(1)" }}
-            >
-              <PartnersList direction={"left"} />
-            </div>
-          ) : (
-            <div className="w-[130%] my-8">
-              <PartnersList direction="left" />
-            </div>
-          )}
-        </motion.div>
+        <div className="w-[130%] my-8">
+          <PartnersList direction="left" />
+        </div>
       </section>
-
-      {/* <section className="overflow-hidden">
-        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
-          Our Donors
-        </h2>
-        <motion.div
-          variants={fadeIn("up", 0.2)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <DonorsList direction="left" />
-        </motion.div>
-      </section> */}
 
       <section className="relative bg-boy bg-cover bg-center h-[500px]">
         <div className="absolute inset-0 bg-black/50 opacity-50"></div>

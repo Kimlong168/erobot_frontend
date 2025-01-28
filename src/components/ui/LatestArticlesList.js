@@ -3,7 +3,8 @@ import { getLatestArticles } from "@/queries/article";
 import ArticleCard from "./ArticleCard";
 import { getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
-
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 import { useEffect, useState } from "react";
 
 const LatestArticlesList = () => {
@@ -27,16 +28,29 @@ const LatestArticlesList = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-5">
-      {latestArticles?.map((article) => {
+      {latestArticles?.map((article, index) => {
         const author = authors.find((author) => author.id === article.authorId);
         const category = articleCategories.find(
           (category) => category.id === article.categoryId
         );
 
         return (
-          <div key={article?.id} className="min-h-full w-full">
+          <motion.div
+            variants={fadeIn(
+              {
+                default: "left",
+              },
+              0.3 * (index + 1),
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            key={article?.id}
+            className="min-h-full w-full"
+          >
             <ArticleCard article={{ ...article, author, category }} />
-          </div>
+          </motion.div>
         );
       })}
     </div>

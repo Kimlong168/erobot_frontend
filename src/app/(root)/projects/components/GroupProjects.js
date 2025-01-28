@@ -1,8 +1,23 @@
+"use client";
 import ProjectCard from "@/components/ui/ProjectCard";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 const GroupProjects = ({ projects, title, description }) => {
   if (projects.length == 0) return null;
   return (
-    <section className="pt-8 md:pt-12 overflow-hidden">
+    <motion.section
+      variants={fadeIn(
+        {
+          default: "up",
+        },
+        0.3,
+        "all"
+      )}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: true, amount: 0.3 }}
+      className="pt-8 md:pt-12 overflow-hidden"
+    >
       <div>
         <h3 className="text-center font-primary text-3xl md:text-4xl text-dark mb-2">
           {title}
@@ -20,7 +35,7 @@ const GroupProjects = ({ projects, title, description }) => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

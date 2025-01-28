@@ -1,7 +1,6 @@
 import LinkIcon from "./LinkIcon";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { fadeIn } from "@/utils/variants";
+
 import contactInfo from "@/data/contactInfo";
 const ContactInfo = () => {
   return (
@@ -14,13 +13,7 @@ const ContactInfo = () => {
         </h2>
 
         {contactInfo && (
-          <motion.div
-            variants={fadeIn("right", 0.2)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: true, amount: 0.3 }}
-            className="pt-6 pb-3 porse lg:prose-xl"
-          >
+          <div className="pt-6 pb-3 porse lg:prose-xl">
             <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
               {/* phone */}
               <div>
@@ -47,7 +40,7 @@ const ContactInfo = () => {
                 <Link href={contactInfo.telegram}>@erobotcambodia</Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
 
         {/* social media */}

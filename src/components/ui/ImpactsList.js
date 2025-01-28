@@ -6,6 +6,8 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { MdVolunteerActivism } from "react-icons/md";
 import { IoHeartCircle } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/variants";
 const impactData = [
   {
     icon: (
@@ -81,7 +83,17 @@ const ImpactsList = ({ inView }) => {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 max-w-6xl mx-auto">
         {info.map((item, index) => (
-          <div
+          <motion.div
+            variants={fadeIn(
+              {
+                default: "up",
+              },
+              0.3 * (index + 1),
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
             key={index}
             className="flex flex-col items-center justify-center space-y-4"
           >
@@ -101,7 +113,7 @@ const ImpactsList = ({ inView }) => {
               )}
             </h3>
             <p className=" text-gray-600 capitalize">{item.text}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </>

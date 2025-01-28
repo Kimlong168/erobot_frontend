@@ -74,7 +74,13 @@ const ContactPage = () => {
               Our Organization
             </h2>
             <motion.div
-              variants={fadeIn("right", 0.2)}
+              variants={fadeIn(
+                {
+                  default: "right",
+                },
+                0.3,
+                "all"
+              )}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: true, amount: 0.3 }}
@@ -99,9 +105,22 @@ const ContactPage = () => {
               </div>
             </motion.div>
           </div>
-
           {/* contact information */}
-          <ContactInfo />
+          <motion.div
+            variants={fadeIn(
+              {
+                default: "right",
+              },
+              0.5,
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {" "}
+            <ContactInfo />
+          </motion.div>
         </section>
 
         {/* contact form */}
@@ -111,11 +130,17 @@ const ContactPage = () => {
           </h2>
 
           {/* form submit message */}
-          <form
-            // variants={fadeIn("left", 0.2)}
-            // initial="hidden"
-            // whileInView={"show"}
-            // viewport={{ once: true, amount: 0.3 }}
+          <motion.form
+            variants={fadeIn(
+              {
+                default: "left",
+              },
+              0.3,
+              "all"
+            )}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
             onSubmit={sendToTelegram}
           >
             <div className="flex flex-col gap-3 mt-5 md:mt-8">
@@ -209,7 +234,7 @@ const ContactPage = () => {
                 Send Message
               </button>
             </div>
-          </form>
+          </motion.form>
 
           {/* fill required information alert */}
           <WarningModal
