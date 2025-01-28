@@ -79,7 +79,8 @@ const GroupMembers = ({
             <motion.div
               variants={fadeIn(
                 {
-                  default: "left",
+                  default: "up",
+                  md: "left",
                 },
                 0.3 * (i + 1),
                 "all"
