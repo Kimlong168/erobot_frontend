@@ -20,14 +20,15 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-// SSG: ✅ Function to generate static paths
-export async function generateStaticParams() {
-  const projects = await getProducts();
 
-  return projects.map((project) => ({
-    id: project.id.toString(),
-  }));
-}
+// // SSG: ✅ Function to generate static paths
+// export async function generateStaticParams() {
+//   const projects = await getProducts();
+
+//   return projects.map((project) => ({
+//     id: project.id.toString(),
+//   }));
+// }
 
 const ProjectDetailServerComponent = async ({ params }) => {
   const id = (await params).id;
