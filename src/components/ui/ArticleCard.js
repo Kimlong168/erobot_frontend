@@ -76,7 +76,7 @@ const ArticleCard = ({ article }) => {
 
       <div className="flex-between gap-3 mt-5">
         <Link href={`/articles?query=filter${categoryId?.toLowerCase()}`}>
-          <p className="text-16-medium">
+          <p className="text-16-medium dark:text-white/80">
             {category.categoryName ? category.categoryName : "No Category"}
           </p>
         </Link>

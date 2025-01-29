@@ -9,8 +9,9 @@ import { scrollToTop } from "@/utils/scrollToTop";
 import assets from "@/assets/assets";
 import { CiLight } from "react-icons/ci";
 import { useThemeContext } from "@/contexts/ThemeContext";
+
 const SideBar = ({ setShowSideBar, showSideBar }) => {
-  const { handleThemeSwitch } = useThemeContext();
+  const { handleThemeSwitch, theme } = useThemeContext();
 
   return (
     <div
@@ -83,10 +84,11 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
             className="text-4xl  text-neutral-500 group hover:text-neutral-50 md:text-6xl mt-6 cursor-pointer"
           >
             <div className="flex items-center gap-3 font-bold">
-              Dark Mode <CiLight className="white" />{" "}
+              {theme === "dark" ? "Light Mode" : "Dark Mode"}
+              {/* <CiLight className="white" />{" "} */}
             </div>
             <span className="relative z-10 mt-2 block text-base  text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
-              Switch to dark mode
+              Switch to {theme === "dark" ? "light mode 🌞" : "dark mode 🌙"}
             </span>
           </div>
         </div>

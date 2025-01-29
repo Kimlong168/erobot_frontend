@@ -21,6 +21,7 @@ import {
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import OrderHistorySection from "./components/OrderHistorySection";
+import { useThemeContext } from "@/contexts/ThemeContext";
 const CartPage = () => {
   const {
     cartItems,
@@ -30,6 +31,7 @@ const CartPage = () => {
     clearCart,
     getTotalPrice,
   } = useCartContext();
+  const { theme } = useThemeContext();
 
   // show customer contact form
   const [isOpenForm, setIsOpenForm] = useState(false);
@@ -57,7 +59,10 @@ const CartPage = () => {
 
   // screenshot the cart image and send to telegram
   const sendToTelegram = () => {
-    html2canvas(document.querySelector("#message")).then(function (canvas) {
+    html2canvas(document.querySelector("#message"), {
+      backgroundColor: theme === "dark" ? "#030712" : null,
+      useCORS: true,
+    }).then(function (canvas) {
       // Convert canvas to base64 data URL
       var imageData = canvas.toDataURL("image/png");
 
