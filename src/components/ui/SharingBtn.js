@@ -20,7 +20,7 @@ const SharingBtn = ({ url, title }) => {
       <div className="flex gap-2.5 sm:gap-3 md:gap-4 justify-center p-2">
         <FacebookShareButton
           url={url}
-          hashtag="#3corseco"
+          hashtag="#erobot"
           quote={`====${title}====`}
         >
           <FacebookIcon
@@ -54,7 +54,7 @@ const SharingBtn = ({ url, title }) => {
         <LinkedinShareButton
           url={url}
           title={`====${title}====`}
-          source="3corseco.com"
+          source="erobotkh.org"
         >
           <LinkedinIcon
             bgStyle={{

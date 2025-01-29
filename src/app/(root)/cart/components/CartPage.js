@@ -15,9 +15,7 @@ import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
 import { orderMessage } from "@/data/messageToSend";
 import {
-  sendTelegramBase64Image,
   sendTelegramImage,
-  sendTelegramMessage,
 } from "@/utils/sendTelegramMessage";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
@@ -66,24 +64,55 @@ const CartPage = () => {
       backgroundColor: theme === "dark" ? "#030712" : "#ffffff",
       useCORS: true,
     }).then(function (canvas) {
-      try {
-        // Convert canvas to base64 data URL
-        const imageData = canvas.toDataURL("image/png");
-        const send = async () => {
-          console.log("sending image base64 to telegram");
-          const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
-          await sendTelegramBase64Image(
-            imageData,
-            orderMessage(orderId, formData, getTotalPrice()),
-            topicId
-          );
-        };
+      // Convert canvas to base64 data URL
+      var imageData = canvas.toDataURL("image/png");
 
-        send();
-        recordOrder();
-      } catch (error) {
-        console.error("Error sending image:", error);
-      }
+      // Convert base64 data URL to Blob
+      var imageBlob = dataURItoBlob(imageData);
+      const imageRef = ref(storage, `cart/cartImage_${orderId}`);
+      uploadBytes(imageRef, imageBlob).then(() => {
+        // Get the download URL for the uploaded image
+        getDownloadURL(imageRef)
+          .then((downloadURL) => {
+            const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
+
+            try {
+              // throw new Error("Fake error for testing");
+              // caption for the image to send to telegram
+              const messageToSend = orderMessage(
+                orderId,
+                formData,
+                getTotalPrice()
+              );
+
+              const send = async () => {
+                const response = await sendTelegramImage(
+                  downloadURL,
+                  messageToSend,
+                  topicId
+                );
+                console.log("response sending image to telegram", response);
+                // Delete the cart image after sending to telegram
+                deleteImageFromStorage(imageRef);
+              };
+
+              // excute send function and record order to database and get the post link
+              send();
+
+              // record order to database
+              recordOrder();
+            } catch (error) {
+              console.error("Error sending image:", error);
+            }
+            // // Delete the cart image after 5s to save storage space
+            // setTimeout(() => {
+            //   deleteImageFromStorage(imageRef);
+            // }, 10000); // 10s
+          })
+          .catch((error) => {
+            console.error("Error getting download URL:", error);
+          });
+      });
 
       // download the cart image to user device
       var a = document.createElement("a");

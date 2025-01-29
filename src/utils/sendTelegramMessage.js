@@ -54,6 +54,7 @@ const sendTelegramImage = async (downloadURL, caption, topic_id) => {
     );
   } catch (error) {
     console.error("Error sending image:", error);
+    // in case we fail to send the image, send the message instead
     sendTelegramMessage(caption, topic_id);
   }
 };
