@@ -12,6 +12,7 @@ import { getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
 import { getLongMonth } from "@/utils/getFormatedDate";
 import GoToTop from "@/components/ui/GoToTop";
+// import { NextSeo } from "next-seo";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ArticleDetail = async ({ params }) => {
@@ -29,73 +30,87 @@ const ArticleDetail = async ({ params }) => {
   );
 
   return (
-    <main className="container mt-6 overflow-x-hidden">
-      {/* title */}
-      <div className="pb-4 border-b-2 border-gray-5 mt-6">
-        <h2 className="text-3xl md:text-4xl font-bold leading-normal">
-          {article.title}
-        </h2>
-      </div>
+    <>
+      {/* meta data */}
+      {/* <NextSeo
+        title={`ERobot | ${article.title}`}
+        description={article.description}
+        openGraph={{
+          title: article.title,
+          description: article.description,
+          images: [{ url: article.coverImage }],
+          url: `${baseUrl}/articles/${article.id}`,
+        }}
+      /> */}
 
-      {/* category, author, date */}
-      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 my-6">
-        <div className="flex items-center gap-3">
-          <BiCategory />
-          <span className="font-semibold">Category:</span>
-          <span>{category.categoryName}</span>
+      <main className="container mt-6 overflow-x-hidden">
+        {/* title */}
+        <div className="pb-4 border-b-2 border-gray-5 mt-6">
+          <h2 className="text-3xl md:text-4xl font-bold leading-normal">
+            {article.title}
+          </h2>
         </div>
-        <div className="flex items-center gap-2">
-          <FaRegUser />
-          <span className="font-semibold">Author:</span>
-          <span>
-            {article.authorId == "default" ? "Admin" : author.fullName}
-          </span>
+
+        {/* category, author, date */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 my-6">
+          <div className="flex items-center gap-3">
+            <BiCategory />
+            <span className="font-semibold">Category:</span>
+            <span>{category.categoryName}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaRegUser />
+            <span className="font-semibold">Author:</span>
+            <span>
+              {article.authorId == "default" ? "Admin" : author.fullName}
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaRegCalendarCheck />
+            <span className="font-semibold">Date:</span>
+            <span>{getLongMonth(article.publicationDate)}</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <FaRegCalendarCheck />
-          <span className="font-semibold">Date:</span>
-          <span>{getLongMonth(article.publicationDate)}</span>
+
+        {/* image */}
+
+        <div>
+          <Image
+            width={1000}
+            height={500}
+            className="w-full h-[260px] md:h-[350px] lg:h-[500px] object-cover rounded-lg overflow-hidden"
+            src={article.coverImage}
+            alt="Article image"
+          />
         </div>
-      </div>
 
-      {/* image */}
+        {/* article content */}
 
-      <div>
-        <Image
-          width={1000}
-          height={500}
-          className="w-full h-[260px] md:h-[350px] lg:h-[500px] object-cover rounded-lg overflow-hidden"
-          src={article.coverImage}
-          alt="Article image"
-        />
-      </div>
+        <div className="mt-6">
+          <ContentDisplay htmlString={article.content} />
+        </div>
 
-      {/* article content */}
+        {/* share button */}
 
-      <div className="mt-6">
-        <ContentDisplay htmlString={article.content} />
-      </div>
+        <div className="flex items-center justify-between py-3 border-y-2 border-gray-5 my-6">
+          <span className="font-semibold">Share</span>
+          <SharingBtn url={`${baseUrl}/articles/${id}`} title={article.title} />
+        </div>
 
-      {/* share button */}
+        {/* comment section */}
+        <div className="mt-12">
+          <div id="disqus_thread"></div>
+        </div>
 
-      <div className="flex items-center justify-between py-3 border-y-2 border-gray-5 my-6">
-        <span className="font-semibold">Share</span>
-        <SharingBtn url={`${baseUrl}/articles/${id}`} title={article.title} />
-      </div>
+        {/* back button */}
+        <div className="lg:hidden mt-6 mb-12 ">
+          <BackToPrevBtn link="/articles" />
+        </div>
 
-      {/* comment section */}
-      <div className="mt-12">
-        <div id="disqus_thread"></div>
-      </div>
-
-      {/* back button */}
-      <div className="lg:hidden mt-6 mb-12 ">
-        <BackToPrevBtn link="/articles" />
-      </div>
-
-      <Comment />
-      <GoToTop />
-    </main>
+        <Comment />
+        <GoToTop />
+      </main>
+    </>
   );
 };
 

@@ -56,4 +56,49 @@ const sendTelegramImage = async (downloadURL, caption, topic_id) => {
   }
 };
 
-export { sendTelegramMessage, sendTelegramImage };
+const sendTelegramBase64Image = async (base64Image, caption, topic_id) => {
+  // Remove the prefix 'data:image/png;base64,' if present
+  const base64Data = base64Image.split(",")[1];
+
+  // Ensure base64 string is properly padded
+  const padding =
+    base64Data.length % 4 === 0 ? "" : "=".repeat(4 - (base64Data.length % 4));
+  const paddedBase64 = base64Data + padding;
+
+  // Convert the padded base64 string to a Blob
+  const blob = new Blob([new Uint8Array(Buffer.from(paddedBase64, "base64"))], {
+    type: "image/png",
+  });
+
+  const form = new FormData();
+
+  form.append("chat_id", chatId);
+
+  // Send the image as a Blob
+  form.append("photo", blob, "image.png"); // Specify any file name
+
+  // Optional: Caption for the image
+  form.append("caption", caption);
+
+  // Optional: Markdown formatting
+  form.append("parse_mode", "Markdown");
+
+  try {
+    const response = await axios.post(
+      `https://api.telegram.org/bot${botToken}/sendPhoto`,
+      form,
+      {
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${form._boundary}`,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error sending image to Telegram:", error);
+    throw error;
+  }
+};
+
+export { sendTelegramMessage, sendTelegramImage, sendTelegramBase64Image };

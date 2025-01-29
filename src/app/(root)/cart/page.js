@@ -15,6 +15,7 @@ import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
 import { orderMessage } from "@/data/messageToSend";
 import {
+  sendTelegramBase64Image,
   sendTelegramImage,
   sendTelegramMessage,
 } from "@/utils/sendTelegramMessage";
@@ -63,76 +64,36 @@ const CartPage = () => {
       backgroundColor: theme === "dark" ? "#030712" : "#ffffff",
       useCORS: true,
     }).then(function (canvas) {
-      // Convert canvas to base64 data URL
-      var imageData = canvas.toDataURL("image/png");
+      const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
+      try {
+        // Convert canvas to base64 data URL
+        const imageData = canvas.toDataURL("image/png");
+        const send = async () => {
+          console.log("sending image base64 to telegram");
+          await sendTelegramBase64Image(
+            imageData,
+            orderMessage(orderId, formData, getTotalPrice()),
+            topicId
+          );
+        };
 
-      // Convert base64 data URL to Blob
-      var imageBlob = dataURItoBlob(imageData);
-
-      const imageRef = ref(storage, `cart/cartImage_${orderId}`);
-      uploadBytes(imageRef, imageBlob).then(() => {
-        // Get the download URL for the uploaded image
-        getDownloadURL(imageRef)
-          .then((downloadURL) => {
-            const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
-
-            try {
-              // throw new Error("Fake error for testing");
-              // caption for the image to send to telegram
-              const messageToSend = orderMessage(
-                orderId,
-                formData,
-                getTotalPrice()
-              );
-
-              const send = async () => {
-                const response = await sendTelegramImage(
-                  downloadURL,
-                  messageToSend,
-                  topicId
-                );
-                console.log("response sending image to telegram", response);
-              };
-
-              // excute send function and record order to database and get the post link
-              send();
-
-              // record order to database
-              recordOrder();
-            } catch (error) {
-              console.error("Error sending image:", error);
-
-              // send notifitaion to telegram if error
-              const messageToSend = orderMessage(
-                orderId,
-                formData,
-                getTotalPrice()
-              );
-
-              const send = async () => {
-                const response = await sendTelegramMessage(
-                  messageToSend,
-                  topicId
-                );
-                console.log(
-                  "response sending order message to telegram (send image error)",
-                  response
-                );
-              };
-
-              // excute send function
-              send();
-              recordOrder();
-            }
-            // Delete the cart image after 5s to save storage space
-            setTimeout(() => {
-              deleteImageFromStorage(imageRef);
-            }, 5000); // 5s
-          })
-          .catch((error) => {
-            console.error("Error getting download URL:", error);
-          });
-      });
+        send();
+        recordOrder();
+      } catch (error) {
+        console.error("Error sending image:", error);
+        // send notifitaion to telegram if error
+        const messageToSend = orderMessage(orderId, formData, getTotalPrice());
+        const send = async () => {
+          const response = await sendTelegramMessage(messageToSend, topicId);
+          console.log(
+            "response sending order message to telegram (send image error)",
+            response
+          );
+        };
+        // excute send function
+        send();
+        recordOrder();
+      }
 
       // download the cart image to user device
       var a = document.createElement("a");
@@ -167,7 +128,7 @@ const CartPage = () => {
       timeStamp: new Date().getTime(),
     };
 
-    const result = await createOrder(order);
+    await createOrder(order);
     clearCart();
     // store order ID in local storage as array list of order ID
     const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];

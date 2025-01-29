@@ -181,7 +181,7 @@ const OrderHistorySection = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody key={orderList.length}>
                     {/* if there is no order */}
                     {orderList && orderList.length === 0 && (
                       <tr
