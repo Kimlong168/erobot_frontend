@@ -1,6 +1,8 @@
 import ProductsPage from "./components/ProductsPage";
 import { db, collection, getDocs } from "@/libs/firebase";
-
+export const metadata = {
+  title: "ERobot | Products",
+};
 const ProductsServerComponent = async ({ searchParams }) => {
   const query = (await searchParams).query;
 

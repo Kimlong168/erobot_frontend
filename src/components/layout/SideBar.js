@@ -188,12 +188,7 @@ const LinkContainer = ({ heading, imgSrc, subheading, href }) => {
           transition={{ type: "spring" }}
           className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
         >
-          <Image
-            src={imgSrc}
-            width={64}
-            height={48}
-            alt={`Image representing a LinkContainer for ${heading}`}
-          />
+          <Image src={imgSrc} width={64} height={48} alt="logo" />
         </motion.div>
 
         <motion.div

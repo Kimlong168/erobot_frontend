@@ -12,8 +12,25 @@ import { getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
 import { getLongMonth } from "@/utils/getFormatedDate";
 import GoToTop from "@/components/ui/GoToTop";
-// import { NextSeo } from "next-seo";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+// ✅ Function to generate dynamic metadata
+export async function generateMetadata({ params }) {
+  const { id } = params;
+
+  const article = await getArticleById(id);
+
+  return {
+    title: `ERobot | ${article.title}`,
+    description: article.description,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      url: `${baseUrl}/articles/${id}`,
+      images: [{ url: article.coverImage }],
+    },
+  };
+}
 
 const ArticleDetail = async ({ params }) => {
   const id = (await params).id;
@@ -31,18 +48,6 @@ const ArticleDetail = async ({ params }) => {
 
   return (
     <>
-      {/* meta data */}
-      {/* <NextSeo
-        title={`ERobot | ${article.title}`}
-        description={article.description}
-        openGraph={{
-          title: article.title,
-          description: article.description,
-          images: [{ url: article.coverImage }],
-          url: `${baseUrl}/articles/${article.id}`,
-        }}
-      /> */}
-
       <main className="container mt-6 overflow-x-hidden">
         {/* title */}
         <div className="pb-4 border-b-2 border-gray-5 mt-6">

@@ -8,8 +8,35 @@ import ArticleCard from "@/components/ui/ArticleCard";
 import assets from "@/assets/assets";
 import LinkIcon from "@/components/ui/LinkIcon";
 import Link from "next/link";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-const AuhtorDetail = async ({ params }) => {
+export async function generateMetadata({ params }) {
+  const { id } = params;
+
+  let author;
+  if (id === "default") {
+    author = {
+      fullName: "Admin",
+      profilePicture: assets.lightLogo,
+      bio: "Hi there, I am the admin of ERobot.",
+    };
+  } else {
+    author = await getAuthorById(id);
+  }
+
+  return {
+    title: `ERobot | ${author.fullName}`,
+    description: author.bio,
+    openGraph: {
+      title: author.fullName,
+      description: author.bio,
+      url: `${baseUrl}/authors/${id}`,
+      images: [{ url: author.profilePicture }],
+    },
+  };
+}
+
+const page = async ({ params }) => {
   const id = (await params).id;
 
   let author;

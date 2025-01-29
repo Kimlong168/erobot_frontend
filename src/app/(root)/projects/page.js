@@ -1,7 +1,9 @@
 export const revalidate = 0;
 import { getProjects } from "@/queries/project";
 import GroupProjects from "./components/GroupProjects";
-
+export const metadata = {
+  title: "ERobot | Projects",
+};
 const ProjectsPage = async () => {
   const projects = await getProjects();
 

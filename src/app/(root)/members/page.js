@@ -1,8 +1,10 @@
 export const revalidate = 0;
 import { getMembers } from "@/queries/member";
 import GroupMembers from "./components/GroupMembers";
-
-const MembersPage = async () => {
+export const metadata = {
+  title: "ERobot | Members",
+};
+const page = async () => {
   const members = await getMembers();
 
   const memberOnly = members?.filter((member) => member.position === "Member");
@@ -56,4 +58,4 @@ const MembersPage = async () => {
   );
 };
 
-export default MembersPage;
+export default page;

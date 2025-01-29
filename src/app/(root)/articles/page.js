@@ -1,16 +1,21 @@
 import ArticlesPage from "./components/ArticlesPage";
 import { db, collection, getDocs } from "@/libs/firebase";
 
-const ArticlesServerComponent = async ({ searchParams }) => {
+export const metadata = {
+  title: "ERobot | Articles",
+};
+
+const page = async ({ searchParams }) => {
   const query = (await searchParams).query;
 
   // const params = { search: query || null };
 
-  const [articlesSnapshot, authorsSnapshot, articleCategorySnapshot] = await Promise.all([
-    getDocs(collection(db, "blogs")),
-    getDocs(collection(db, "authors")),
-    getDocs(collection(db, "blog_category")),
-  ]);
+  const [articlesSnapshot, authorsSnapshot, articleCategorySnapshot] =
+    await Promise.all([
+      getDocs(collection(db, "blogs")),
+      getDocs(collection(db, "authors")),
+      getDocs(collection(db, "blog_category")),
+    ]);
 
   // Map through the snapshots to get the documents
   const articles = articlesSnapshot.docs.map((doc) => ({
@@ -38,4 +43,4 @@ const ArticlesServerComponent = async ({ searchParams }) => {
   );
 };
 
-export default ArticlesServerComponent;
+export default page;
