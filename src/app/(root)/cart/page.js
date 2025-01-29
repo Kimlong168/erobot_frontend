@@ -64,12 +64,12 @@ const CartPage = () => {
       backgroundColor: theme === "dark" ? "#030712" : "#ffffff",
       useCORS: true,
     }).then(function (canvas) {
-      const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
       try {
         // Convert canvas to base64 data URL
         const imageData = canvas.toDataURL("image/png");
         const send = async () => {
           console.log("sending image base64 to telegram");
+          const topicId = process.env.NEXT_PUBLIC_TELEGRAM_ORDER_CHAT_ID;
           await sendTelegramBase64Image(
             imageData,
             orderMessage(orderId, formData, getTotalPrice()),
@@ -81,18 +81,6 @@ const CartPage = () => {
         recordOrder();
       } catch (error) {
         console.error("Error sending image:", error);
-        // // send notifitaion to telegram if error
-        // const messageToSend = orderMessage(orderId, formData, getTotalPrice());
-        // const send = async () => {
-        //   const response = await sendTelegramMessage(messageToSend, topicId);
-        //   console.log(
-        //     "response sending order message to telegram (send image error)",
-        //     response
-        //   );
-        // };
-        // // excute send function
-        // send();
-        // recordOrder();
       }
 
       // download the cart image to user device

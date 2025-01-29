@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Comment from "@/components/ui/Comment";
 import ProductDetailCard from "@/components/ui/ProductDetailCard";
 import { getProductCategories } from "@/queries/productCategory";
-import { NextSeo } from "next-seo";
+// import { NextSeo } from "next-seo";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ProductDetail = async ({ params }) => {
@@ -23,7 +23,7 @@ const ProductDetail = async ({ params }) => {
   return (
     <>
       {/* meta data */}
-      <NextSeo
+      {/* <NextSeo
         title={`ERobot | ${product.name}`}
         description={product.description}
         openGraph={{
@@ -32,7 +32,7 @@ const ProductDetail = async ({ params }) => {
           images: [{ url: product.image }],
           url: `${baseUrl}/products/${product.id}`,
         }}
-      />
+      /> */}
       <main className="container mt-6 overflow-x-hidden">
         {/* detail card */}
         <div>
