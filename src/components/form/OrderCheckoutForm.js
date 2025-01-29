@@ -93,8 +93,8 @@ const CustomerContactForm = ({
     setStatus(false);
 
     const optionalData = {
-      // currency: khqrData.currency.usd,
-      currency: khqrData.currency.khr,
+      // currency: khqrData.currency.khr,
+      currency: khqrData.currency.usd,
       amount: parseFloat(totalPrice),
       mobileNumber: "85512233455",
       storeLabel: "Coffee Shop",

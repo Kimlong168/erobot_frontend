@@ -61,6 +61,7 @@ const CartPage = () => {
     html2canvas(document.querySelector("#message"), {
       backgroundColor: theme === "dark" ? "#030712" : "#ffffff",
       useCORS: true,
+      scale: window.devicePixelRatio || 2,
     }).then(function (canvas) {
       // Convert canvas to base64 data URL
       var imageData = canvas.toDataURL("image/png");
