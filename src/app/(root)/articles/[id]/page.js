@@ -5,7 +5,7 @@ import { FaRegCalendarCheck } from "react-icons/fa6";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import SharingBtn from "@/components/ui/SharingBtn";
 import BackToPrevBtn from "@/components/ui/BackToPrevBtn";
-import { getArticleById } from "@/queries/article";
+import { getArticleById, getArticles } from "@/queries/article";
 import { notFound } from "next/navigation";
 import Comment from "@/components/ui/Comment";
 import { getAuthors } from "@/queries/author";
@@ -16,7 +16,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 // ✅ Function to generate dynamic metadata
 export async function generateMetadata({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   const article = await getArticleById(id);
 
@@ -30,6 +30,15 @@ export async function generateMetadata({ params }) {
       images: [{ url: article.coverImage }],
     },
   };
+}
+
+// SSG: ✅ Function to generate static paths
+export async function generateStaticParams() {
+  const artilces = await getArticles();
+
+  return artilces.map((article) => ({
+    id: article.id.toString(),
+  }));
 }
 
 const ArticleDetail = async ({ params }) => {

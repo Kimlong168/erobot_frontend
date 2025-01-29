@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getArticlesByAuthorId } from "@/queries/article";
-import { getAuthorById } from "@/queries/author";
+import { getAuthorById, getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
 import { notFound } from "next/navigation";
 import GoToTop from "@/components/ui/GoToTop";
@@ -11,29 +11,39 @@ import Link from "next/link";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
-  let author;
   if (id === "default") {
-    author = {
-      fullName: "Admin",
-      profilePicture: assets.lightLogo,
-      bio: "Hi there, I am the admin of ERobot.",
+    return {
+      title: "ERobot | Admin",
+      description: "Hi there! I am the admin of Erobot.",
     };
   } else {
-    author = await getAuthorById(id);
-  }
-
-  return {
-    title: `ERobot | ${author.fullName}`,
-    description: author.bio,
-    openGraph: {
-      title: author.fullName,
+    const author = await getAuthorById(id);
+    return {
+      title: `ERobot | ${author.fullName}`,
       description: author.bio,
-      url: `${baseUrl}/authors/${id}`,
-      images: [{ url: author.profilePicture }],
-    },
-  };
+      openGraph: {
+        title: author.fullName,
+        description: author.bio,
+        url: `${baseUrl}/authors/${id}`,
+        images: [{ url: author.profilePicture }],
+      },
+    };
+  }
+}
+
+// SSG: ✅ Function to generate static paths
+export async function generateStaticParams() {
+  const authors = await getAuthors();
+
+  // Add 'default' as a static parameter
+  return [
+    { id: "default" },
+    ...authors.map((author) => ({
+      id: author.id.toString(),
+    })),
+  ];
 }
 
 const page = async ({ params }) => {
@@ -53,7 +63,7 @@ const page = async ({ params }) => {
   }
 
   const articles = await getArticlesByAuthorId(id);
-  if (!articles) return notFound();
+  if (articles.length === 0) return notFound();
   const categories = await getArticleCategories();
 
   return (
@@ -82,7 +92,7 @@ const page = async ({ params }) => {
           </p>
 
           <div>
-            {author.links.length > 0 &&
+            {author?.links.length > 0 &&
               author?.links.map((item, i) => (
                 <Link
                   key={i}
@@ -120,4 +130,4 @@ const page = async ({ params }) => {
   );
 };
 
-export default AuhtorDetail;
+export default page;
