@@ -14,9 +14,7 @@ import deleteImageFromStorage from "@/utils/deleteImageFromStorage";
 import { useCartContext } from "@/contexts/CartContext";
 import { storage, ref, uploadBytes, getDownloadURL } from "@/libs/firebase";
 import { orderMessage } from "@/data/messageToSend";
-import {
-  sendTelegramImage,
-} from "@/utils/sendTelegramMessage";
+import { sendTelegramImage } from "@/utils/sendTelegramMessage";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import OrderHistorySection from "./OrderHistorySection";
@@ -209,7 +207,7 @@ const CartPage = () => {
                           {
                             default: "left",
                           },
-                          0.3 * (index + 1),
+                          0.3,
                           "all"
                         )}
                         initial="hidden"

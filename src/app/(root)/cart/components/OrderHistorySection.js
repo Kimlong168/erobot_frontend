@@ -262,7 +262,7 @@ const OrderHistorySection = () => {
                                 {
                                   default: "left",
                                 },
-                                0.3 * (index + 1),
+                                0.3,
                                 "all"
                               )}
                               initial="hidden"
