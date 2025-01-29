@@ -32,14 +32,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// SSG: ✅ Function to generate static paths
-export async function generateStaticParams() {
-  const artilces = await getArticles();
+// // SSG: ✅ Function to generate static paths
+// export async function generateStaticParams() {
+//   const artilces = await getArticles();
 
-  return artilces.map((article) => ({
-    id: article.id.toString(),
-  }));
-}
+//   return artilces.map((article) => ({
+//     id: article.id.toString(),
+//   }));
+// }
 
 const ArticleDetail = async ({ params }) => {
   const id = (await params).id;
