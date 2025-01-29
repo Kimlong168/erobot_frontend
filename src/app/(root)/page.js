@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section className="max-w-screen overflow-x-hidden">
         <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
           Read Our Articles
         </h2>
