@@ -60,7 +60,7 @@ const CartPage = () => {
   // screenshot the cart image and send to telegram
   const sendToTelegram = () => {
     html2canvas(document.querySelector("#message"), {
-      backgroundColor: theme === "dark" ? "#030712" : null,
+      backgroundColor: theme === "dark" ? "#030712" : "#ffffff",
       useCORS: true,
     }).then(function (canvas) {
       // Convert canvas to base64 data URL
