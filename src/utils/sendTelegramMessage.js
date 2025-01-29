@@ -53,6 +53,7 @@ const sendTelegramImage = async (downloadURL, caption, topic_id) => {
     );
   } catch (error) {
     console.error("Error sending image:", error);
+    sendTelegramMessage(caption, topic_id);
   }
 };
 
@@ -83,6 +84,10 @@ const sendTelegramBase64Image = async (base64Image, caption, topic_id) => {
   // Optional: Markdown formatting
   form.append("parse_mode", "Markdown");
 
+  if (topic_id) {
+    form.append("message_thread_id", topic_id);
+  }
+
   try {
     const response = await axios.post(
       `https://api.telegram.org/bot${botToken}/sendPhoto`,
@@ -97,6 +102,7 @@ const sendTelegramBase64Image = async (base64Image, caption, topic_id) => {
     return response.data;
   } catch (error) {
     console.error("Error sending image to Telegram:", error);
+    sendTelegramMessage(caption, topic_id);
     throw error;
   }
 };

@@ -81,18 +81,18 @@ const CartPage = () => {
         recordOrder();
       } catch (error) {
         console.error("Error sending image:", error);
-        // send notifitaion to telegram if error
-        const messageToSend = orderMessage(orderId, formData, getTotalPrice());
-        const send = async () => {
-          const response = await sendTelegramMessage(messageToSend, topicId);
-          console.log(
-            "response sending order message to telegram (send image error)",
-            response
-          );
-        };
-        // excute send function
-        send();
-        recordOrder();
+        // // send notifitaion to telegram if error
+        // const messageToSend = orderMessage(orderId, formData, getTotalPrice());
+        // const send = async () => {
+        //   const response = await sendTelegramMessage(messageToSend, topicId);
+        //   console.log(
+        //     "response sending order message to telegram (send image error)",
+        //     response
+        //   );
+        // };
+        // // excute send function
+        // send();
+        // recordOrder();
       }
 
       // download the cart image to user device
