@@ -13,7 +13,7 @@ const PopupImage = ({ image, width, height, className }) => {
           <div className="fixed inset-0  bg-black/70 z-[1000] flex justify-center items-center p-4">
             <div
               onClick={() => setShowImage(false)}
-              className="relative max-w-[500px] max-h-[600px] min-h-[200px] min-w-[200px] overflow-hidden border-2 border-secondary rounded-xl"
+              className="relative max-w-[500px] max-h-[600px] min-h-[200px] min-w-[200px] overflow-hidden border-2 border-secondary rounded-xl bg-dark-mode/50"
             >
               {/* image */}
               <Image

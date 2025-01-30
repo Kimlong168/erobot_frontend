@@ -4,9 +4,11 @@ import { LuDownload } from "react-icons/lu";
 import PopupImage from "@/components/ui/PopupImage";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
+import Link from "next/link";
+
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-const DownloadPage = () => {
+const DownloadPage = ({ stickers }) => {
   const LOGO_LIGHT_URL = baseUrl + "/images/light.png";
   const LOGO_DARK_URL = baseUrl + "/images/dark.png";
   const LOGO_WHITE_URL = baseUrl + "/images/white.png";
@@ -34,6 +36,8 @@ const DownloadPage = () => {
       console.error("Download failed:", error.message);
     }
   };
+
+  console.log(stickers);
 
   const logos = [
     {
@@ -95,7 +99,7 @@ const DownloadPage = () => {
 
       <section className="mb-12">
         <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
-          Logos
+          Our Logos
         </h3>
         <div className="flex flex-col md:flex-row gap-4">
           {logos.map((logo, index) => (
@@ -123,7 +127,7 @@ const DownloadPage = () => {
 
               <button
                 onClick={() => downloadFileAtURL(logo.url)}
-                className="mt-2 w-full flex justify-center items-center gap-3 px-3 py-2.5 bg-secondary text-white font-medium text-sm rounded-lg hover:bg-primary "
+                className="mt-2 w-full flex justify-center items-center gap-3 px-3 py-2.5 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-secondary "
               >
                 <LuDownload /> Download
               </button>
@@ -134,23 +138,42 @@ const DownloadPage = () => {
 
       <section>
         <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
-          Stickers
+          Our Stickers
         </h3>
-        <motion.div
-          variants={fadeIn(
-            {
-              default: "left",
-            },
-            0.3,
-            "all"
-          )}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.3 }}
-          className="flex gap-4"
-        >
-          Comming Soon...
-        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-6 lg:gap-10">
+          {stickers?.map((item, index) => (
+            <motion.div
+              key={index}
+              variants={fadeIn(
+                {
+                  default: "left",
+                },
+                0.3,
+                "all"
+              )}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: true, amount: 0.3 }}
+              className="w-full md:w-[200px] md:h-[200px]" // mb-12
+            >
+              <PopupImage
+                image={item.url}
+                className=" w-full h-full object-cover hover:scale-110 transition-transform"
+                width={400}
+                height={400}
+              />
+              {/* <Link
+                href={item.url}
+                className="mt-2 w-full flex justify-center items-center gap-3
+                px-3 py-2.5 bg-blue-600 text-white font-medium text-sm
+                rounded-lg hover:bg-secondary "
+              >
+                <LuDownload /> Download
+              </Link> */}
+            </motion.div>
+          ))}
+        </div>
       </section>
     </main>
   );
