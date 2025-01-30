@@ -1,3 +1,4 @@
+export const revalidate = 86400;
 import Image from "next/image";
 import { BiCategory } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";

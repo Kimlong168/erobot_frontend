@@ -1,3 +1,4 @@
+export const revalidate = 86400;
 import SharingBtn from "@/components/ui/SharingBtn";
 import BackToPrevBtn from "@/components/ui/BackToPrevBtn";
 import { getProductById, getProducts } from "@/queries/product";

@@ -1,4 +1,4 @@
-export const revalidate = 0;
+export const revalidate = 86400; 
 import { getProjects } from "@/queries/project";
 import GroupProjects from "./components/GroupProjects";
 export const metadata = {

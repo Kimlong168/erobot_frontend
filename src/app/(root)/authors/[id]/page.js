@@ -1,3 +1,4 @@
+export const revalidate = 86400;
 import Image from "next/image";
 import { getArticlesByAuthorId } from "@/queries/article";
 import { getAuthorById, getAuthors } from "@/queries/author";
@@ -34,17 +35,17 @@ export async function generateMetadata({ params }) {
 }
 
 // SSG: ✅ Function to generate static paths
-export async function generateStaticParams() {
-  const authors = await getAuthors();
+// export async function generateStaticParams() {
+//   const authors = await getAuthors();
 
-  // Add 'default' as a static parameter
-  return [
-    { id: "default" },
-    ...authors.map((author) => ({
-      id: author.id.toString(),
-    })),
-  ];
-}
+//   // Add 'default' as a static parameter
+//   return [
+//     { id: "default" },
+//     ...authors.map((author) => ({
+//       id: author.id.toString(),
+//     })),
+//   ];
+// }
 
 const page = async ({ params }) => {
   const id = (await params).id;

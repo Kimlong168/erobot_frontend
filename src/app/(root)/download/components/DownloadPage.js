@@ -5,6 +5,7 @@ import PopupImage from "@/components/ui/PopupImage";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 const DownloadPage = () => {
   const LOGO_LIGHT_URL = baseUrl + "/images/light.png";
   const LOGO_DARK_URL = baseUrl + "/images/dark.png";
