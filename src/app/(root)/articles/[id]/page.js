@@ -1,5 +1,4 @@
 // export const revalidate = 86400;
-import Image from "next/image";
 import { BiCategory } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegCalendarCheck } from "react-icons/fa6";
@@ -90,13 +89,20 @@ const ArticleDetail = async ({ params }) => {
         {/* image */}
 
         <div>
-          <Image
-            width={1000}
+          {/* <Image
+            width={1300}
             height={500}
             className="w-full h-[260px] md:h-[350px] lg:h-[500px] object-cover rounded-lg overflow-hidden"
             src={article.coverImage}
             alt="Article image"
-          />
+          /> */}
+          <div
+            className="bg-center bg-cover w-full h-[260px] md:h-[350px] lg:h-[500px] object-cover rounded-lg overflow-hidden"
+            style={{
+              backgroundImage: `url(${article.coverImage})`,
+            }}
+            alt="Article image"
+          ></div>
         </div>
 
         {/* article content */}
