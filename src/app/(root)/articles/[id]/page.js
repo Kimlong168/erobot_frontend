@@ -6,7 +6,7 @@ import { FaRegCalendarCheck } from "react-icons/fa6";
 import ContentDisplay from "@/components/ui/ContentDisplay";
 import SharingBtn from "@/components/ui/SharingBtn";
 import BackToPrevBtn from "@/components/ui/BackToPrevBtn";
-import { getArticleById, getArticles } from "@/queries/article";
+import { getArticleById } from "@/queries/article";
 import { notFound } from "next/navigation";
 import Comment from "@/components/ui/Comment";
 import { getAuthors } from "@/queries/author";
