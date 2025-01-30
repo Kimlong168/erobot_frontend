@@ -1,4 +1,4 @@
-export const revalidate = 86400;
+// export const revalidate = 86400;
 import { notFound } from "next/navigation";
 import { getProjectById } from "@/queries/project";
 import ProjectDetailPage from "./ProjectDetailPage";

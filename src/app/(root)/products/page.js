@@ -1,29 +1,32 @@
 export const revalidate = 86400;
+import { getProducts } from "@/queries/product";
 import ProductsPage from "./components/ProductsPage";
 import { db, collection, getDocs } from "@/libs/firebase";
+import { getProductCategories } from "@/queries/productCategory";
 export const metadata = {
   title: "ERobot | Products",
 };
 const ProductsServerComponent = async ({ searchParams }) => {
   const query = (await searchParams).query;
 
-  // const params = { search: query || null };
+  // const [productsSnapshot, productCategorySnapshot] = await Promise.all([
+  //   getDocs(collection(db, "products")),
+  //   getDocs(collection(db, "product_category")),
+  // ]);
 
-  const [productsSnapshot, productCategorySnapshot] = await Promise.all([
-    getDocs(collection(db, "products")),
-    getDocs(collection(db, "product_category")),
-  ]);
+  // // Map through the snapshots to get the documents
+  // const products = productsSnapshot.docs.map((doc) => ({
+  //   id: doc.id,
+  //   ...doc.data(),
+  // }));
 
-  // Map through the snapshots to get the documents
-  const products = productsSnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  // const productCategories = productCategorySnapshot.docs.map((doc) => ({
+  //   id: doc.id,
+  //   ...doc.data(),
+  // }));
 
-  const productCategories = productCategorySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  const products = await getProducts();
+  const productCategories = await getProductCategories();
 
   return (
     <ProductsPage
