@@ -1,3 +1,4 @@
+export const revalidate = 86400;
 import ProductsPage from "./components/ProductsPage";
 import { db, collection, getDocs } from "@/libs/firebase";
 export const metadata = {
