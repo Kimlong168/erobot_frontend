@@ -60,7 +60,7 @@ const DownloadPage = ({ stickers }) => {
   return (
     <main className="container py-8 md:py-12">
       <section className="mb-12">
-        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
+        <h3 className="text-center md:text-left  text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Our Brand Story
         </h3>
         <motion.p
@@ -98,10 +98,10 @@ const DownloadPage = ({ stickers }) => {
       </section>
 
       <section className="mb-12">
-        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
+        <h3 className=" text-center md:text-left  text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Our Logos
         </h3>
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-4 max-w-screen overflow-x-hidden">
           {logos.map((logo, index) => (
             <div key={index}>
               <motion.div
@@ -115,7 +115,7 @@ const DownloadPage = ({ stickers }) => {
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: true, amount: 0.3 }}
-                className="w-full md:w-[200px] md:h-[200px] overflow-hidden rounded-lg border border-gray-400"
+                className="w-[calc(100vw-200px)] mx-auto  md:w-[200px] md:h-[200px] overflow-hidden rounded-lg border border-gray-400"
               >
                 <PopupImage
                   image={logo.image}
@@ -127,7 +127,7 @@ const DownloadPage = ({ stickers }) => {
 
               <button
                 onClick={() => downloadFileAtURL(logo.url)}
-                className="mt-2 w-full flex justify-center items-center gap-3 px-3 py-2.5 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-secondary "
+                className="mt-2 w-[calc(100vw-200px)] mx-auto  md:w-full flex justify-center items-center gap-3 px-3 py-2.5 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-secondary "
               >
                 <LuDownload /> Download
               </button>
@@ -137,11 +137,11 @@ const DownloadPage = ({ stickers }) => {
       </section>
 
       <section>
-        <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
+        <h3 className="text-center md:text-left text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Our Stickers
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-6 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 max-w-screen overflow-x-hidden">
           {stickers?.map((item, index) => (
             <motion.div
               key={index}
@@ -155,7 +155,7 @@ const DownloadPage = ({ stickers }) => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: true, amount: 0.3 }}
-              className="w-full md:w-[200px] md:h-[200px]" // mb-12
+              className="w-[calc(100vw-200px)] md:w-[200px] md:h-[200px] mx-auto mt-4 md:mt-0" // mb-12
             >
               <PopupImage
                 image={item.url}
