@@ -21,7 +21,7 @@ const SharingBtn = ({ url, title }) => {
         <FacebookShareButton
           url={url}
           hashtag="#erobot"
-          quote={`====${title}====`}
+          quote={`${title}`}
         >
           <FacebookIcon
             bgStyle={{
@@ -31,7 +31,7 @@ const SharingBtn = ({ url, title }) => {
             round={true}
           />
         </FacebookShareButton>
-        <TelegramShareButton url={url} title={`====${title}====`}>
+        <TelegramShareButton url={url} title={`**${title}**`}>
           <TelegramIcon
             bgStyle={{
               fill: "#494E58",
@@ -41,7 +41,7 @@ const SharingBtn = ({ url, title }) => {
           />
         </TelegramShareButton>
 
-        <WhatsappShareButton url={url} title={`====${title}====`}>
+        <WhatsappShareButton url={url} title={`${title}`}>
           <WhatsappIcon
             bgStyle={{
               fill: "#494E58",
@@ -53,7 +53,7 @@ const SharingBtn = ({ url, title }) => {
 
         <LinkedinShareButton
           url={url}
-          title={`====${title}====`}
+          title={`${title}`}
           source="erobotkh.org"
         >
           <LinkedinIcon
@@ -65,7 +65,7 @@ const SharingBtn = ({ url, title }) => {
           />
         </LinkedinShareButton>
 
-        <TwitterShareButton url={url} title={`====${title}====`}>
+        <TwitterShareButton url={url} title={`${title}`}>
           <XIcon
             bgStyle={{
               fill: "#494E58",
@@ -75,7 +75,7 @@ const SharingBtn = ({ url, title }) => {
           />
         </TwitterShareButton>
 
-        <LineShareButton url={url} title={`====${title}====`}>
+        <LineShareButton url={url} title={`${title}`}>
           <LineIcon
             bgStyle={{
               fill: "#494E58",

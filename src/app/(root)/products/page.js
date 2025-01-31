@@ -1,7 +1,6 @@
 export const revalidate = 86400;
 import { getProducts } from "@/queries/product";
 import ProductsPage from "./components/ProductsPage";
-import { db, collection, getDocs } from "@/libs/firebase";
 import { getProductCategories } from "@/queries/productCategory";
 export const metadata = {
   title: "ERobot | Products",

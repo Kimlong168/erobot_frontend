@@ -119,7 +119,7 @@ const DownloadPage = ({ stickers }) => {
               >
                 <PopupImage
                   image={logo.image}
-                  className=" w-full h-full object-cover hover:scale-110 transition-transform"
+                  className=" w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer"
                   width={400}
                   height={400}
                 />
@@ -136,12 +136,12 @@ const DownloadPage = ({ stickers }) => {
         </div>
       </section>
 
-      <section>
+      <section className="max-w-screen">
         <h3 className="text-center md:text-left text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Our Stickers
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 max-w-screen overflow-x-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 ">
           {stickers?.map((item, index) => (
             <motion.div
               key={index}
@@ -155,11 +155,11 @@ const DownloadPage = ({ stickers }) => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: true, amount: 0.3 }}
-              className="w-[calc(100vw-200px)] md:w-[200px] md:h-[200px] mx-auto mt-4 md:mt-0" // mb-12
+              className="w-[calc(100vw-200px)] md:w-[200px] md:h-[200px] mx-auto mt-4 md:mt-0 " // mb-12
             >
               <PopupImage
                 image={item.url}
-                className=" w-full h-full object-cover hover:scale-110 transition-transform"
+                className=" w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer"
                 width={400}
                 height={400}
               />

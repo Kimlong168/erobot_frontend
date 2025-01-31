@@ -3,7 +3,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
   title: "ERobot Cambodia",
-  description: "Welcome to Erobotofficial website",
+  description: "Welcome to Erobot official website",
   openGraph: {
     title: "ERobot Cambodia",
     description: "Welcome to Erobot official website",
