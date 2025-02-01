@@ -136,7 +136,7 @@ const DownloadPage = ({ stickers }) => {
         </div>
       </section>
 
-      <section className="max-w-screen">
+      <section className="max-w-screen overflow-hidden pb-4">
         <h3 className="text-center md:text-left text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90 mb-4">
           Our Stickers
         </h3>
