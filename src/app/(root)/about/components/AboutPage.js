@@ -191,7 +191,7 @@ innovative learning opportunities.`,
             <h3 className="text-nowrap font-primary text-3xl md:text-4xl text-dark dark:text-white/90">
               Our Vision
             </h3>
-            <div className="text-primary text-[150px]">
+            <div className="text-secondary text-[150px]">
               <FaRegEye />
             </div>
             <p className="lg:w-[80%] text-center dark:text-white/70">
