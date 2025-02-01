@@ -11,7 +11,7 @@ export const metadata = {
     siteName: "ERobot Cambodia",
     images: [
       {
-        url: `${baseUrl}/images/heroImage.jpg`,
+        url: `${baseUrl}/images/banner.png`,
         width: 1200,
         height: 630,
         alt: "ERobot Cambodia Official Banner",
@@ -23,7 +23,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "ERobot Cambodia",
     description: "Welcome to Erobot official website",
-    images: [`${baseUrl}/images/heroImage.jpg`],
+    images: [`${baseUrl}/images/banner.png`],
   },
 };
 
