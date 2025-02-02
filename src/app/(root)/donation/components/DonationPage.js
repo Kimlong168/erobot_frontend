@@ -31,7 +31,7 @@ const DonationPage = () => {
   const [currency, setCurrency] = useState(curr || "USD");
   const [deepLink, setDeepLink] = useState("");
   const [paymentData, setPaymentData] = useState({
-    name: name || "",
+    name: name || localStorage?.getItem("donorName") || "",
     amount: amount || "",
   });
 
@@ -130,6 +130,7 @@ const DonationPage = () => {
       };
 
       console.log("md5", String(localStorage.getItem("md5")));
+      console.log("Payment data", paymentData);
 
       // Define the request body
       const body = {
@@ -142,12 +143,11 @@ const DonationPage = () => {
       // Update status from the API response
       const status = response.data?.errorCode === null ? true : false;
       setStatus(status);
-
       if (status) {
         // Function to format the current date and time
-
+        const donorName = localStorage.getItem("donorName");
         await sendTelegramMessage(
-          `🎉 Donation received from ${paymentData.name || "anonymous"} for ${
+          `🎉 Donation received from ${donorName || "anonymous"} for ${
             paymentData.amount
           } ${currency} on ${getCurrentTime()}`,
           process.env.NEXT_PUBLIC_TELEGRAM_DONATION_CHAT_ID
@@ -159,15 +159,15 @@ const DonationPage = () => {
             : parseFloat(paymentData.amount) / 4000;
 
         createDonor({
-          name: paymentData.name || "Anonymous",
+          name: donorName || "Anonymous",
           amount: amountInUSD,
           source: "website",
           date: getCurrentTimeForDonor(),
         });
 
         localStorage.removeItem("md5"); // Clear the MD5 from localStorage
+        localStorage.removeItem("donorName"); // Clear the donor name from localStorage
       }
-      // console.log("res", response.data);
     } catch (error) {
       // Handle errors
       console.error(
@@ -181,6 +181,10 @@ const DonationPage = () => {
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setPaymentData((prev) => ({ ...prev, [name]: value }));
+    if (name == "name") {
+      //add to local storage
+      localStorage.setItem("donorName", value);
+    }
     if (name == "amount") {
       setQrCode("");
       setDeepLink("");
