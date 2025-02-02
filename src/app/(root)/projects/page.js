@@ -1,4 +1,4 @@
-export const revalidate = 86400; 
+export const revalidate = 86400;
 import { getProjects } from "@/queries/project";
 import GroupProjects from "./components/GroupProjects";
 export const metadata = {
@@ -18,6 +18,13 @@ const ProjectsPage = async () => {
   const upcomingProject = projects?.filter(
     (project) => project.status === "upcoming"
   );
+
+  if (projects?.length === 0)
+    return (
+      <div className="no-results container h-[calc(100vh-100px)] gird place-content-center text-center">
+        No projects found!
+      </div>
+    );
 
   return (
     <main className="container">

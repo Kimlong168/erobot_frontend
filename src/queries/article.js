@@ -62,8 +62,8 @@ export const getArticleById = async (id) => {
 export const getLatestArticles = async () => {
   const q = query(
     collection(db, "blogs"),
-    // orderBy("createdAt", "desc"), // Ensure the articles are ordered by date, descending
-    orderBy("coverImageId", "desc"),
+    orderBy("createdAt", "desc"), // Ensure the articles are ordered by date, descending
+    // orderBy("coverImageId", "desc"),
     limit(3) // Fetch only the latest 3 articles
   );
   const querySnapshot = await getDocs(q);

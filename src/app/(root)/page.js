@@ -91,34 +91,11 @@ export default function Home() {
       </section>
 
       <section className="max-w-screen overflow-x-hidden">
-        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
-          Read Our Articles
-        </h2>
-
-        <div className="container mt-8 mb-14">
-          <div>
-            <LatestArticlesList />
-          </div>
-          <div className="flex justify-center mt-4">
-            <Link href="/articles">
-              <button className="flex items-center gap-2  text-secondary border border-secondary dark:text-white/80 dark:border-white font-bold py-3.5 px-4  rounded-full mt-4 hover:shadow-lg">
-                <span>
-                  <FaHeart />
-                </span>{" "}
-                View More
-              </button>
-            </Link>
-          </div>
-        </div>
+        <LatestArticlesList />
       </section>
 
-      <section className="overflow-hidden">
-        <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
-          Our Partners
-        </h2>
-        <div className="w-[130%] my-8">
-          <PartnersList direction="left" />
-        </div>
+      <section className="max-w-screen overflow-x-hidden">
+        <PartnersList direction="left" />
       </section>
 
       <section className="relative bg-boy dark:brightness-75 bg-cover bg-center h-[500px]  max-w-screen overflow-x-hidden">
