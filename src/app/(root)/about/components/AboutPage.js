@@ -371,16 +371,13 @@ innovative learning opportunities.`,
         </section>
 
         <section className="overflow-hidden mt-12">
-          <h2 className="text-2xl font-primary hover:bg-secondary bg-primary text-center py-1 text-white">
-            Our Partners
-          </h2>
           <motion.div
             variants={fadeIn("up", 0.2)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <div className="w-[130%] my-8">
+            <div>
               <PartnersList direction="left" />
             </div>
           </motion.div>
