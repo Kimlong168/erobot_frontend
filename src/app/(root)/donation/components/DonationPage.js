@@ -242,7 +242,7 @@ const DonationPage = () => {
 
   return (
     <main>
-      <section>
+      <section className="w-screen overflow-x-hidden">
         <div className="min-h-[calc(100vh-100px)] dark:brightness-75 grid justify-center items-center text-white bg-gray-500 bg-donate bg-cover bg-center p-6">
           <motion.div
             variants={bounceIn(0.5)}
