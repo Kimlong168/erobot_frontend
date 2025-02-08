@@ -1,5 +1,6 @@
 import "./globals.css";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+import ComingSoon from "@/components/layout/ComingSoon";
 
 export const metadata = {
   title: "ERobot Cambodia",
@@ -27,13 +28,14 @@ export const metadata = {
   },
 };
 
+const IS_HIDDEN = process.env.NEXT_PUBLIC_IS_HIDDEN === "true";
 function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
         className={`antialiased font-secondary dark:bg-dark-mode dark:text-white max-w-screen overflow-x-hidden`}
       >
-        {children}
+        {IS_HIDDEN ? <ComingSoon /> : children}
       </body>
     </html>
   );
