@@ -85,7 +85,7 @@ const ComingSoon = () => {
         </motion.button>
       </div>
       <div className="rounded-full overflow-hidden mt-12 shadow-2xl border-2 border-secondary">
-        <Countdown className="text-white text-md" countdownFrom="2025-02-20" />
+        <Countdown className="text-white text-md" countdownFrom="2026-01-01" />
       </div>
     </motion.section>
   );
