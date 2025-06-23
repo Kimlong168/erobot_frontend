@@ -43,19 +43,11 @@ This project demonstrates proficiency in full-stack MERN development through a c
 - Vite (Build tool and dev server)
 - React Beautiful DnD (Drag and drop functionality)
 - Tailwind CSS (Styling and responsive design)
+- Shadcn (UI library)
 - React Router DOM (Client-side routing)
 - Axios (HTTP client)
-- React Hot Toast (Notifications)
+- React Toastify (Notifications)
 - Lucide React (Icons)
-
-**Backend:**
-- Node.js (Runtime environment)
-- Express.js (Web framework)
-- MongoDB (Database)
-- Mongoose (ODM for MongoDB)
-- CORS (Cross-origin resource sharing)
-- Dotenv (Environment variables)
-- Nodemon (Development server)
 
 **Development Tools:**
 - ESLint (Code linting)
@@ -185,7 +177,7 @@ npm run build
 
 ## 👨‍💻 Author
 
-**[Chann Kimlong]**
+**Chann Kimlong**
 - GitHub: [@Kimlong168](https://github.com/Kimlong168)
 - Portfolio: [Portfolio Website](https://kimlongchann.dev)
 
