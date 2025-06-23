@@ -199,9 +199,10 @@ This project follows the **Atomic Design** methodology by [Brad Frost](https://b
 ![List View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_175951_lke7jo.png)
 *Seamless switching between dark and light mode*
 
-### Task Management Demo
-![Task CRUD Operations](https://youtu.be/b0YGkyuZeWY?si=KQbl3kX2MA6xTP-v)
-*Complete task lifecycle: create, update, move, and delete*
+### 🚀 Task Management Demo
+[![Task CRUD Operations](https://img.youtube.com/vi/b0YGkyuZeWY/0.jpg)](https://youtu.be/b0YGkyuZeWY?si=KQbl3kX2MA6xTP-v)
+> **Watch Demo** – *Complete task lifecycle: create, update, move, and delete*
+
 
 ## 👨‍💻 Author
 
