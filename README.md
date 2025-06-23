@@ -57,8 +57,7 @@ This project demonstrates proficiency in full-stack MERN development through a c
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/) (v16.0 or higher)
-- [MongoDB](https://www.mongodb.com/) (v5.0 or higher) or MongoDB Atlas account
+- [Node.js](https://nodejs.org/) (v18.0 or higher)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 - [Git](https://git-scm.com/)
 
