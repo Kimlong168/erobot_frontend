@@ -1,4 +1,4 @@
-# Taskflow (To-Do Application)
+# Taskflow (ToDo List App)
 
 A fully-featured task management application built with the MERN stack, featuring dynamic board layouts, customizable columns, and responsive design for optimal productivity across all devices.
 
