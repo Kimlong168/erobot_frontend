@@ -189,13 +189,17 @@ This project follows the **Atomic Design** methodology by [Brad Frost](https://b
 ![Mobile View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676907/iPhone-13-PRO-localhost_vt4t78.png)
 *Optimized mobile experience with touch-friendly interactions*
 
+### List View Toggle
+![List View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_180000_kdzpsd.png)
+*Seamless switching between board and list layouts*
+
 ### Borads List
 ![Column Management](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676490/Screenshot_2025-06-23_175835_sqoo8e.png)
 *View all available boards*
 
-### List View Toggle
-![List View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_180000_kdzpsd.png)
-*Seamless switching between board and list layouts*
+### Adding a new column
+![Column Management](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750677476/Screenshot_2025-06-23_181727_zj9rus.png)
+*Adding a new column to the board*
 
 ### Dark Mode
 ![List View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_175951_lke7jo.png)
