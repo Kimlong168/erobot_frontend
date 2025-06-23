@@ -13,6 +13,7 @@ This project demonstrates proficiency in full-stack MERN development through a c
 - **Read Tasks**: View all tasks across different columns and layouts
 - **Update Tasks**: Edit task details and move between columns (drag and drop)
 - **Delete Tasks**: Remove completed or unwanted tasks with confirmation
+- **Multiple boards**: User can create boards as much as they need
 
 ### 🗂️ Dynamic Board View
 - **Kanban-Style Columns**: Visual task organization (To Do, Doing, Done)
@@ -20,7 +21,7 @@ This project demonstrates proficiency in full-stack MERN development through a c
 - **Drag & Drop**: Intuitive task movement between columns
 - **Column Ordering**: Reorder columns to match workflow preferences
 - **Visual Indicators**: User can add color to each column
-- **Multiple boards**: User can create boards as much as they need
+
 
 ### 📝 List/Board View (Bonus Feature)
 - **Toggle Between Views**: Switch between board and list layouts
