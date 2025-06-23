@@ -102,8 +102,28 @@ Frontend runs on: `http://localhost:5173`
 npm run build
 ```
 
-## 📁 Project Structure
+## 🧱 Component Structure: Atomic Design
 
+This project follows the **Atomic Design** methodology by [Brad Frost](https://bradfrost.com/blog/post/atomic-web-design/) for organizing UI components in a scalable and maintainable way.
+
+### 🔹 Structure Overview
+
+- **Atoms** – Basic building blocks of the interface  
+  _Examples: Button, Input, Label_
+
+- **Molecules** – Groups of atoms that form a small, functional unit  
+  _Examples: Form Field, Modal Header_
+
+- **Organisms** – Complex UI components made up of molecules and atoms  
+  _Examples: Navbar, Card, Product List_
+
+- **Templates** – Page-level layout with placeholder content  
+  _Examples: Dashboard Layout, Auth Page Template_
+
+- **Pages** – Specific screens with real data and logic  
+  _Examples: Home Page, Login Page_
+
+📖 **Reference**: [Atomic Design by Brad Frost](https://bradfrost.com/blog/post/atomic-web-design/)
 
 ## 🎨 Design Decisions
 
@@ -183,11 +203,10 @@ npm run build
 
 ## 🙏 Acknowledgments
 
-- **React Beautiful DnD**: Excellent drag-and-drop library
-- **Tailwind CSS**: Utility-first CSS framework
-- **MongoDB**: Flexible NoSQL database
-- **Express.js**: Fast, minimalist web framework
 - **Vite**: Next-generation frontend tooling
+- **Tailwind CSS**: Utility-first CSS framework
+- **Shadcn**: UI Library for react js
+- **React Beautiful DnD**: Excellent drag-and-drop library
 
 ---
 
