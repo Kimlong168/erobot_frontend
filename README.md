@@ -26,7 +26,7 @@ This project demonstrates proficiency in full-stack MERN development through a c
 ### 📝 List/Board View (Bonus Feature)
 - **Toggle Between Views**: Switch between board and list layouts
 
-  ### 🔑 Authentication
+### 🔑 Authentication
 - **Authentication**: User can register a new account or login to access their boards
   
 ### 📱 Responsive Interface
