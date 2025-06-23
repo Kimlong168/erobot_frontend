@@ -59,7 +59,7 @@ This project demonstrates proficiency in full-stack MERN development through a c
 **Development Tools:**
 - ESLint (Code linting)
 - Prettier (Code formatting)
-- =
+
 ## 📋 Prerequisites
 
 Ensure you have the following installed:
