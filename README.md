@@ -175,24 +175,32 @@ This project follows the **Atomic Design** methodology by [Brad Frost](https://b
 
 ## 📸 Application Screenshots
 
+### Landing Page (Home)
+![Landing Page](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676543/home_zphs9y.png)
+*Dynamic board layout with customizable columns and drag-and-drop functionality*
+
 ### Desktop Board View
-![Desktop Board View](./screenshots/desktop-board-view.png)
+![Landing Page](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_175941_l7f9nc.png)
 *Dynamic board layout with customizable columns and drag-and-drop functionality*
 
 ### Mobile Responsive Design
-![Mobile View](./screenshots/mobile-responsive.png)
+![Mobile View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676907/iPhone-13-PRO-localhost_vt4t78.png)
 *Optimized mobile experience with touch-friendly interactions*
 
 ### Column Management
-![Column Management](./screenshots/column-management.gif)
+![Column Management](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_175941_l7f9nc.png)
 *Dynamic column creation, renaming, and reordering*
 
 ### List View Toggle
-![List View](./screenshots/list-view-toggle.gif)
+![List View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_180000_kdzpsd.png)
+*Seamless switching between board and list layouts*
+
+### Dark Mode
+![List View](https://res.cloudinary.com/dzbtplz1o/image/upload/v1750676491/Screenshot_2025-06-23_175951_lke7jo.png)
 *Seamless switching between board and list layouts*
 
 ### Task Management Demo
-![Task CRUD Operations](./screenshots/task-management-demo.gif)
+![Task CRUD Operations](https://youtu.be/b0YGkyuZeWY?si=KQbl3kX2MA6xTP-v)
 *Complete task lifecycle: create, update, move, and delete*
 
 ## 👨‍💻 Author
