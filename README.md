@@ -1,4 +1,4 @@
-# Taskflow Frontend (ToDo List App)
+# Taskflow To-Do Board - Frontend
 
 A fully-featured task management application built with the MERN stack, featuring dynamic board layouts, customizable columns, and responsive design for optimal productivity across all devices.
 
