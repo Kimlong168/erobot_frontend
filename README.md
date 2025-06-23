@@ -58,7 +58,7 @@ This project demonstrates proficiency in full-stack MERN development through a c
 Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (v18.0 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/)
 - [Git](https://git-scm.com/)
 
 ## 🚀 Installation & Setup
