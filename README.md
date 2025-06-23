@@ -6,6 +6,8 @@ A fully-featured task management application built with the MERN stack, featurin
 
 This project demonstrates proficiency in full-stack MERN development through a comprehensive To-Do List application with advanced board management capabilities. The application emphasizes clean architecture, intuitive user experience, and modern web development best practices.
 
+[![Watch Demo](https://img.shields.io/badge/▶️%20Watch%20Demo-YouTube-red?logo=youtube)](https://youtu.be/b0YGkyuZeWY?si=KQbl3kX2MA6xTP-v)
+
 ## ✨ Core Features
 
 ### 📋 Task Management (CRUD Operations)
