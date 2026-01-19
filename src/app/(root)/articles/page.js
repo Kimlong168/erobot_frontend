@@ -1,3 +1,4 @@
+export const revalidate = 86400;
 import { getArticles } from "@/queries/article";
 import ArticlesPage from "./components/ArticlesPage";
 import { getAuthors } from "@/queries/author";

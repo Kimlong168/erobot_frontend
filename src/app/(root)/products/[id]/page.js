@@ -1,4 +1,4 @@
-// export const revalidate = 86400;
+export const revalidate = 86400;
 import SharingBtn from "@/components/ui/SharingBtn";
 import BackToPrevBtn from "@/components/ui/BackToPrevBtn";
 import { getProductById, getProducts } from "@/queries/product";
@@ -44,7 +44,7 @@ const ProductDetail = async ({ params }) => {
   if (!product) return notFound();
 
   const category = categories.find(
-    (category) => category.id === product?.categoryId
+    (category) => category.id === product?.categoryId,
   );
 
   return (

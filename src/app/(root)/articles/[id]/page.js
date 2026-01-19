@@ -1,4 +1,4 @@
-// export const revalidate = 86400;
+export const revalidate = 86400;
 import { BiCategory } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegCalendarCheck } from "react-icons/fa6";
@@ -52,7 +52,7 @@ const ArticleDetail = async ({ params }) => {
 
   const author = authors.find((author) => author.id === article?.authorId);
   const category = categories.find(
-    (category) => category.id === article?.categoryId
+    (category) => category.id === article?.categoryId,
   );
 
   return (
