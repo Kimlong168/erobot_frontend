@@ -1,19 +1,23 @@
 export const revalidate = 86400;
+export const dynamic = "force-static";
+
 import { getArticles } from "@/queries/article";
-import ArticlesPage from "./components/ArticlesPage";
 import { getAuthors } from "@/queries/author";
 import { getArticleCategories } from "@/queries/articleCategory";
+import ArticlesPage from "./components/ArticlesPage";
 
 export const metadata = {
   title: "ERobot | Articles",
 };
 
-const page = async ({ searchParams }) => {
-  const query = (await searchParams).query;
+const Page = async ({ searchParams }) => {
+  const query = searchParams?.query ?? "";
 
-  const articles = await getArticles();
-  const authors = await getAuthors();
-  const articleCategories = await getArticleCategories();
+  const [articles, authors, articleCategories] = await Promise.all([
+    getArticles(),
+    getAuthors(),
+    getArticleCategories(),
+  ]);
 
   return (
     <ArticlesPage
@@ -25,4 +29,4 @@ const page = async ({ searchParams }) => {
   );
 };
 
-export default page;
+export default Page;
